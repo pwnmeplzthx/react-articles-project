@@ -1,13 +1,13 @@
 import webpack from "webpack";
-import { BuildOptions } from "./types/config";
-import path from "path";
+import { buidDevServer } from "./buildDevServer";
 import { buildLoaders } from "./buildLoaders";
 import { buildPlugins } from "./buildPlugins";
 import { buildResolvers } from "./buildResolevrs";
+import { BuildOptions } from "./types/config";
 
 export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
 
-    const {mode, paths} = options
+    const { mode, paths, isDev } = options
 
     return {
         mode: mode,
@@ -23,5 +23,9 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             rules: buildLoaders(),
         },
         resolve: buildResolvers(),
+        // Показывает, в каком из исходных файлов (которые собираются в bandle) ошибка, не нужно на прод сборке
+        devtool: isDev ? 'inline-source-map' : undefined,
+        // Автоматическая пересброка после внесения изменений в файлы, на проде не нужна
+        devServer: isDev ? buidDevServer(options) : undefined
     }
 }
