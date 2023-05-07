@@ -1,0 +1,19 @@
+import { useState } from "react"
+import './Counter.scss'
+
+type Props = {}
+
+export const Counter = (props: Props) => {
+    const [count, setCount] = useState(0)
+
+    const increament = () => {
+        setCount(count + 1)
+    }
+
+    return (
+        <>
+            <h1>{count}</h1>
+            <button onClick={increament}>increament</button>
+        </>
+    )
+}
