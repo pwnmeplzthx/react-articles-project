@@ -20,7 +20,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         plugins: buildPlugins(options),
         module: {
             // Конфигурируем лоадеры (предназначены для обработки файлов, которые выходят за рамки javascript)
-            rules: buildLoaders(),
+            rules: buildLoaders(options),
         },
         resolve: buildResolvers(),
         // Показывает, в каком из исходных файлов (которые собираются в bandle) ошибка, не нужно на прод сборке
