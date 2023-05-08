@@ -1,6 +1,10 @@
+// Функция для генеарции className 
+// params: mainClass - главный класс, additional - дополнительные классы, mods - модификаторы (например {hoevered: true})
+// return string
+
 type Mods = Record<string, boolean | string>
 
-export function classNmaes(mainClass: string, additional: string[], mods: Mods = {},): string {
+export function classNames(mainClass: string, additional: string[], mods: Mods = {},): string {
     return [
         mainClass,
         ...additional,

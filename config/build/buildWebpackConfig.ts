@@ -22,7 +22,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             // Конфигурируем лоадеры (предназначены для обработки файлов, которые выходят за рамки javascript)
             rules: buildLoaders(options),
         },
-        resolve: buildResolvers(),
+        resolve: buildResolvers(options),
         // Показывает, в каком из исходных файлов (которые собираются в bandle) ошибка, не нужно на прод сборке
         devtool: isDev ? 'inline-source-map' : undefined,
         // Автоматическая пересброка после внесения изменений в файлы, на проде не нужна
