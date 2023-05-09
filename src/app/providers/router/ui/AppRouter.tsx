@@ -9,11 +9,20 @@ const AppRouter = (props: Props) => {
         <Suspense fallback={<div>Loading...</div>}>
             <Routes>
                 {Object.values(routeConfig).map((routeItem) => {
-                    return (<Route 
-                        key={routeItem.path}
-                        path={routeItem.path} 
-                        element={routeItem.element}
-                    />)
+                    return (
+                        <Route 
+                            key={routeItem.path}
+                            path={routeItem.path} 
+                            element={
+                                // Оборачиваем контентную часть, чтобы растянуть ее на остаток (от aside) страницы
+                                // навешиваем на класс page-wrapper: flex-grow (см index.scss)
+                                <div className="page-wrapper">
+                                    {routeItem.element}
+                                </div>
+                                
+                            }
+                        />
+                    )
                 })}
             </Routes>
         </Suspense>
