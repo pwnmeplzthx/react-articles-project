@@ -5,6 +5,7 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { useTheme } from "./providers/ThemeProvider"
 import { AboutPage } from "pages/AboutPage"
 import { MainPage } from "pages/MainPage"
+import { AppRouter } from "./providers/router"
 
 type Props = {}
 
@@ -17,12 +18,7 @@ const App = (props: Props) => {
             <button onClick={toggleTheme}>TOGGLE</button>
             <Link to={'/'}>Главная</Link>
             <Link to={'/about'}>О сайте</Link>
-            <Suspense fallback={<div>Loading...</div>}>
-                <Routes>
-                    <Route path={'/about'} element={<AboutPage />}/>
-                    <Route path={'/'} element={<MainPage />}/>
-                </Routes>
-            </Suspense>
+            <AppRouter />
         </div>
     )
 }
