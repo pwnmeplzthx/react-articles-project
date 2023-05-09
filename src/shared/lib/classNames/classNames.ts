@@ -4,10 +4,10 @@
 
 type Mods = Record<string, boolean | string>
 
-export function classNames(mainClass: string, additional: string[], mods: Mods = {},): string {
+export function classNames(mainClass: string, additional: string[] = [], mods: Mods = {},): string {
     return [
         mainClass,
-        ...additional,
+        ...additional.filter(Boolean),
         // Object.entries() - Полуаем ключи и значения у объекта, возвращает массив (в данном случае кортеж)
         ...Object.entries(mods)
             // Фильтруем только true элементы
