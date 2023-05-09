@@ -4,9 +4,11 @@ import { Configuration as DevServerConfiguration } from "webpack-dev-server";
 export function buidDevServer(options: BuildOptions): DevServerConfiguration {
     return {
         port: options.port,
-        //автоматически в браузере открывает окно
+        // Автоматически в браузере открывает окно
         open: true,
-        //позволяет проксировать запросы через корневую старницу (если обновить страницу не на / выдаст ошибку)
-        historyApiFallback: true
+        // Позволяет проксировать запросы через корневую старницу (если обновить страницу не на / выдаст ошибку)
+        historyApiFallback: true,
+        // Обновление приложения без обновления страницы при внесении изменений
+        hot: true
     }
 }
