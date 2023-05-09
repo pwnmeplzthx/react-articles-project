@@ -18,3 +18,6 @@ declare module "*.svg" {
     const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
     export default SVG;
 }
+
+// Декларация глобальной переменной из конфига (buildWebpackConfig.ts)
+declare const __IS_DEV__: boolean
