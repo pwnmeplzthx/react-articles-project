@@ -1,5 +1,5 @@
-import { BuildOptions } from "./types/config";
-import { Configuration as DevServerConfiguration } from "webpack-dev-server";
+import { Configuration as DevServerConfiguration } from 'webpack-dev-server';
+import { BuildOptions } from './types/config';
 
 export function buidDevServer(options: BuildOptions): DevServerConfiguration {
     return {
@@ -9,6 +9,6 @@ export function buidDevServer(options: BuildOptions): DevServerConfiguration {
         // Позволяет проксировать запросы через корневую старницу (если обновить страницу не на / выдаст ошибку)
         historyApiFallback: true,
         // Обновление приложения без обновления страницы при внесении изменений
-        hot: true
-    }
+        hot: true,
+    };
 }

@@ -1,10 +1,10 @@
-// Функция для генеарции className 
+// Функция для генеарции className
 // params: mainClass - главный класс, additional - дополнительные классы, mods - модификаторы (например {hoevered: true})
 // return string
 
 type Mods = Record<string, boolean | string>
 
-export function classNames(mainClass: string, additional: string[] = [], mods: Mods = {},): string {
+export function classNames(mainClass: string, additional: string[] = [], mods: Mods = {}): string {
     return [
         mainClass,
         ...additional.filter(Boolean),
@@ -13,6 +13,6 @@ export function classNames(mainClass: string, additional: string[] = [], mods: M
             // Фильтруем только true элементы
             .filter(([key, value]) => Boolean(value))
             // Итерируемся по массиву и возвращаем ключи
-            .map(([key]) => key)
-    ].join(' ')
+            .map(([key]) => key),
+    ].join(' ');
 }

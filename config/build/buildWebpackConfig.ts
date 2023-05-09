@@ -1,21 +1,20 @@
-import webpack from "webpack";
-import { buidDevServer } from "./buildDevServer";
-import { buildLoaders } from "./buildLoaders";
-import { buildPlugins } from "./buildPlugins";
-import { buildResolvers } from "./buildResolevrs";
-import { BuildOptions } from "./types/config";
+import webpack from 'webpack';
+import { buidDevServer } from './buildDevServer';
+import { buildLoaders } from './buildLoaders';
+import { buildPlugins } from './buildPlugins';
+import { buildResolvers } from './buildResolevrs';
+import { BuildOptions } from './types/config';
 
 export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
-
-    const { mode, paths, isDev } = options
+    const { mode, paths, isDev } = options;
 
     return {
-        mode: mode,
+        mode,
         entry: paths.entry,
         output: {
             filename: '[name].[contenthash].js',
             path: paths.build,
-            clean: true
+            clean: true,
         },
         plugins: buildPlugins(options),
         module: {
@@ -26,6 +25,6 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         // Показывает, в каком из исходных файлов (которые собираются в bandle) ошибка, не нужно на прод сборке
         devtool: isDev ? 'inline-source-map' : undefined,
         // Автоматическая пересброка после внесения изменений в файлы, на проде не нужна
-        devServer: isDev ? buidDevServer(options) : undefined
-    }
+        devServer: isDev ? buidDevServer(options) : undefined,
+    };
 }
