@@ -10,7 +10,8 @@
     "lint:ts": "npx eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "npx eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\"",
-    "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix"
+    "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
+    "unit": "jest --config ./config/jest/jest.config.ts"
   },
   "repository": {
     "type": "git",
@@ -58,7 +59,10 @@
     "babel-loader": "^8.2.3",
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
-    "babel-plugin-i18next-extract": "^0.8.3"
+    "babel-plugin-i18next-extract": "^0.8.3",
+    "jest": "^27.5.1",
+    "@types/jest": "^27.4.1",
+    "@babel/preset-typescript": "^7.16.7"
   },
   "dependencies": {
     "react": "^17.0.2",
