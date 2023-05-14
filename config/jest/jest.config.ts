@@ -3,17 +3,9 @@
  * https://jestjs.io/docs/configuration
  */
 
+import path from 'path';
+
 export default {
-    // All imported modules in your tests should be mocked automatically
-    // automock: false,
-
-    // Stop running tests after `n` failures
-    // bail: 0,
-
-    // The directory where Jest should store its cached dependency information
-    // cacheDirectory: "/private/var/folders/n2/jpvtj5sn7hs8sspsj5f6lprc0000gn/T/jest_dx",
-
-    // Automatically clear mock calls, instances and results before every test
     clearMocks: true,
     testEnvironment: 'jsdom',
     // An array of regexp pattern strings used to skip coverage collection
@@ -23,6 +15,7 @@ export default {
     // An array of directory names to be searched recursively up from the requiring module's location
     moduleDirectories: [
         'node_modules',
+        'src',
     ],
     // An array of file extensions your modules use
     moduleFileExtensions: [
@@ -35,10 +28,22 @@ export default {
     ],
     // The root directory that Jest should scan for tests and modules within
     rootDir: '../../',
+    setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
     // The glob patterns Jest uses to detect test files
+    modulePaths: [
+        '<rootDir>src',
+    ],
     testMatch: [
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
     ],
+    moduleNameMapper: {
+        '\\.(s?css)$': 'identity-obj-proxy',
+        /**
+         * поскольку иконки благодаря плагину импортируются как готовые компоненты, делаем подобный маппер
+         * своеобразный мок, который будет использоваться для всех импортов .svg
+         */
+        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+    },
 
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,

@@ -15,7 +15,9 @@
         // Для абсолютного импорта
         "baseUrl": ".",
         "paths": {
-            "*": ["./src/*"]
+            "*": [
+                "./src/*"
+            ]
         },
         // esModuleInterop позволяет работать с пакетами, которые используют
         // common js как с обычными пакета с помощью import (require() module.export) = common js
@@ -33,7 +35,6 @@
         // import React from 'react';
         "allowSyntheticDefaultImports": true
     },
-
     // Note that you'll also need to check your tsconfig.json file. 
     // If the module in compilerOptions in tsconfig.json is commonjs, the setting is complete, else webpack will fail 
     // with an error. This occurs because ts-node does not support any module syntax other than commonjs.
@@ -41,5 +42,10 @@
         "compilerOptions": {
             "module": "CommonJS"
         }
-    }
+    },
+    "include": [
+        "./config/jest/setupTests.ts",
+        // Работа абсолюных импортов в тестах
+        "./src/**/*"
+    ],
 }
