@@ -62,7 +62,9 @@
     "babel-plugin-i18next-extract": "^0.8.3",
     "jest": "^27.5.1",
     "@types/jest": "^27.4.1",
-    "@babel/preset-typescript": "^7.16.7"
+    "@babel/preset-typescript": "^7.16.7",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "@types/webpack-bundle-analyzer": "^4.4.1"
   },
   "dependencies": {
     "react": "^17.0.2",
