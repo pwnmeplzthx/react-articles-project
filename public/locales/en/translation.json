@@ -1,5 +1,9 @@
 {
     "test": "Translation",
     "button-toggleLang": "English",
-    "Page not found": "Page not found"
+    "Page not found": "Page not found",
+    "Somethink wrong": "Somethink wrong",
+    "Reload page": "Reload page",
+    "Navbar_MainPageLink": "Main",
+    "Navbar_AboutPageLink": "About"
 }

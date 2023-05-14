@@ -20,6 +20,5 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
         }),
         // Обновление приложения без обновления страницы при внесении изменений
         new webpack.HotModuleReplacementPlugin(),
-
     ];
 }
