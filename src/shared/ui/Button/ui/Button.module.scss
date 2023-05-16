@@ -9,3 +9,9 @@ button {
     background: none;
     outline: none;
 }
+
+.outline {
+    background: none;
+    border: 1px solid var(--primary-color);
+    padding: 10px 15px;
+}
