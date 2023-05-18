@@ -5,7 +5,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] {
-    return [
+    const plugins = [
         new HtmlWebpackPlugin({
             template: paths.html,
         }),
@@ -19,11 +19,20 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
         }),
-        // Обновление приложения без обновления страницы при внесении изменений
-        new webpack.HotModuleReplacementPlugin(),
-        // Плагин для анализа размера бандла
-        new BundleAnalyzerPlugin({
-            openAnalyzer: false,
-        }),
     ];
+
+    if (isDev) {
+        plugins.push(
+            // Обновление приложения без обновления страницы при внесении изменений
+            new webpack.HotModuleReplacementPlugin(),
+        );
+        plugins.push(
+            // Плагин для анализа размера бандла
+            new BundleAnalyzerPlugin({
+                openAnalyzer: false,
+            }),
+        );
+    }
+
+    return plugins;
 }
