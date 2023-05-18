@@ -37,6 +37,7 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
         'max-len': ['error', { code: 250 }],
+        'linebreak-style': 0,
     },
     globals: {
         __IS_DEV__: true,
