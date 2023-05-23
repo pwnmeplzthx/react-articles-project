@@ -5,3 +5,5 @@ storybook-static
 
 .DS_store
 .vscode
+.loki/report.html
+.loki/report.json

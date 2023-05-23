@@ -16,7 +16,10 @@
     "test:ui:ok": "npx loki approve",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
-    "storybook:build": "storybook build -c ./config/storybook"
+    "storybook:build": "storybook build -c ./config/storybook",
+    "test:ui:json": "node scripts/generate-visual-json-report.js",
+    "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
+    "test:ui:report": "npm run test:ui:json && npm run test:ui:html"
   },
   "repository": {
     "type": "git",
@@ -83,7 +86,8 @@
     "@storybook/react-webpack5": "^7.0.12",
     "@storybook/testing-library": "^0.0.14-next.2",
     "storybook": "^7.0.12",
-    "loki": "^0.31.2"
+    "loki": "^0.31.2",
+    "reg-cli": "^0.17.6"
   },
   "dependencies": {
     "react": "^17.0.2",
