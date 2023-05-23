@@ -1,6 +1,7 @@
 {
     "test": "Translation",
     "button-toggleLang": "English",
+    "shortLang": "En",
     "Page not found": "Page not found",
     "Somethink wrong": "Somethink wrong",
     "Reload page": "Reload page",
