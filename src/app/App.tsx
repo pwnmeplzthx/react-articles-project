@@ -9,7 +9,7 @@ const App = () => {
     const { theme } = useTheme();
 
     return (
-        <div className={classNames('app', [theme])}>
+        <div className={classNames('app', [])}>
             {/* Глобальное оборачивание компонентов, т.к. переводы будут подгружаться асинхронно */}
             <Suspense fallback="">
                 <Navbar />
