@@ -9,5 +9,7 @@
     "Navbar_AboutPageLink": "О сайте",
     "Log in": "Войти",
     "Enter login": "Введите логин",
-    "Enter password": "Введите пароль"
+    "Enter password": "Введите пароль",
+    "Authorization form": "Форма авторизации",
+    "Incorrect login or password": "Вы ввели неверный логин или пароль"
 }

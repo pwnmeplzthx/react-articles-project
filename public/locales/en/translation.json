@@ -9,5 +9,7 @@
     "Navbar_AboutPageLink": "About",
     "Log in": "Log in",
     "Enter login": "Enter login",
-    "Enter password": "Enter password"
+    "Enter password": "Enter password",
+    "Authorization form": "Authorization form",
+    "Incorrect login or password": "Incorrect login or password"
 }
