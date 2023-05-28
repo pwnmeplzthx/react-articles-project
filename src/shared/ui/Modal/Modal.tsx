@@ -11,16 +11,25 @@ interface ModalProps {
     children?: ReactNode;
     isOpen?: boolean;
     onClose?: () => void;
+    // Вмонтирование модалки в дом дерево при ее открытии ( см isMounted setIsMounted)
+    lazy?: boolean;
 }
 
 const ANIMATION_DELAY = 200;
 
 export const Modal = (props: ModalProps) => {
     const {
-        className, children, isOpen, onClose,
+        className, children, isOpen, onClose, lazy,
     } = props;
 
     const [isClosing, setIsClosing] = useState(false);
+    // Состояние вмонтирована модалка в дом дерево или нет
+    const [isMounted, setIsMounted] = useState(false);
+    useEffect(() => {
+        if (isOpen) {
+            setIsMounted(true);
+        }
+    }, [isOpen]);
 
     // В closeHandler в этот реф кладется ассинхронная функция, их нужно очищать внутри useEffect при onmount
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
@@ -71,6 +80,11 @@ export const Modal = (props: ModalProps) => {
             clearTimeout(timerRef.current);
         };
     }, [isOpen, onKeyDown]);
+
+    // Если указано lazy и компонент не вмонтирован не отрисовывать его
+    if (lazy && !isMounted) {
+        return null;
+    }
 
     return (
         <Portal>

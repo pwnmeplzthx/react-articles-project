@@ -1,13 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
+import { userReducer } from 'entities/User';
 import { StateSchema } from './StateSchema';
 
 // Создание стора вынесено в функцию для переиспользования в storybook и jest
 export function createReduxStore(initialState?: StateSchema) {
+    const rootReducers: ReducersMapObject<StateSchema> = {
+        counter: counterReducer,
+        user: userReducer,
+    };
+
     return configureStore<StateSchema>({
-        reducer: {
-            counter: counterReducer,
-        },
+        reducer: rootReducers,
         devTools: __IS_DEV__,
         // Данные для тестов и сторибука
         preloadedState: initialState,

@@ -23,10 +23,10 @@ export const Primary: Story = {
     },
 };
 
-export const PrimaryDark: Story = {
+export const Dark: Story = {
     args: {
         isOpen: true,
         children: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum dicta architecto iste natus debitis ipsum repellat maiores, consectetur voluptatibus velit non inventore commodi quos dolore odio eius, veritatis assumenda suscipit?',
     },
 };
-PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
+Dark.decorators = [ThemeDecorator(Theme.DARK)];

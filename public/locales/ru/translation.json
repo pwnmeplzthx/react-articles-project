@@ -7,5 +7,7 @@
     "Reload page": "Обновить страницу",
     "Navbar_MainPageLink": "Главная",
     "Navbar_AboutPageLink": "О сайте",
-    "Log in": "Войти"
+    "Log in": "Войти",
+    "Enter login": "Введите логин",
+    "Enter password": "Введите пароль"
 }
