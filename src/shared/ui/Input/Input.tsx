@@ -1,4 +1,4 @@
-import {
+import React, {
     InputHTMLAttributes, memo, useEffect, useRef,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -27,6 +27,10 @@ export const Input = memo((props: InputProps) => {
     } = props;
     const ref = useRef<HTMLInputElement>(null);
 
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange?.(e.target.value);
+    };
+
     useEffect(() => {
         if (autofocus) {
             ref.current?.focus();
@@ -45,6 +49,7 @@ export const Input = memo((props: InputProps) => {
                 type={type}
                 value={value}
                 className={cls.input}
+                onChange={onChangeHandler}
                 {...otherProps}
             />
         </div>
