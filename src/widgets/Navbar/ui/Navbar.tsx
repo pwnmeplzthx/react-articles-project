@@ -39,7 +39,7 @@ export const Navbar = (props: NavbarProps) => {
                     className={cls.links}
                     onClick={onLogout}
                 >
-                    {t('Выйти')}
+                    {t('Log out')}
                 </Button>
             </div>
         );
@@ -54,10 +54,12 @@ export const Navbar = (props: NavbarProps) => {
             >
                 {t('Log in')}
             </Button>
-            <LoginModal
-                isOpen={isAuthModal}
-                onClose={onCloseModal}
-            />
+            {isAuthModal && (
+                <LoginModal
+                    isOpen={isAuthModal}
+                    onClose={onCloseModal}
+                />
+            )}
         </div>
     );
 };
