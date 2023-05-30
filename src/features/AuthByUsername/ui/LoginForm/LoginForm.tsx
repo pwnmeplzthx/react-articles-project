@@ -1,11 +1,12 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
@@ -16,15 +17,19 @@ import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
     className?: string;
+    onSuccess: () => void;
 }
 
 const initialReducers: ReducersList = {
     loginForm: loginReducer,
 };
 
-const LoginForm = memo(({ className }: LoginFormProps) => {
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const { t } = useTranslation();
-    const dispatch = useDispatch();
+    // Кастомный хук для типизации диспатча
+    const dispatch = useAppDispatch();
+
+    // Вытаскиваем поля точечно, потому что объект может быть undefined
     const username = useSelector(getLoginUsername);
     const password = useSelector(getLoginPassword);
     const isLoading = useSelector(getLoginIsLoading);
@@ -38,9 +43,14 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
         dispatch(loginActions.setPassword(value));
     }, [dispatch]);
 
-    const onLoginClick = useCallback(() => {
-        dispatch(loginByUsername({ username, password }));
-    }, [dispatch, password, username]);
+    const onLoginClick = useCallback(async () => {
+        const result = await dispatch(loginByUsername({ username, password }));
+        // Для подсветки полей требуется типизация диспатча
+        // https://redux-toolkit.js.org/usage/usage-with-typescript
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess();
+        }
+    }, [dispatch, password, username, onSuccess]);
 
     return (
         <DynamicModuleLoader
