@@ -22,3 +22,4 @@ declare module '*.svg' {
 
 // Декларация глобальной переменной из конфига (buildWebpackConfig.ts)
 declare const __IS_DEV__: boolean;
+declare const __API__: string;
