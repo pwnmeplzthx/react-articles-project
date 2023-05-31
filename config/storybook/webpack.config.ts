@@ -36,6 +36,8 @@ export default ({ config }: {config: webpack.Configuration}) => {
     // Устраняем проблему с css modules
     config?.module?.rules?.push(buildCssLoader(true));
 
+    // Другой вариант - гарантируем тайпскрипту, что поля не равны undefined
+    // config!.plugins!.push(new DefinePlugin({
     config?.plugins?.push(new DefinePlugin({
         __IS_DEV__: JSON.stringify(true),
         __API__: JSON.stringify(''),

@@ -1,3 +1,5 @@
+// Глобальные типы
+
 // https://scriptdev.ru/book/types/lib.d.ts/#string
 // Необходим, чтобы явно опеределить тип, который должен импортироваться из файлов
 // ..name.module.css создана глобальная декларация типов
@@ -23,3 +25,7 @@ declare module '*.svg' {
 // Декларация глобальной переменной из конфига (buildWebpackConfig.ts)
 declare const __IS_DEV__: boolean;
 declare const __API__: string;
+
+type DeepPartial<T> = T extends object ? {
+    [P in keyof T]?: DeepPartial<T[P]>;
+} : T;

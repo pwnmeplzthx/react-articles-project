@@ -2,7 +2,7 @@
 // params: mainClass - главный класс, additional - дополнительные классы, mods - модификаторы (например {hoevered: true})
 // return string
 
-type Mods = Record<string, boolean | string>
+export type Mods = Record<string, boolean | string | undefined>
 
 export function classNames(mainClass: string, additional: Array<string | undefined> = [], mods: Mods = {}): string {
     return [
