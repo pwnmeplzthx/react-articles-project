@@ -1,11 +1,10 @@
 button {
     cursor: pointer;
-    color: var(--inverted-primary-color);
+    color: var(--primary-color);
     padding: 5px 15px;
 }
 
-.clear,
-.clearInverted {
+.clear {
     padding: 0;
     border: none;
     background: none;
@@ -14,11 +13,21 @@ button {
 
 .clearInverted {
     color: var(--inverted-primary-color);
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
 }
 
 .outline {
     background: none;
     border: 1px solid var(--primary-color);
+}
+
+.outlineInverted {
+    background: none;
+    border: 1px solid var(--inverted-primary-color);
+    color: var(--inverted-primary-color);
 }
 
 .background {

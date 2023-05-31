@@ -14,7 +14,7 @@ interface ProfileCardProps {
 }
 
 export const ProfileCard = ({ className }: ProfileCardProps) => {
-    const { t } = useTranslation('profile');
+    const { t } = useTranslation('profilePage');
     // Достаем данные из стейта
     const data = useSelector(getProfileData);
     const isLoading = useSelector(getProfileIsLoading);
@@ -33,12 +33,12 @@ export const ProfileCard = ({ className }: ProfileCardProps) => {
             </div>
             <div className={cls.data}>
                 <Input
-                    value={data?.first}
+                    value={data?.first || ''}
                     placeholder={t('Your first name')}
                     className={cls.input}
                 />
                 <Input
-                    value={data?.lastname}
+                    value={data?.lastname || ''}
                     placeholder={t('Your second name')}
                     className={cls.input}
                 />

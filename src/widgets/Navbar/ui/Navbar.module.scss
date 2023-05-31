@@ -9,6 +9,9 @@
 
 .links {
     margin-left: auto;
+
+    // TODO не подтягивает цвет из кнопки, пофиксить
+    color: var(--inverted-primary-color);
 }
 
 .link {
