@@ -1,5 +1,8 @@
 {
     "test": "Перевод",
+    "Main": "Главная",
+    "About": "О сайте",
+    "Profile": "Профиль",
     "button-toggleLang": "Русский",
     "shortLang": "Ru",
     "Page not found": "Страница не найдена",
@@ -13,5 +16,7 @@
     "Enter login": "Введите логин",
     "Enter password": "Введите пароль",
     "Authorization form": "Форма авторизации",
-    "Incorrect login or password": "Вы ввели неверный логин или пароль"
+    "Incorrect login or password": "Вы ввели неверный логин или пароль",
+    "Currency": "Валюта",
+    "Country": "Страна"
 }

@@ -11,6 +11,7 @@ const config: StorybookConfig = {
         name: '@storybook/react-webpack5',
         options: {},
     },
+    staticDirs: ['../storybook/images'],
     docs: {
         autodocs: 'tag',
     },

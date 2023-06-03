@@ -2,6 +2,14 @@
     "Profile page": "Профиль страница",
     "Profile": "Профиль",
     "Edit": "Редактировать",
-    "Your first name": "Ваше имя",
-    "Your second name": "Ваша фамилия"
+    "Cancel": "Отменить",
+    "Save": "Сохранить",
+    "First name": "Имя",
+    "Second name": "Фамилия",
+    "Age": "Возраст",
+    "City": "Город",
+    "Username": "Логин",
+    "Avatar link": "Ссылка на аватар",
+    "An error occurred while loading the profile": "Произошла ошибка при загрузке профиля",
+    "Try refreshing the page": "Попробуйте обновить страницу"
 }

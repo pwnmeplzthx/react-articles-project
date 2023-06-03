@@ -1,5 +1,8 @@
 {
     "test": "Translation",
+    "Main": "Main",
+    "About": "About",
+    "Profile": "Profile",
     "button-toggleLang": "English",
     "shortLang": "En",
     "Page not found": "Page not found",
@@ -13,5 +16,7 @@
     "Enter login": "Enter login",
     "Enter password": "Enter password",
     "Authorization form": "Authorization form",
-    "Incorrect login or password": "Incorrect login or password"
+    "Incorrect login or password": "Incorrect login or password",
+    "Currency": "Currency",
+    "Country": "Country"
 }

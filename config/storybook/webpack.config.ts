@@ -33,6 +33,15 @@ export default ({ config }: {config: webpack.Configuration}) => {
         use: ['@svgr/webpack'],
     });
 
+    config?.module?.rules?.push({
+        test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+        use: [
+            {
+                loader: 'file-loader',
+            },
+        ],
+    });
+
     // Устраняем проблему с css modules
     config?.module?.rules?.push(buildCssLoader(true));
 
