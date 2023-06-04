@@ -18,5 +18,10 @@
     "Authorization form": "Authorization form",
     "Incorrect login or password": "Incorrect login or password",
     "Currency": "Currency",
-    "Country": "Country"
+    "Country": "Country",
+    "Server error": "Server error",
+    "Incorrect country": "Incorrect country",
+    "No data": "No data",
+    "Incorrect firstname or secondname": "Incorrect firstname or secondname",
+    "Incorrect age": "Incorrect age"
 }

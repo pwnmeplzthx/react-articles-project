@@ -18,5 +18,10 @@
     "Authorization form": "Форма авторизации",
     "Incorrect login or password": "Вы ввели неверный логин или пароль",
     "Currency": "Валюта",
-    "Country": "Страна"
+    "Country": "Страна",
+    "Server error": "Серверная ошибка при сохранении",
+    "Incorrect country": "Некорректный регион",
+    "No data": "Данные не указаны",
+    "Incorrect firstname or secondname": "Имя и фамилия обязательны",
+    "Incorrect age": "Некорректный возраст"
 }
