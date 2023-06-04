@@ -44,7 +44,11 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     };
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        // Предотвращение отправки запросов в storybook
+        if (__PROJECT__ !== 'storybook') {
+            // Отправка запроса на получение данных профиля
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
 
     const onChangeFirstname = useCallback((value?: string) => {
