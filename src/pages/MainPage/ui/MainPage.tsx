@@ -1,4 +1,3 @@
-import { Counter } from 'entities/Counter';
 import { useTranslation } from 'react-i18next';
 
 type Props = {}
@@ -9,7 +8,6 @@ const MainPage = (props: Props) => {
     return (
         <div>
             {t('Main page')}
-            <Counter />
         </div>
     );
 };

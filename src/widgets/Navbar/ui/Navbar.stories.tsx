@@ -19,16 +19,26 @@ type Story = StoryObj<typeof Navbar>;
 
 export const Light: Story = {};
 Light.args = {};
-Light.decorators = [StoreDecorator({})];
+Light.decorators = [
+    StoreDecorator({
+        user: {},
+    }),
+];
 
 export const Dark: Story = {};
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
-Dark.decorators = [StoreDecorator({})];
+Dark.decorators = [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+        user: {},
+    }),
+];
 
 export const AuthNavbar: Story = {};
 AuthNavbar.args = {};
-AuthNavbar.decorators = [ThemeDecorator(Theme.DARK)];
-AuthNavbar.decorators = [StoreDecorator({
-    user: { authData: {} },
-})];
+AuthNavbar.decorators = [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+        user: { authData: {} },
+    }),
+];

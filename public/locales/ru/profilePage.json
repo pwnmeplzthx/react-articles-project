@@ -11,5 +11,10 @@
     "Username": "Логин",
     "Avatar link": "Ссылка на аватар",
     "An error occurred while loading the profile": "Произошла ошибка при загрузке профиля",
-    "Try refreshing the page": "Попробуйте обновить страницу"
+    "Try refreshing the page": "Попробуйте обновить страницу",
+    "Server error": "Серверная ошибка при сохранении",
+    "Incorrect country": "Некорректный регион",
+    "No data": "Данные не указаны",
+    "Incorrect firstname or secondname": "Имя и фамилия обязательны",
+    "Incorrect age": "Некорректный возраст"
 }
