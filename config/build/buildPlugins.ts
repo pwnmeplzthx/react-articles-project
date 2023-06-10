@@ -2,6 +2,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({
@@ -30,6 +31,8 @@ export function buildPlugins({
             // Обновление приложения без обновления страницы при внесении изменений
             new webpack.HotModuleReplacementPlugin(),
         );
+        // Аналог HotModuleReplacementPlugin, но работает лучше (не перезагружает страницу при смене css)
+        plugins.push(new ReactRefreshWebpackPlugin());
         plugins.push(
             // Плагин для анализа размера бандла
             new BundleAnalyzerPlugin({
