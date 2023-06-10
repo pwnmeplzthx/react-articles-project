@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack serve --env port=3000",
     "start:dev:server": "node ./json-server/index.js",
+    "start:dev": "concurrently \"npm start\" \"npm run start:dev:server\"",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
     "lint:ts": "npx eslint \"**/*.{ts,tsx}\"",
@@ -101,7 +102,8 @@
     "react-i18next": "^11.15.5",
     "react-redux": "^7.2.6",
     "@reduxjs/toolkit": "^1.8.0",
-    "axios": "^0.26.1"
+    "axios": "^0.26.1",
+    "concurrently": "^7.0.0"
   },
   "loki": {
     "fetchFailIgnore": ".*",
