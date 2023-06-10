@@ -1,9 +1,12 @@
 import { classNames } from 'shared/lib/classNames/classNames';
+import ArrowLeftIcon from 'shared/assets/icons/arrow-left.svg';
+import ArrowRightIcon from 'shared/assets/icons/arrow-right.svg';
 import { memo, useMemo, useState } from 'react';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { ButtonSize } from 'shared/ui/Button/ui/Button';
+import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { SidebarItemsList } from '../../model/items';
 import cls from './Sidebar.module.scss';
@@ -18,6 +21,8 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     const onToggle = () => {
         setCollapsed((prev) => !prev);
     };
+
+    const { theme, toggleTheme } = useTheme();
 
     const itemsList = useMemo(() => SidebarItemsList.map((item) => (
         <SidebarItem
@@ -36,11 +41,13 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 data-testid="sidebar-toggle"
                 onClick={onToggle}
                 className={cls.collapseBtn}
-                theme={ButtonTheme.BACKGROUND_INVERTED}
-                size={ButtonSize.L}
+                theme={ButtonTheme.BACKGROUND}
+                size={ButtonSize.XL}
                 square
             >
-                {collapsed ? '>' : '<'}
+                {collapsed
+                    ? <ArrowRightIcon className={theme === Theme.DARK ? cls.darkToggleButton : cls['light-toggle-button']} />
+                    : <ArrowLeftIcon className={theme === Theme.DARK ? cls.darkToggleButton : cls['light-toggle-button']} />}
             </Button>
             <div className={cls.items}>
                 {itemsList}
