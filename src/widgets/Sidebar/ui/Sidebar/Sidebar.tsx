@@ -46,8 +46,8 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 square
             >
                 {collapsed
-                    ? <ArrowRightIcon className={theme === Theme.DARK ? cls.darkToggleButton : cls['light-toggle-button']} />
-                    : <ArrowLeftIcon className={theme === Theme.DARK ? cls.darkToggleButton : cls['light-toggle-button']} />}
+                    ? <ArrowRightIcon className={cls.strokeTogleButton} />
+                    : <ArrowLeftIcon className={cls.strokeTogleButton} />}
             </Button>
             <div className={cls.items}>
                 {itemsList}

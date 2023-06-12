@@ -1,9 +1,9 @@
 .sidebar {
     height: calc(100vh - var(--navbar-height));
-    width: var(--sidebar-width);
+    min-width: var(--sidebar-width);
     background: var(--inverted-bg-color);
     position: relative;
-    transition: width 0.3s;
+    transition: min-width 0.3s;
 }
 
 .switchers {
@@ -33,7 +33,7 @@
 }
 
 .collapsed {
-    width: var(--sidebar-width-collapsed);
+    min-width: var(--sidebar-width-collapsed);
 
     .switchers {
         flex-direction: column;
@@ -43,4 +43,8 @@
     .lang {
         margin-left: 0;
     }
+}
+
+.strokeTogleButton {
+    stroke: var(--inverted-bg-color);
 }
