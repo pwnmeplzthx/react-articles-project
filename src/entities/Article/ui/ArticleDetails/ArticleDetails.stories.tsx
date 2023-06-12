@@ -1,20 +1,21 @@
 /* eslint-disable max-len */
-import { Meta, StoryObj } from '@storybook/react';
-import { Theme } from 'app/providers/ThemeProvider';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Article } from 'entities/Article';
 import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import ArticleDetailsPage from './ArticleDetailsPage';
+import { ArticleDetails } from './ArticleDetails';
 
-const meta: Meta<typeof ArticleDetailsPage> = {
-    title: 'pages/ArticleDetailsPage',
-    component: ArticleDetailsPage,
-    tags: ['autodocs'],
+export default {
+    title: 'entities/ArticleDetails',
+    component: ArticleDetails,
     argTypes: {
-
+        backgroundColor: { control: 'color' },
     },
-};
+} as ComponentMeta<typeof ArticleDetails>;
+
+const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;
 
 const article: Article = {
     id: '1',
@@ -52,10 +53,7 @@ const article: Article = {
     ],
 };
 
-export default meta;
-type Story = StoryObj<typeof ArticleDetailsPage>;
-
-export const Normal: Story = {};
+export const Normal = Template.bind({});
 Normal.args = {};
 Normal.decorators = [StoreDecorator({
     articleDetails: {
@@ -63,13 +61,18 @@ Normal.decorators = [StoreDecorator({
     },
 })];
 
-export const Dark: Story = {};
-Dark.args = {};
-Dark.decorators = [
-    ThemeDecorator(Theme.DARK),
-    StoreDecorator({
-        articleDetails: {
-            data: article,
-        },
-    }),
-];
+export const Loading = Template.bind({});
+Loading.args = {};
+Loading.decorators = [StoreDecorator({
+    articleDetails: {
+        isLoading: true,
+    },
+})];
+
+export const Error = Template.bind({});
+Error.args = {};
+Error.decorators = [StoreDecorator({
+    articleDetails: {
+        error: 'error',
+    },
+})];
