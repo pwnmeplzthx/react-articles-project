@@ -2,21 +2,34 @@
     margin-top: 10px;
     display: flex;
     align-items: center;
+
+    .icon {
+        fill: var(--inverted-primary-color);
+    }
+
+    &:hover {
+        fill: var(--primary-color);
+        color: var(--primary-color);
+
+        .icon {
+            fill: var(--primary-color);
+            color: var(--primary-color);
+        }
+    }
 }
 
 .link {
-    margin-left: 10px;
+    margin-left: 15px;
     opacity: 1;
-}
-
-.icon {
-    fill: var(--inverted-primary-color);
+    width: 70%;
+    transition: opacity 0.2s 0.1s, width 0.2s 0.1s;
+    white-space: nowrap;
 }
 
 .collapsed {
     .link {
         opacity: 0;
-        transition: 0.2s opacity;
         width: 0;
+        transition: opacity 0.2s;
     }
 }
