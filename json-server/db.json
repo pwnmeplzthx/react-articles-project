@@ -109,13 +109,15 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcZnEnLy7Ie31zOFTPNd_C8GCFnYvy-Thcg&usqp=CAU"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMx1itTXTXLB8p4ALTTL8mUPa9TFN_m9h5VQ&usqp=CAU"
     }
   ],
   "profile": {
@@ -126,6 +128,6 @@
     "country": "Belarus",
     "city": "Moscow",
     "username": "admin213",
-    "avatar": "https://static.vecteezy.com/system/resources/previews/016/833/872/large_2x/github-logo-git-hub-icon-on-white-background-free-vector.jpg"
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcZnEnLy7Ie31zOFTPNd_C8GCFnYvy-Thcg&usqp=CAU"
   }
 }
