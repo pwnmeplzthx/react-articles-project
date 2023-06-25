@@ -11,11 +11,7 @@ const AppRouter = () => {
         const element = (
             // Оборачиваем для lazy-load (подгрузки страниц чанками)
             <Suspense fallback={<PageLoader />}>
-                {/* // Оборачиваем контентную часть, чтобы растянуть ее на остаток (от aside) страницы
-                // навешиваем на класс page-wrapper: flex-grow (см index.scss) */}
-                <div className="page-wrapper">
-                    {route.element}
-                </div>
+                {route.element}
             </Suspense>
         );
         return (
