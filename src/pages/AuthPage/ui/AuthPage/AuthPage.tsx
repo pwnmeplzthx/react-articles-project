@@ -1,6 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
+import { Page } from 'shared/ui/Page/Page';
 import cls from './AuthPage.module.scss';
 
 interface AuthPageProps {
@@ -12,9 +13,9 @@ const AuthPage = (props: AuthPageProps) => {
     const { t } = useTranslation('authPage');
 
     return (
-        <div className={classNames(cls.authPage, [className])}>
+        <Page className={classNames(cls.authPage, [className])}>
             Auth page
-        </div>
+        </Page>
     );
 };
 
