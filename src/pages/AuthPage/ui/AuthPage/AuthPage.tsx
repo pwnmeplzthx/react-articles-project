@@ -14,7 +14,7 @@ const AuthPage = (props: AuthPageProps) => {
 
     return (
         <Page className={classNames(cls.authPage, [className])}>
-            Auth page
+            Auth page!!!
         </Page>
     );
 };
