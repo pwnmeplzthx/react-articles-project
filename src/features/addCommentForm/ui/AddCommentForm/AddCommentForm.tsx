@@ -42,7 +42,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
                 <Input
                     className={cls.input}
                     placeholder={t('Enter comment text')}
-                    value={text || ''}
+                    value={text}
                     onChange={onCommentTextChange}
                 />
                 <Button
