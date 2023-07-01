@@ -5,6 +5,7 @@ import cls from './Card.module.scss';
 export enum CardTheme {
     NORMAL = 'normal',
     OUTLINED = 'outlined',
+    CLEAR = 'clear'
 }
 
 // Добавляем дефолтные пропсы элементы extends HTMLAttributes<HTMLDivElement>

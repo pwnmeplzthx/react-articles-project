@@ -2,18 +2,20 @@
     margin-top: 10px;
     display: flex;
     align-items: center;
+    transition: 0.15s color, 0.15s fill;
 
     .icon {
+        transition: 0.15s color, 0.15s fill;
         fill: var(--inverted-primary-color);
     }
 
     &:hover {
-        fill: var(--primary-color);
-        color: var(--primary-color);
+        fill: var(--primary-action-color);
+        color: var(--primary-action-color);
 
         .icon {
-            fill: var(--primary-color);
-            color: var(--primary-color);
+            fill: var(--primary-action-color);
+            color: var(--primary-action-color);
         }
     }
 }

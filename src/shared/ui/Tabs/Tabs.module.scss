@@ -3,3 +3,18 @@
     gap: 8px;
     cursor: pointer;
 }
+
+.tab {
+    transition: 0.15s color, 0.15s fill, 0.15s border-color;
+
+    &:hover {
+        fill: var(--primary-action-color);
+        color: var(--primary-action-color);
+        border-color: var(--primary-action-color);
+
+        .icon {
+            fill: var(--primary-action-color);
+            color: var(--primary-action-color);
+        }
+    }
+}

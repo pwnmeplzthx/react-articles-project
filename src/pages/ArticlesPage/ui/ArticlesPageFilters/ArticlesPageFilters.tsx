@@ -9,7 +9,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { SortOrder } from 'shared/types';
-import { Card } from 'shared/ui/Card/Card';
+import { Card, CardTheme } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
 import {
     getArticlesPageOrder, getArticlesPageSearch,
@@ -86,7 +86,10 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
                     onViewClick={onChangeView}
                 />
             </div>
-            <Card className={cls.search}>
+            <Card
+                className={cls.search}
+                theme={CardTheme.CLEAR}
+            >
                 <Input
                     onChange={onChangeSearch}
                     value={search}

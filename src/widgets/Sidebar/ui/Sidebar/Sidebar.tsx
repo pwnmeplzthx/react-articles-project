@@ -39,18 +39,20 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             data-testid="sidebar"
             className={classNames(cls.sidebar, [className], { [cls.collapsed]: collapsed })}
         >
-            <Button
-                data-testid="sidebar-toggle"
-                onClick={onToggle}
-                className={cls.collapseBtn}
-                theme={ButtonTheme.BACKGROUND}
-                size={ButtonSize.XL}
-                square
-            >
-                {collapsed
-                    ? <ArrowRightIcon className={cls.strokeTogleButton} />
-                    : <ArrowLeftIcon className={cls.strokeTogleButton} />}
-            </Button>
+            <div className={cls.sideBarToggleWrapper}>
+                <Button
+                    data-testid="sidebar-toggle"
+                    onClick={onToggle}
+                    className={cls.collapseBtn}
+                    theme={ButtonTheme.BACKGROUND}
+                    // size={ButtonSize.XL}
+                    square
+                >
+                    {collapsed
+                        ? <ArrowRightIcon className={cls.strokeTogleButton} />
+                        : <ArrowLeftIcon className={cls.strokeTogleButton} />}
+                </Button>
+            </div>
             <div className={cls.items}>
                 {itemsList}
             </div>

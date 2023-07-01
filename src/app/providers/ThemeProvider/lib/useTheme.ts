@@ -17,11 +17,14 @@ export function useTheme(): UseThemeResult {
             newTheme = Theme.LIGHT;
             break;
         case Theme.LIGHT:
-            newTheme = Theme.VIOLET;
-            break;
-        case Theme.VIOLET:
             newTheme = Theme.DARK;
             break;
+        // case Theme.LIGHT:
+        //     newTheme = Theme.VIOLET;
+        //     break;
+        // case Theme.VIOLET:
+        //     newTheme = Theme.DARK;
+        //     break;
         default:
             newTheme = Theme.LIGHT;
         }

@@ -20,9 +20,54 @@
 
 .collapseBtn {
     position: absolute;
-    right: -25px;
-    bottom: 50%;
+    right: calc(50% - 5px);
+    bottom: calc(50% - 5px);
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--inverted-bg-color);
+    border: solid 3px var(--bg-color);
+    height: 10px !important;
+    width: 10px !important;
+    transition: 0.3s all;
+    transition-delay: 1s;
+    pointer-events: all;
+}
+
+.strokeTogleButton {
+    stroke: var(--inverted-bg-color);
+    display: block;
+    opacity: 0;
+    transition: 0.2s opacity;
+    transition-delay: 1s;
+}
+
+.sideBarToggleWrapper {
+    background: transparent;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+    right: -30px;
+    top: calc(50% - 60px);
+    pointer-events: all;
+
+    &:hover {
+        .collapseBtn {
+            right: calc(50% - 20px);
+            bottom: calc(50% - 20px);
+            height: 40px !important;
+            width: 40px !important;
+            transition: 0.4s all;
+            background-color: var(--bg-color);
+        }
+
+        .strokeTogleButton {
+            opacity: 1;
+            transition: 0.3s opacity;
+        }
+    }
 }
 
 .items {
@@ -43,8 +88,4 @@
     .lang {
         margin-left: 0;
     }
-}
-
-.strokeTogleButton {
-    stroke: var(--inverted-bg-color);
 }

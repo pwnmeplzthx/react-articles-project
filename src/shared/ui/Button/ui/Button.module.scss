@@ -2,11 +2,16 @@ button {
     cursor: pointer;
     color: var(--primary-color);
     padding: 5px 15px;
+    transition: 0.15s color;
 
     &:hover {
-        opacity: 0.8;
-        fill-opacity: 80%;
-        stroke-opacity: 80%;
+        fill: var(--primary-action-color);
+        color: var(--primary-action-color);
+
+        .icon {
+            fill: var(--primary-action-color);
+            color: var(--primary-action-color);
+        }
     }
 }
 

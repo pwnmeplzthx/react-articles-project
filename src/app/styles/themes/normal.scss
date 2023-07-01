@@ -1,24 +1,27 @@
 // .app.light {
 // временный фикс для работы со сторибуком
 :root {
-    --bg-color: #ebe6e6;
-    --inverted-bg-color: rgb(3 3 75);
+    --bg-color: #dcd7ba;
+    --inverted-bg-color: #1e1f28;
 
     // акцентный цвет
-    --primary-color: rgb(4 40 140);
-    --inverted-primary-color: rgb(36 232 36);
+    --primary-color: #2d4f67;
+    --inverted-primary-color: #dcd7ba;
+
+    // action-color
+    --primary-action-color: #fe5d62;
 
     // текст и тд
-    --secondary-color: rgb(19 26 221);
-    --inverted-secondary-color: rgb(14 161 14);
+    --secondary-color: #2a2a37;
+    --inverted-secondary-color: #bfa36e;
 
     // skeleton
-    --skeleton-color: #fff;
+    --skeleton-color: #bfa36e;
     --skeleton-shadow: rgba(0 0 0 / 20%);
 
     // code
-    --code-bg: #fff;
+    --code-bg: #bfa36e;
 
     // card
-    --card-bg: #d5d5d7;
+    --card-bg: #d5cfad;
 }
