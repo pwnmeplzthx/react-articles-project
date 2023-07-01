@@ -4,22 +4,9 @@
     border-color: transparent;
 }
 
-.input {
-    margin-top: 10px;
-}
-
 .loading,
 .error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 300px;
-}
-
-.avatarWrapper {
-    display: flex;
-    width: 100%;
-    justify-content: center;
 }
 
 .editing {

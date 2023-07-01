@@ -2,11 +2,12 @@ button {
     cursor: pointer;
     color: var(--primary-color);
     padding: 5px 15px;
-    transition: 0.15s color;
+    transition: 0.15s all;
 
     &:hover {
         fill: var(--primary-action-color);
         color: var(--primary-action-color);
+        border-color: var(--primary-action-color);
 
         .icon {
             fill: var(--primary-action-color);
