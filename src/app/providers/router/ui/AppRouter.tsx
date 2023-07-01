@@ -4,9 +4,13 @@ import {
 import { Route, Routes } from 'react-router-dom';
 import { AppRoutesProps, routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { PageLoader } from 'widgets/PageLoader/PageLoader';
+import { useSelector } from 'react-redux';
+import { getUserAuthData } from 'entities/User';
 import { RequireAuth } from './RequireAuth';
 
 const AppRouter = () => {
+    const userAuthData = !!(useSelector(getUserAuthData));
+
     const renderWithWrapper = useCallback((route: AppRoutesProps) => {
         const element = (
             // Оборачиваем для lazy-load (подгрузки страниц чанками)
@@ -23,9 +27,15 @@ const AppRouter = () => {
         );
     }, []);
 
+    let routeConfigItems = Object.values(routeConfig);
+
+    if (userAuthData) {
+        routeConfigItems = routeConfigItems.filter((element) => element.path !== '/auth');
+    }
+
     return (
         <Routes>
-            {Object.values(routeConfig).map(renderWithWrapper)}
+            {routeConfigItems.map(renderWithWrapper)}
         </Routes>
     );
 };

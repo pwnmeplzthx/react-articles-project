@@ -1,6 +1,4 @@
 .item {
-    display: flex;
-    align-items: center;
     transition: 0.15s color, 0.15s fill;
 
     .icon {
@@ -20,10 +18,8 @@
 }
 
 .link {
-    margin-left: 15px;
     opacity: 1;
-    width: 70%;
-    transition: opacity 0.2s 0.1s, width 0.2s 0.1s;
+    transition: opacity 0.3s 0.1s, width 0.3s 0.1s;
     white-space: nowrap;
 }
 
@@ -31,6 +27,6 @@
     .link {
         opacity: 0;
         width: 0;
-        transition: opacity 0.2s;
+        transition: opacity 0.3s;
     }
 }

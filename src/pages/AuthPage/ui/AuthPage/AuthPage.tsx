@@ -1,7 +1,9 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
+import { LoginForm } from 'features/AuthByUsername';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { Page } from 'widgets/Page/Page';
+import { HStack } from 'shared/ui/Stack';
 import cls from './AuthPage.module.scss';
 
 interface AuthPageProps {
@@ -14,7 +16,9 @@ const AuthPage = (props: AuthPageProps) => {
 
     return (
         <Page className={classNames(cls.authPage, [className])}>
-            Auth page!!!
+            <HStack className={cls.loginFormWrapper} justify="center" align="center" max>
+                <LoginForm onSuccess={() => {}} />
+            </HStack>
         </Page>
     );
 };

@@ -12,7 +12,7 @@ export function RequireAuth({ children }: { children: JSX.Element }) {
         // trying to go to when they were redirected. This allows us to send them
         // along to that page after they login, which is a nicer user experience
         // than dropping them off on the home page.
-        return <Navigate to={RoutePath.main} state={{ from: location }} replace />;
+        return <Navigate to={RoutePath.auth} state={{ from: location }} replace />;
     }
 
     return children;

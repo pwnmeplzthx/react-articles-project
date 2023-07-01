@@ -4,6 +4,7 @@ import { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
+import { HStack } from 'shared/ui/Stack';
 import cls from './SidebarItem.module.scss';
 import { SidebarItemType } from '../../model/types/sidebar';
 
@@ -27,10 +28,12 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
             to={item.path}
             className={classNames(cls.item, [], { [cls.collapsed]: collapsed })}
         >
-            <item.Icon className={cls.icon} />
-            <span className={cls.link}>
-                {t(item.text)}
-            </span>
+            <HStack gap="8" max>
+                <item.Icon className={cls.icon} />
+                <span className={cls.link}>
+                    {t(item.text)}
+                </span>
+            </HStack>
         </AppLink>
     );
 });

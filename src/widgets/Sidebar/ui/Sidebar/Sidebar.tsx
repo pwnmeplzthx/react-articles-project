@@ -1,17 +1,16 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { useTheme } from 'app/providers/ThemeProvider';
+import { memo, useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 import ArrowLeftIcon from 'shared/assets/icons/arrow-left.svg';
 import ArrowRightIcon from 'shared/assets/icons/arrow-right.svg';
-import { memo, useMemo, useState } from 'react';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button';
-import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
-import { LangSwitcher } from 'widgets/LangSwitcher';
-import { ButtonSize } from 'shared/ui/Button/ui/Button';
-import { Theme, useTheme } from 'app/providers/ThemeProvider';
-import { useSelector } from 'react-redux';
 import { VStack } from 'shared/ui/Stack';
+import { LangSwitcher } from 'widgets/LangSwitcher';
+import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
+import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
-import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 
 interface SidebarProps {
     className?: string;
