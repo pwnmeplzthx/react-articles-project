@@ -33,6 +33,7 @@
     transition: 0.3s all;
     transition-delay: 1s;
     pointer-events: all;
+    z-index: 10000;
 }
 
 .strokeTogleButton {
