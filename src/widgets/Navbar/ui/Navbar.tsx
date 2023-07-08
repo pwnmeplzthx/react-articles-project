@@ -1,9 +1,13 @@
 import { getUserAuthData, userActions } from 'entities/User';
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from 'shared/ui/Button';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
+import { HStack } from 'shared/ui/Stack';
+import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -20,16 +24,31 @@ export const Navbar = memo((props: NavbarProps) => {
         dispatch(userActions.logout());
     }, [dispatch]);
 
+    console.log('authData', authData);
+
     if (authData) {
         return (
             <header className={classNames(cls.navbar, [className])}>
-                <Button
-                    theme={ButtonTheme.CLEAR_INVERTED}
-                    className={cls.links}
-                    onClick={onLogout}
-                >
-                    {t('Log out')}
-                </Button>
+                <Dropdown
+                    direction="bottom left"
+                    className={cls.dropdown}
+                    items={[
+                        {
+                            content: t('Profile'),
+                            href: RoutePath.profile + authData.id,
+                        },
+                        {
+                            content: t('Log out'),
+                            onClick: onLogout,
+                        },
+                    ]}
+                    trigger={(
+                        <HStack gap="8">
+                            <Text theme={TextTheme.INVERTED} size={TextSize.S} text={authData.username} />
+                            <Avatar size={30} src={authData.avatar} />
+                        </HStack>
+                    )}
+                />
             </header>
         );
     }
