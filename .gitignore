@@ -7,3 +7,4 @@ storybook-static
 .vscode
 .loki/report.html
 .loki/report.json
+/reports

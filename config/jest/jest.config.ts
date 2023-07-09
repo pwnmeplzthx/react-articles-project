@@ -50,7 +50,15 @@ export default {
          */
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     },
-
+    reporters: [
+        'default',
+        ['jest-html-reporters', {
+            publicPath: '<rootDir>/reports/unit',
+            filename: 'report.html',
+            openReport: true,
+            inlineSource: true,
+        }],
+    ],
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 

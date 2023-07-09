@@ -93,7 +93,8 @@
     "reg-cli": "^0.17.6",
     "json-server": "^0.17.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.5",
-    "copy-webpack-plugin": "^10.2.4"
+    "copy-webpack-plugin": "^10.2.4",
+    "jest-html-reporters": "^3.0.10"
   },
   "dependencies": {
     "react": "^17.0.2",
