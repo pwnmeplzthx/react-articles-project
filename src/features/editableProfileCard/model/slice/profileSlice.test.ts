@@ -1,13 +1,13 @@
-import {
-    profileActions, profileReducer, ProfileSchema, updateProfileData, ValidateProfileError,
-} from 'entities/Profile';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
+import { updateProfileData } from '../services/updateProfileData/updateProfileData';
+import { ProfileSchema, ValidateProfileError } from '../types/editableProfileCardSchema';
+import { profileActions, profileReducer } from './profileSlice';
 
 const data = {
     username: 'admin',
     age: 22,
-    country: Country.Russia,
+    country: Country.Ukraine,
     lastname: 'ulbi tv',
     first: 'asd',
     city: 'asf',

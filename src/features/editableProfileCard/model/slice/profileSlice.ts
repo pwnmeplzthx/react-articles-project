@@ -1,14 +1,14 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { Profile, ProfileSchema, ValidateProfileError } from '../types/profile';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Profile } from 'entities/Profile';
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
+import { ProfileSchema } from '../types/editableProfileCardSchema';
 
 const initialState: ProfileSchema = {
     readonly: true,
     isLoading: false,
     error: undefined,
     data: undefined,
-    validateErrors: undefined,
 };
 
 export const profileSlice = createSlice({
@@ -20,8 +20,8 @@ export const profileSlice = createSlice({
         },
         cancelEdit: (state) => {
             state.readonly = true;
-            state.form = state.data;
             state.validateErrors = undefined;
+            state.form = state.data;
         },
         updateProfile: (state, action: PayloadAction<Profile>) => {
             state.form = {
@@ -32,7 +32,6 @@ export const profileSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            // Получение данных профиля
             .addCase(fetchProfileData.pending, (state) => {
                 state.error = undefined;
                 state.isLoading = true;
@@ -49,7 +48,6 @@ export const profileSlice = createSlice({
                 state.isLoading = false;
                 state.error = action.payload;
             })
-            // Обновление данных профиля
             .addCase(updateProfileData.pending, (state) => {
                 state.validateErrors = undefined;
                 state.isLoading = true;
