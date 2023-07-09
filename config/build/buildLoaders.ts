@@ -5,11 +5,11 @@ import { buildBabelLoader } from './loaders/buildBabelLoader';
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     // если не используется typescript - нужен babel-loader (перегоняет новый стандарт js в старый, чтобы все браузеры поддерживались)
-    const typescriptLoader = {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-    };
+    // const typescriptLoader = {
+    //     test: /\.tsx?$/,
+    //     use: 'ts-loader',
+    //     exclude: /node_modules/,
+    // };
 
     const cssLoader = buildCssLoader(options.isDev);
 
@@ -29,14 +29,16 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
 
     // Транспилятор, преобразующий код из одних стандартов в другие, если не используется typescriptLoader, тобабель обязателен
     // https://babeljs.io/docs/babel-preset-react
-    const babelLoader = buildBabelLoader(options);
+    const codeBabelLoader = buildBabelLoader({ ...options, isTsx: false });
+    const tsxCodeBabelLoader = buildBabelLoader({ ...options, isTsx: true });
 
     return [
-        cssLoader,
         svgLoader,
         fileLoader,
-        babelLoader,
+        codeBabelLoader,
+        tsxCodeBabelLoader,
         // babel loader должен отрабатывать раньше, чем typescriptLoader
-        typescriptLoader,
+        // typescriptLoader,
+        cssLoader,
     ];
 }

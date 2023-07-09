@@ -4,6 +4,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import { BuildOptions } from './types/config';
 
@@ -54,6 +55,16 @@ export function buildPlugins({
                 failOnError: true,
             }),
         );
+        // Проверка типов (передача пропсов) - без typescriptLoader не работает, поэтому устанавливается плагин
+        plugins.push(new ForkTsCheckerWebpackPlugin({
+            typescript: {
+                diagnosticOptions: {
+                    semantic: true,
+                    syntactic: true,
+                },
+                mode: 'write-references',
+            },
+        }));
     }
 
     return plugins;
