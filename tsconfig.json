@@ -34,7 +34,8 @@
         // import * as React from 'react';
         // можно писать такой
         // import React from 'react';
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "isolatedModules": true
     },
     // Note that you'll also need to check your tsconfig.json file. 
     // If the module in compilerOptions in tsconfig.json is commonjs, the setting is complete, else webpack will fail 
