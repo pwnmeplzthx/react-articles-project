@@ -96,7 +96,9 @@
     "copy-webpack-plugin": "^10.2.4",
     "jest-html-reporters": "^3.0.10",
     "@testing-library/user-event": "^14.3.0",
-    "storybook-addon-mock": "^2.4.1"
+    "storybook-addon-mock": "^2.4.1",
+    "@types/circular-dependency-plugin": "^5.0.5",
+    "circular-dependency-plugin": "^5.2.2"
   },
   "dependencies": {
     "react": "^18.2.0",
