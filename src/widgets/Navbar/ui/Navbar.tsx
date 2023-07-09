@@ -1,4 +1,4 @@
-import { getUserAuthData, userActions } from 'entities/User';
+import { getUserAuthData, isUserAdmin, userActions } from 'entities/User';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,12 +19,13 @@ export const Navbar = memo((props: NavbarProps) => {
     const { className } = props;
     const authData = useSelector(getUserAuthData);
     const dispatch = useDispatch();
+    const isAdmin = useSelector(isUserAdmin);
 
     const onLogout = useCallback(() => {
         dispatch(userActions.logout());
     }, [dispatch]);
 
-    console.log('authData', authData);
+    const isAdminPanelAvailable = isAdmin;
 
     if (authData) {
         return (
@@ -33,6 +34,10 @@ export const Navbar = memo((props: NavbarProps) => {
                     direction="bottom left"
                     className={cls.dropdown}
                     items={[
+                        ...(isAdminPanelAvailable ? [{
+                            content: t('Админка'),
+                            href: RoutePath.admin_panel,
+                        }] : []),
                         {
                             content: t('Profile'),
                             href: RoutePath.profile + authData.id,
