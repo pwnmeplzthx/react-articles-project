@@ -33,6 +33,30 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     }, [navigate]);
 
     if (!id) {
+        if (__PROJECT__ === 'storybook') {
+            return (
+                <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+                    <Page className={classNames(cls.articleDetailsPage, [className])}>
+                        <VStack gap="32" max>
+                            <Card max>
+                                <VStack gap="16" max>
+                                    <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
+                                        {t('Назад к списку')}
+                                    </Button>
+                                    <ArticleDetails id="1" />
+                                </VStack>
+                            </Card>
+                            <Card max>
+                                <ArticleRecommendationsList />
+                            </Card>
+                            <Card max>
+                                <ArticleDetailsComments id="1" />
+                            </Card>
+                        </VStack>
+                    </Page>
+                </DynamicModuleLoader>
+            );
+        }
         return (
             <Page className={classNames(cls.ArticleDetailsPage, [className])}>
                 {t('The article not found')}

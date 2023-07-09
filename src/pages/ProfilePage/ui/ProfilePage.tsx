@@ -16,6 +16,15 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     const { id } = useParams<{ id: string }>();
 
     if (!id) {
+        if (__PROJECT__ === 'storybook') {
+            return (
+                <Page className={classNames('', [className])}>
+                    <Card>
+                        <EditableProfileCard id="1" />
+                    </Card>
+                </Page>
+            );
+        }
         return <Text text={t('Профиль не найден')} />;
     }
 
