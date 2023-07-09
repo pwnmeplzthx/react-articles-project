@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './Text.module.scss';
 
@@ -9,9 +9,9 @@ export enum TextTheme {
 }
 
 export enum TextAlign {
+    RIGHT = 'right',
     LEFT = 'left',
     CENTER = 'center',
-    RIGHT = 'right'
 }
 
 export enum TextSize {
@@ -27,6 +27,8 @@ interface TextProps {
     theme?: TextTheme;
     align?: TextAlign;
     size?: TextSize;
+
+    'data-testid'?: string;
 }
 
 type HeaderTagType = 'h1' | 'h2' | 'h3';
@@ -45,14 +47,35 @@ export const Text = memo((props: TextProps) => {
         theme = TextTheme.PRIMARY,
         align = TextAlign.LEFT,
         size = TextSize.M,
+        'data-testid': dataTestId = 'Text',
     } = props;
 
     const HeaderTag = mapSizeToHeaderTag[size];
 
+    const mods: Mods = {
+        [cls[theme]]: true,
+        [cls[align]]: true,
+        [cls[size]]: true,
+    };
+
     return (
-        <div className={classNames(cls.Text, [className, cls[align], cls[size]], { [cls[theme]]: true })}>
-            {title && <HeaderTag className={cls.title}>{title}</HeaderTag>}
-            {text && <p className={cls.text}>{text}</p>}
+        <div className={classNames(cls.text, [className], mods)}>
+            {title && (
+                <HeaderTag
+                    className={cls.title}
+                    data-testid={`${dataTestId}.Header`}
+                >
+                    {title}
+                </HeaderTag>
+            )}
+            {text && (
+                <p
+                    className={cls.text}
+                    data-testid={`${dataTestId}.Paragraph`}
+                >
+                    {text}
+                </p>
+            )}
         </div>
     );
 });
