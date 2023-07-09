@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { HTMLAttributes, memo, ReactNode } from 'react';
 import cls from './Card.module.scss';
 
@@ -13,6 +13,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
     children: ReactNode;
     theme?: CardTheme;
+    max?: boolean;
 }
 
 export const Card = memo((props: CardProps) => {
@@ -20,12 +21,17 @@ export const Card = memo((props: CardProps) => {
         className,
         children,
         theme = CardTheme.NORMAL,
+        max,
         ...otherProps
     } = props;
 
+    const mods: Mods = {
+        [cls.max]: max,
+    };
+
     return (
         <div
-            className={classNames(cls.сard, [className, cls[theme]])}
+            className={classNames(cls.сard, [className, cls[theme]], mods)}
             {...otherProps}
         >
             {children}

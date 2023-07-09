@@ -7,15 +7,23 @@
 body {
     font: var(--font-m);
     color: var(--primary-color);
+    background: linear-gradient(var(--inverted-bg-color) 350px, var(--bg-color) 350px 100%);
 }
 
 .app {
     min-height: 100vh;
-    background-color: var(--bg-color);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 .content-page {
     display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 100;
+
+    // max-width: 90%;
 }
 
 // scrollbar styling
@@ -25,7 +33,7 @@ body {
 }
 
 *::-webkit-scrollbar-track {
-    background: var(--card-bg);        /* цвет дорожки */
+    background: transparent;        /* цвет дорожки */
 }
 
 *::-webkit-scrollbar-thumb {

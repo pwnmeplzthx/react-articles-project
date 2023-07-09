@@ -24,7 +24,8 @@
 }
 
 .active {
-    background: var(--inverted-primary-color);
+    background: var(--primary-color);
+    color: var(--inverted-primary-color);
     cursor: pointer;
     border-radius: 12px;
 }
@@ -35,6 +36,7 @@
 
 .selected {
     background: var(--primary-color);
+    border-radius: 12px;
     color: var(--inverted-primary-color);
     cursor: default;
 }

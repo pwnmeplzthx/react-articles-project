@@ -8,6 +8,8 @@ import { Button, ButtonTheme } from 'shared/ui/Button';
 import { VStack } from 'shared/ui/Stack';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
+import { Text, TextSize } from 'shared/ui/Text/Text';
+import MainLogoIcon from 'shared/assets/icons/main-logo.svg';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
@@ -35,35 +37,44 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     )), [collapsed, sidebarItemsList]);
 
     return (
-        <aside
-            data-testid="sidebar"
-            className={classNames(cls.sidebar, [className], { [cls.collapsed]: collapsed })}
-        >
-            <div className={cls.sideBarToggleWrapper}>
-                <Button
-                    data-testid="sidebar-toggle"
-                    onClick={onToggle}
-                    className={cls.collapseBtn}
-                    theme={ButtonTheme.BACKGROUND}
-                    // size={ButtonSize.XL}
-                    square
-                >
-                    {collapsed
-                        ? <ArrowRightIcon className={cls.strokeTogleButton} />
-                        : <ArrowLeftIcon className={cls.strokeTogleButton} />}
-                </Button>
-            </div>
-            {/* role="navigation" - для сео-оптимизации */}
-            <VStack role="navigation" gap="16" className={cls.items}>
-                {itemsList}
-            </VStack>
-            <div className={cls.switchers}>
-                <ThemeSwitcher />
-                <LangSwitcher
-                    short={collapsed}
-                    className={cls.lang}
-                />
-            </div>
-        </aside>
+        <>
+            <div className={classNames(cls.sidebarHolder, [], { [cls.collapsed]: collapsed })} />
+            <aside
+                data-testid="sidebar"
+                className={classNames(cls.sidebar, [className], { [cls.collapsed]: collapsed })}
+            >
+                <div className={cls.sidebarWrapper}>
+                    <div className={cls.sideBarToggleWrapper}>
+                        <Button
+                            data-testid="sidebar-toggle"
+                            onClick={onToggle}
+                            className={cls.collapseBtn}
+                            theme={ButtonTheme.BACKGROUND}
+                            square
+                        >
+                            {collapsed
+                                ? <ArrowRightIcon className={cls.strokeTogleButton} />
+                                : <ArrowLeftIcon className={cls.strokeTogleButton} />}
+                        </Button>
+                    </div>
+                    <div className={cls.logoWrapepr}>
+                        <MainLogoIcon className={cls.logo} />
+                        <h1 className={cls.logoName}>FIXME</h1>
+
+                    </div>
+                    {/* role="navigation" - для сео-оптимизации */}
+                    <VStack role="navigation" gap="16" className={cls.items}>
+                        {itemsList}
+                    </VStack>
+                    <div className={cls.switchers}>
+                        <ThemeSwitcher />
+                        <LangSwitcher
+                            short={collapsed}
+                            className={cls.lang}
+                        />
+                    </div>
+                </div>
+            </aside>
+        </>
     );
 });

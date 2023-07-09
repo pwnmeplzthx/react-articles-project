@@ -1,30 +1,33 @@
 // .app.dark {
 // временный фикс для работы со сторибуком
 .app_dark_theme {
-    --bg-color: rgb(3 3 75);
-    --inverted-bg-color: #ebe6e6;
+    --bg-color: #041239;
+    --inverted-bg-color: #041239;
 
     // акцентный цвет
-    --primary-color: rgb(14 161 14);
-    --inverted-primary-color: rgb(4 40 140);
+    --primary-color: #fff;
+    --inverted-primary-color: #fff;
 
     // action-color
     --primary-action-color: rgb(14 161 14);
 
     // текст и тд
-    --secondary-color: rgb(36 232 36);
-    --inverted-secondary-color: rgb(19 26 221);
+    --secondary-color: #fff;
+    --inverted-secondary-color: #fff;
 
     // skeleton
-    --skeleton-color: #1515ad;
-    --skeleton-shadow: #2b2be8;
+    --skeleton-color: #fff;
+    --skeleton-shadow: rgba(0 0 0 / 20%);
 
     // code
-    --code-bg: #1212a1;
+    --code-bg: #111c43;
+
+    // sidebar
+    --sidebar-bg: #111c43;
 
     // card
-    --card-bg: #0d0d6b;
+    --card-bg: #111c43;
 
     // listbox
-    --listbox-bg: #0d0d6b;
+    --listbox-bg: #111c43;
 }

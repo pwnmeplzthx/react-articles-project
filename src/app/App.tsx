@@ -25,9 +25,9 @@ const App = () => {
                 {userAuthData
                     ? (
                         <>
-                            <Navbar />
+                            <Sidebar className="sidebar" />
                             <div className="content-page">
-                                <Sidebar />
+                                <Navbar />
                                 {/* AppRouter рендерится раньше, чем инициализируются данные о пользователе, необходима проверка */}
                                 {inited && <AppRouter />}
                             </div>

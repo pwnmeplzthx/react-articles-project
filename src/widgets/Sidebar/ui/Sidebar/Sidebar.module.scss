@@ -1,9 +1,52 @@
 .sidebar {
-    height: calc(100vh - var(--navbar-height));
+    height: 100vh;
     min-width: var(--sidebar-width);
-    background: var(--inverted-bg-color);
-    position: relative;
+    background: transparent;
     transition: min-width 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+
+.sidebarHolder {
+    min-width: var(--sidebar-width);
+    transition: min-width 0.3s;
+}
+
+.sidebarWrapper {
+    background: var(--sidebar-bg);
+    height: calc(100% - 40px);
+    width: calc(100% - 20px);
+    border-radius: 20px;
+    box-shadow: rgb(0 0 0 / 5%) 0 1.25rem 1.6875rem 0;
+}
+
+.logoWrapepr {
+    max-width: 100%;
+    min-height: 50px;
+    max-height: 50px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+
+    .logo {
+        max-width: 50px;
+    }
+
+    .logoName {
+        opacity: 1;
+        transition: width 0.6s 0.1s;
+        transition-delay: 2s;
+        margin-left: 5px;
+    }
+}
+
+.items {
+    margin-left: 40px;
+    margin-top: 40px;
 }
 
 .switchers {
@@ -11,7 +54,7 @@
     bottom: 20px;
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: calc(100% - 20px);
 }
 
 .lang {
@@ -20,7 +63,7 @@
 
 .collapseBtn {
     position: absolute;
-    right: calc(50% - 5px);
+    right: calc(50% + 5px);
     bottom: calc(50% - 5px);
     border-radius: 50%;
     display: flex;
@@ -37,7 +80,7 @@
 }
 
 .strokeTogleButton {
-    stroke: var(--inverted-bg-color);
+    stroke: var(--bg-color);
     display: block;
     opacity: 0;
     transition: 0.2s opacity;
@@ -56,12 +99,12 @@
 
     &:hover {
         .collapseBtn {
-            right: calc(50% - 20px);
+            right: calc(50% - 10px);
             bottom: calc(50% - 20px);
             height: 40px !important;
             width: 40px !important;
             transition: 0.4s all;
-            background-color: var(--bg-color);
+            background-color: var(--inverted-bg-color);
         }
 
         .strokeTogleButton {
@@ -69,11 +112,6 @@
             transition: 0.3s opacity;
         }
     }
-}
-
-.items {
-    margin-top: 20px;
-    margin-left: 30px;
 }
 
 .collapsed {
@@ -86,5 +124,11 @@
 
     .lang {
         margin-left: 0;
+    }
+
+    .logoName {
+        opacity: 0;
+        width: 0;
+        transition: opacity 0.3s, width 0.3s;
     }
 }

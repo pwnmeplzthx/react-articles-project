@@ -73,7 +73,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
     }, [dispatch, fetchData]);
 
     return (
-        <div className={classNames(cls.articlesPageFilters, [className])}>
+        <Card className={classNames(cls.articlesPageFilters, [className])}>
             <div className={cls.sortWrapper}>
                 <ArticleSortSelector
                     order={order}
@@ -86,21 +86,20 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
                     onViewClick={onChangeView}
                 />
             </div>
-            <Card
+            <div
                 className={cls.search}
-                theme={CardTheme.CLEAR}
             >
                 <Input
                     onChange={onChangeSearch}
                     value={search}
                     placeholder={t('Поиск')}
                 />
-            </Card>
+            </div>
             <ArticleTypeTabs
                 value={type}
                 onChangeType={onChangeType}
                 className={cls.tabs}
             />
-        </div>
+        </Card>
     );
 });

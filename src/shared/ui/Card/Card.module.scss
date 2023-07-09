@@ -1,6 +1,7 @@
 .сard {
     padding: 15px;
     border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 5%) 0 1.25rem 1.6875rem 0;
 }
 
 .normal {
@@ -13,4 +14,9 @@
 
 .clear {
     background: var(--bg-color);
+}
+
+.max {
+    width: 100%;
+    max-width: 100%;
 }

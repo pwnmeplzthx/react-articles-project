@@ -17,7 +17,7 @@ interface ListBoxProps {
     className?: string;
     value?: string;
     defaultValue?: string;
-    onChange: (value: string) => void;
+    onChange: (value: any) => void;
     readonly?: boolean;
     direction?: DropdownDirection;
     label?: string;
