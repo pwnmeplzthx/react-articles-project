@@ -1,5 +1,5 @@
 import {
-    FC, ReactNode, useEffect, useMemo, useState,
+    ReactNode, useEffect, useMemo, useState,
 } from 'react';
 import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/ThemeContext';
 
