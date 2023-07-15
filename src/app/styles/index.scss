@@ -17,13 +17,17 @@ body {
     flex-direction: row;
 }
 
+.app_modal,
+.app_drawer {
+    font: var(--font-m);
+    color: var(--primary-color);
+}
+
 .content-page {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     flex-shrink: 100;
-
-    // max-width: 90%;
 }
 
 // scrollbar styling

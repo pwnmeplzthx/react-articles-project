@@ -115,7 +115,8 @@
     "@reduxjs/toolkit": "^1.8.0",
     "axios": "^0.26.1",
     "concurrently": "^7.0.0",
-    "@headlessui/react": "^1.6.6"
+    "@headlessui/react": "^1.6.6",
+    "react-device-detect": "^2.2.2"
   },
   "loki": {
     "fetchFailIgnore": ".*",
