@@ -1,10 +1,10 @@
-import { LoginForm } from 'features/AuthByUsername';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Page } from 'widgets/Page/Page';
-import { HStack } from 'shared/ui/Stack';
-import { Card } from 'shared/ui/Card/Card';
+import { LoginForm } from '@/features/AuthByUsername';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Page } from '@/widgets/Page/Page';
+import { HStack } from '@/shared/ui/Stack';
+import { Card } from '@/shared/ui/Card/Card';
 import cls from './AuthPage.module.scss';
 
 interface AuthPageProps {

@@ -1,11 +1,11 @@
-import { getUserAuthData, isUserAdmin, userActions } from 'entities/User';
-import { AvatarDropdown } from 'features/avatarDropdown';
-import { NotificationButton } from 'features/notificationButton';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { HStack } from 'shared/ui/Stack';
+import { getUserAuthData, isUserAdmin, userActions } from '@/entities/User';
+import { AvatarDropdown } from '@/features/avatarDropdown';
+import { NotificationButton } from '@/features/notificationButton';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { HStack } from '@/shared/ui/Stack';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {

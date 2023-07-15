@@ -1,13 +1,13 @@
-import { UserRole } from 'entities/User';
-import { AdminPanelPage } from 'pages/AdminPanelPage';
-import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
-import { ArticlesPage } from 'pages/ArticlesPage';
-import { AuthPage } from 'pages/AuthPage';
-import { ForbiddenPage } from 'pages/ForbiddenPage';
-import { MainPage } from 'pages/MainPage';
-import { NotFoundPage } from 'pages/NotFoundPage';
-import { ProfilePage } from 'pages/ProfilePage';
 import { RouteProps } from 'react-router-dom';
+import { UserRole } from '@/entities/User';
+import { AdminPanelPage } from '@/pages/AdminPanelPage';
+import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage';
+import { ArticlesPage } from '@/pages/ArticlesPage';
+import { AuthPage } from '@/pages/AuthPage';
+import { ForbiddenPage } from '@/pages/ForbiddenPage';
+import { MainPage } from '@/pages/MainPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
+import { ProfilePage } from '@/pages/ProfilePage';
 
 // Расширяем пропсы библиотеки
 export type AppRoutesProps = RouteProps & {

@@ -1,10 +1,10 @@
 import { Suspense, useEffect, useState } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Navbar } from 'widgets/Navbar';
-import { Sidebar } from 'widgets/Sidebar';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserAuthData, getUserIsInitedAuthData, userActions } from 'entities/User';
-import { AuthPage } from 'pages/AuthPage';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Navbar } from '@/widgets/Navbar';
+import { Sidebar } from '@/widgets/Sidebar';
+import { getUserAuthData, getUserIsInitedAuthData, userActions } from '@/entities/User';
+import { AuthPage } from '@/pages/AuthPage';
 import { useTheme } from './providers/ThemeProvider';
 import { AppRouter } from './providers/router';
 

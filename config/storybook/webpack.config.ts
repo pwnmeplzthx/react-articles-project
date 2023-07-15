@@ -17,6 +17,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
     };
     config?.resolve?.modules?.push(paths.src);
     config?.resolve?.extensions?.push('.ts', '.tsx');
+    config.resolve!.alias = { '@': paths.src };
 
     // устраняем проблему с svg
     if (config?.module?.rules) {

@@ -22,7 +22,8 @@
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
-    "generate:slice": "node ./scripts/createSlice/index.js"
+    "generate:slice": "node ./scripts/createSlice/index.js",
+    "imports:fix": "npx ts-node ./scripts/updateImports.ts"
   },
   "repository": {
     "type": "git",
@@ -101,7 +102,8 @@
     "circular-dependency-plugin": "^5.2.2",
     "@babel/plugin-transform-runtime": "^7.18.10",
     "@babel/plugin-transform-typescript": "^7.18.12",
-    "fork-ts-checker-webpack-plugin": "^7.2.13"
+    "fork-ts-checker-webpack-plugin": "^7.2.13",
+    "ts-morph": "^16.0.0"
   },
   "dependencies": {
     "react": "^18.2.0",

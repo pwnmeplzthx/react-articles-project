@@ -49,6 +49,7 @@ export default {
          * своеобразный мок, который будет использоваться для всех импортов .svg
          */
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        '^@/(.*)$': '<rootDir>src/$1',
     },
     reporters: [
         'default',
