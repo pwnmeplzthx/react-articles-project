@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -8,8 +8,11 @@ import {
 import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Dropdown } from '@/shared/ui/Popups';
-import { HStack } from '@/shared/ui/Stack';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { Text, TextSize, TextTheme } from '@/shared/ui/Text/Text';
+import { SettingsDrawer } from '@/shared/ui/SettingsDrawer/SettingsDrawer';
+import { ThemeSwitcher } from '@/widgets/ThemeSwitcher';
+import { LangSwitcher } from '@/widgets/LangSwitcher';
 
 interface AvatarDropdownProps {
     className?: string;
@@ -28,33 +31,55 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
 
     const isAdminPanelAvailable = isAdmin;
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const onOpenDrawer = useCallback(() => {
+        setIsOpen(true);
+    }, []);
+
+    const onCloseDrawer = useCallback(() => {
+        setIsOpen(false);
+    }, []);
+
     if (!authData) {
         return null;
     }
 
     return (
-        <Dropdown
-            direction="bottom left"
-            items={[
-                ...(isAdminPanelAvailable ? [{
-                    content: t('Админка'),
-                    href: RoutePath.admin_panel,
-                }] : []),
-                {
-                    content: t('Profile'),
-                    href: RoutePath.profile + authData.id,
-                },
-                {
-                    content: t('Log out'),
-                    onClick: onLogout,
-                },
-            ]}
-            trigger={(
-                <HStack gap="8">
-                    <Text theme={TextTheme.INVERTED} size={TextSize.S} text={authData.username} />
-                    <Avatar size={30} src={authData.avatar} />
-                </HStack>
-            )}
-        />
+        <>
+            <Dropdown
+                direction="bottom left"
+                items={[
+                    ...(isAdminPanelAvailable ? [{
+                        content: t('Админка'),
+                        href: RoutePath.admin_panel,
+                    }] : []),
+                    {
+                        content: t('Profile'),
+                        href: RoutePath.profile + authData.id,
+                    },
+                    {
+                        content: t('Настройки'),
+                        onClick: onOpenDrawer,
+                    },
+                    {
+                        content: t('Log out'),
+                        onClick: onLogout,
+                    },
+                ]}
+                trigger={(
+                    <HStack gap="8">
+                        <Text theme={TextTheme.INVERTED} size={TextSize.S} text={authData.username} />
+                        <Avatar size={30} src={authData.avatar} />
+                    </HStack>
+                )}
+            />
+            <SettingsDrawer isOpen={isOpen} onClose={onCloseDrawer}>
+                <VStack gap="16" align="center">
+                    <ThemeSwitcher />
+                    <LangSwitcher />
+                </VStack>
+            </SettingsDrawer>
+        </>
     );
 });

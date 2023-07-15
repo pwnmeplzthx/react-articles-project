@@ -1,7 +1,7 @@
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUserAuthData, isUserAdmin, userActions } from '@/entities/User';
+import { useSelector } from 'react-redux';
+import { getUserAuthData } from '@/entities/User';
 import { AvatarDropdown } from '@/features/avatarDropdown';
 import { NotificationButton } from '@/features/notificationButton';
 import { classNames } from '@/shared/lib/classNames/classNames';

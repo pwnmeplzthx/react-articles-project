@@ -66,13 +66,13 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                     <VStack role="navigation" gap="16" className={cls.items}>
                         {itemsList}
                     </VStack>
-                    <div className={cls.switchers}>
+                    {/* <div className={cls.switchers}>
                         <ThemeSwitcher />
                         <LangSwitcher
                             short={collapsed}
                             className={cls.lang}
                         />
-                    </div>
+                    </div> */}
                 </div>
             </aside>
         </>
