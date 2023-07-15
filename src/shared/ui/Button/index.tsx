@@ -1,6 +1,7 @@
-import { Button, ButtonTheme } from './ui/Button';
+import { Button, ButtonSize, ButtonTheme } from './ui/Button';
 
 export {
     Button,
     ButtonTheme,
+    ButtonSize,
 };
