@@ -13,6 +13,7 @@ import { VStack } from '@/shared/ui/Stack';
 import { Page } from '@/widgets/Page/Page';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import cls from './ArticleDetailsPage.module.scss';
+import { ArticleRating } from '@/features/articleRating';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -75,6 +76,9 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                             </Button>
                             <ArticleDetails id={id} />
                         </VStack>
+                    </Card>
+                    <Card max>
+                        <ArticleRating articleId={id} />
                     </Card>
                     <Card max>
                         <ArticleRecommendationsList />
