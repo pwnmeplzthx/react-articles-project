@@ -13,6 +13,8 @@ import { Text, TextSize, TextTheme } from '@/shared/ui/Text/Text';
 import { SettingsDrawer } from '@/shared/ui/SettingsDrawer/SettingsDrawer';
 import { ThemeSwitcher } from '@/widgets/ThemeSwitcher';
 import { LangSwitcher } from '@/widgets/LangSwitcher';
+import { ThemeButtonSwitcher } from '@/widgets/ThemeButtonSwitcher';
+import { Theme } from '@/app/providers/ThemeProvider';
 
 interface AvatarDropdownProps {
     className?: string;
@@ -75,8 +77,12 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
                 )}
             />
             <SettingsDrawer isOpen={isOpen} onClose={onCloseDrawer}>
-                <VStack gap="16" align="center">
-                    <ThemeSwitcher />
+                <VStack gap="32" align="center">
+                    <VStack gap="16">
+                        <ThemeButtonSwitcher themeSwitch={Theme.LIGHT} />
+                        <ThemeButtonSwitcher themeSwitch={Theme.DARK} />
+                        <ThemeButtonSwitcher themeSwitch={Theme.KANAGAWA} />
+                    </VStack>
                     <LangSwitcher />
                 </VStack>
             </SettingsDrawer>

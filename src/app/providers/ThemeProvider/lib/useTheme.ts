@@ -3,6 +3,7 @@ import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from './ThemeContext';
 
 interface UseThemeResult {
     toggleTheme: () => void;
+    changeTheme: (theme: Theme) => void;
     theme: Theme;
 }
 
@@ -20,7 +21,7 @@ export function useTheme(): UseThemeResult {
             newTheme = Theme.DARK;
             break;
         // case Theme.LIGHT:
-        //     newTheme = Theme.VIOLET;
+        //     newTheme = Theme.KANAGAWA;
         //     break;
         // case Theme.VIOLET:
         //     newTheme = Theme.DARK;
@@ -33,5 +34,10 @@ export function useTheme(): UseThemeResult {
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
     };
 
-    return { theme: theme || Theme.LIGHT, toggleTheme };
+    const changeTheme = (newTheme: Theme) => {
+        setTheme?.(newTheme);
+        localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
+    };
+
+    return { theme: theme || Theme.LIGHT, toggleTheme, changeTheme };
 }

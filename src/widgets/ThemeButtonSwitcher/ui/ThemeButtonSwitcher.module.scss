@@ -1,0 +1,25 @@
+.switcherWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.light,
+.dark,
+.kanagawa {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+
+.light {
+    background-color: white;
+}
+
+.dark {
+    background-color: black;
+}
+
+.kanagawa {
+    background-color: yellow;
+}

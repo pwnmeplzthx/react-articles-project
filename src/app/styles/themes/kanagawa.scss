@@ -1,0 +1,33 @@
+// .app.light {
+// временный фикс для работы со сторибуком
+.app_kanagawa_theme {
+    --bg-color: #dcd7ba;
+    --inverted-bg-color: #2d4f67;
+
+    // акцентный цвет
+    --primary-color: #1e1f28;
+    --inverted-primary-color: #88755b;
+
+    // action-color
+    --primary-action-color: #fe5d62;
+
+    // текст и тд
+    --secondary-color: #1e1f28;
+    --inverted-secondary-color: #88755b;
+
+    // skeleton
+    --skeleton-color: #2d4f67;
+    --skeleton-shadow: rgba(0 0 0 / 20%);
+
+    // code
+    --code-bg: #1e1f28;
+
+    // sidebar
+    --sidebar-bg: #e5c284;
+
+    // card
+    --card-bg: #88755b;
+
+    // listbox
+    --listbox-bg: #88755b;
+}
