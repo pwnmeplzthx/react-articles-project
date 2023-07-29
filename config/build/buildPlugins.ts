@@ -11,27 +11,19 @@ import { BuildOptions } from './types/config';
 export function buildPlugins({
     paths, isDev, apiUrl, project,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
+    const isProd = !isDev;
+
     const plugins = [
         new HtmlWebpackPlugin({
             template: paths.html,
         }),
         // Прогресс сборки
         new webpack.ProgressPlugin(),
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash:8].css',
-            chunkFilename: 'css/[name].[contenthash:8].css',
-        }),
         // Прокидывание глобальных переменных (чтобы использовать в ts)
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
             __API__: JSON.stringify(apiUrl),
             __PROJECT__: JSON.stringify(project),
-        }),
-        // Копирование файлов перевода при прод сборке
-        new CopyPlugin({
-            patterns: [
-                { from: paths.locales, to: paths.buildLocales },
-            ],
         }),
     ];
 
@@ -64,6 +56,21 @@ export function buildPlugins({
                 },
                 mode: 'write-references',
             },
+        }));
+    }
+
+    if (isProd) {
+        // Этот плагин извлекает CSS в отдельные файлы. Он создает файл CSS для каждого файла JS, который содержит CSS. Он поддерживает загрузку по требованию CSS и SourceMaps.
+        // https://webpack.js.org/plugins/mini-css-extract-plugin/
+        plugins.push(new MiniCssExtractPlugin({
+            filename: 'css/[name].[contenthash:8].css',
+            chunkFilename: 'css/[name].[contenthash:8].css',
+        }));
+        // Копирование файлов перевода при прод сборке
+        plugins.push(new CopyPlugin({
+            patterns: [
+                { from: paths.locales, to: paths.buildLocales },
+            ],
         }));
     }
 

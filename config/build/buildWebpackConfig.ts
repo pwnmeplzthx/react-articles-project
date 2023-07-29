@@ -24,7 +24,8 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         },
         resolve: buildResolvers(options),
         // Показывает, в каком из исходных файлов (которые собираются в bandle) ошибка, не нужно на прод сборке
-        devtool: isDev ? 'inline-source-map' : undefined,
+        // https://webpack.js.org/configuration/devtool/
+        devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
         // Автоматическая пересброка после внесения изменений в файлы, на проде не нужна
         devServer: isDev ? buidDevServer(options) : undefined,
     };
