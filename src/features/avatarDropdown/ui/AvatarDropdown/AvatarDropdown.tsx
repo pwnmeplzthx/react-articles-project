@@ -5,7 +5,7 @@ import {
     getUserAuthData, isUserAdmin,
     userActions,
 } from '@/entities/User';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { RoutePath } from '@/app/providers/router/config/routeConfig';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Dropdown } from '@/shared/ui/Popups';
 import { HStack, VStack } from '@/shared/ui/Stack';

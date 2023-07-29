@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { AppRoutesProps, routeConfig } from '@/shared/config/routeConfig/routeConfig';
+import { AppRoutesProps, routeConfig } from '@/app/providers/router/config/routeConfig';
 import { PageLoader } from '@/widgets/PageLoader/PageLoader';
 import { getUserAuthData } from '@/entities/User';
 import { RequireAuth } from './RequireAuth';
