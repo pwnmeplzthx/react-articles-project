@@ -1,11 +1,10 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { getUserAuthData } from '@/entities/User';
-import { RoutePath } from '@/app/providers/router/config/routeConfig';
-import MainIcon from '@/shared/assets/icons/main-20-20.svg';
-import AboutIcon from '@/shared/assets/icons/about-20-20.svg';
-import ProfileIcon from '@/shared/assets/icons/profile-20-20.svg';
 import ArticleIcon from '@/shared/assets/icons/article-20-20.svg';
+import MainIcon from '@/shared/assets/icons/main-20-20.svg';
+import ProfileIcon from '@/shared/assets/icons/profile-20-20.svg';
 import { SidebarItemType } from '../types/sidebar';
+import { getRouteArticles, getRouteMain, getRouteProfile } from '@/app/providers/router/config/routeConfig';
 
 // используется createSelector (реселект), чтобы мемоизировать значения
 export const getSidebarItems = createSelector(
@@ -13,7 +12,7 @@ export const getSidebarItems = createSelector(
     (userData) => {
         const sidebarItemsList: SidebarItemType[] = [
             {
-                path: RoutePath.main,
+                path: getRouteMain(),
                 Icon: MainIcon,
                 text: 'Main',
             },
@@ -22,13 +21,13 @@ export const getSidebarItems = createSelector(
         if (userData) {
             sidebarItemsList.push(
                 {
-                    path: RoutePath.profile + userData.id,
+                    path: getRouteProfile(userData.id),
                     Icon: ProfileIcon,
                     text: 'Profile',
                     authOnly: true,
                 },
                 {
-                    path: RoutePath.articles,
+                    path: getRouteArticles(),
                     Icon: ArticleIcon,
                     text: 'Articles',
                     authOnly: true,

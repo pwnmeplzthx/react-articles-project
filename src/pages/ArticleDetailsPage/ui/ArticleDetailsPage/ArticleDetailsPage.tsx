@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ArticleDetails } from '@/entities/Article';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/model/slices';
-import { RoutePath } from '@/app/providers/router/config/routeConfig';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
@@ -14,6 +13,7 @@ import { Page } from '@/widgets/Page/Page';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import cls from './ArticleDetailsPage.module.scss';
 import { ArticleRating } from '@/features/articleRating';
+import { getRouteArticles } from '@/app/providers/router/config/routeConfig';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -30,7 +30,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const navigate = useNavigate();
 
     const onBackToList = useCallback(() => {
-        navigate(RoutePath.articles);
+        navigate(getRouteArticles());
     }, [navigate]);
 
     if (!id) {

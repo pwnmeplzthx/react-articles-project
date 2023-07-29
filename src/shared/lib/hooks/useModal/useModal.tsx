@@ -9,6 +9,12 @@ interface UseModalProps {
     lazy?: boolean;
 }
 
+/**
+ * Переиспользуемый хук для модальных компонентов (drawer/modal)
+ * @param animationDelay
+ * @param isOpen
+ * @param onClose
+ */
 export function useModal({
     animationDelay, isOpen, onClose, lazy,
 }: UseModalProps) {
