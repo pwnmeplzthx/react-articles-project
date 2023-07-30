@@ -48,7 +48,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
         <div className={classNames(cls.wrapper, [className], mods)}>
             {label && (
                 <span className={cls.label}>
-                    {`${label}>`}
+                    {`${label}`}
                 </span>
             )}
             {readonly
