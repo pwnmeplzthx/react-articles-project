@@ -71,7 +71,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
                 trigger={(
                     <HStack gap="8">
                         <Text theme={TextTheme.INVERTED} size={TextSize.S} text={authData.username} />
-                        <Avatar size={30} src={authData.avatar} />
+                        <Avatar fallbackInverted size={30} src={authData.avatar} />
                     </HStack>
                 )}
             />
