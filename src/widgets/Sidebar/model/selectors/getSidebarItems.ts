@@ -4,7 +4,9 @@ import ArticleIcon from '@/shared/assets/icons/article-20-20.svg';
 import MainIcon from '@/shared/assets/icons/main-20-20.svg';
 import ProfileIcon from '@/shared/assets/icons/profile-20-20.svg';
 import { SidebarItemType } from '../types/sidebar';
-import { getRouteArticles, getRouteMain, getRouteProfile } from '@/app/providers/router/config/routeConfig';
+import {
+    getRouteArticles, getRouteMain, getRouteProfile, getRouteUsers,
+} from '@/app/providers/router/config/routeConfig';
 
 // используется createSelector (реселект), чтобы мемоизировать значения
 export const getSidebarItems = createSelector(
@@ -21,9 +23,9 @@ export const getSidebarItems = createSelector(
         if (userData) {
             sidebarItemsList.push(
                 {
-                    path: getRouteProfile(userData.id),
+                    path: getRouteUsers(),
                     Icon: ProfileIcon,
-                    text: 'Profile',
+                    text: 'Users',
                     authOnly: true,
                 },
                 {

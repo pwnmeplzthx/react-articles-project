@@ -23,3 +23,7 @@ export type {
 export {
     UserRole,
 } from './model/consts/consts';
+
+export type {
+    UserDetailsCardSchema,
+} from './model/types/userDetailsCardSchema';

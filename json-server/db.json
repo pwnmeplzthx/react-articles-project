@@ -701,29 +701,68 @@
     {
       "id": "1",
       "username": "admin",
-      "password": "123",
+      "password": "changeme",
       "roles": [
         "ADMIN"
       ],
-      "avatar": "https://yakutsk.ru/wp-content/uploads/2022/07/12/bystrov_haker.jpeg"
+      "avatar": "https://www.sketchappsources.com/resources/source-image/nyan-cat-artoctober.png",
+      "name": "hello",
+      "surname": "hello",
+      "patronymic": "hello",
+      "phone": "87336541234",
+      "email": "kotpodkolpakom42@mail.ru",
+      "whatsapp": " - ",
+      "telegram": " - ",
+      "salary": "20000",
+      "sale_percent": "12",
+      "repair_percent": "12",
+      "create_order_percent": "12",
+      "service_percent": "12",
+      "user_icon": "https://www.sketchappsources.com/resources/source-image/nyan-cat-artoctober.png"
     },
     {
       "id": "2",
       "username": "user",
-      "password": "123",
+      "password": "changeme",
       "roles": [
         "USER"
       ],
-      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+      "avatar": "https://www.sketchappsources.com/resources/source-image/nyan-cat-artoctober.png",
+      "name": "hello",
+      "surname": "hello",
+      "patronymic": "hello",
+      "phone": "87336541234",
+      "email": "kotpodkolpakom42@mail.ru",
+      "whatsapp": " - ",
+      "telegram": " - ",
+      "salary": "20000",
+      "sale_percent": "12",
+      "repair_percent": "12",
+      "create_order_percent": "12",
+      "service_percent": "12",
+      "user_icon": "https://www.sketchappsources.com/resources/source-image/nyan-cat-artoctober.png"
     },
     {
       "id": "3",
       "username": "manager",
-      "password": "123",
+      "password": "changeme",
       "roles": [
         "MANAGER"
       ],
-      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+      "avatar": "https://www.sketchappsources.com/resources/source-image/nyan-cat-artoctober.png",
+      "name": "hello",
+      "surname": "hello",
+      "patronymic": "hello",
+      "phone": "87336541234",
+      "email": "kotpodkolpakom42@mail.ru",
+      "whatsapp": " - ",
+      "telegram": " - ",
+      "salary": "20000",
+      "sale_percent": "12",
+      "repair_percent": "12",
+      "create_order_percent": "12",
+      "service_percent": "12",
+      "user_icon": "https://www.sketchappsources.com/resources/source-image/nyan-cat-artoctober.png"
     }
   ],
   "profile": [

@@ -1,0 +1,41 @@
+.userDetailsCard {
+    padding: 20px;
+    border: 2px solid;
+    border-color: transparent;
+}
+
+.loading,
+.error {
+    height: 300px;
+}
+
+.editing {
+    border-color: var(--primary-color);
+}
+
+.cardsWrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    gap: 10px;
+    /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
+    flex-wrap: wrap;
+}
+
+@media (max-width: 950px) {
+    .cardsWrapper {
+        flex-direction: column;
+    }
+}
+
+.main {
+    flex: 0 1 calc(50% - 1em);
+
+    // min-width: 46%;
+}
+
+.second {
+    flex: 0 1 calc(50% - 1em);
+
+    // min-width: 46%;
+}

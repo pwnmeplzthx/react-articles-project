@@ -5,7 +5,7 @@ import { AxiosInstance } from 'axios';
 import { CombinedState } from 'redux';
 import { ArticleDetailsSchema } from '@/entities/Article';
 import { CounterSchema } from '@/entities/Counter';
-import { UserSchema } from '@/entities/User';
+import { UserDetailsCardSchema, UserSchema } from '@/entities/User';
 import { LoginSchema } from '@/features/AuthByUsername';
 import { UISchema } from '@/features/UI';
 import { AddCommentFormSchema } from '@/features/addCommentForm';
@@ -28,6 +28,7 @@ export interface StateSchema {
     addCommentForm?: AddCommentFormSchema;
     articlesPage?: ArticlesPageSchema;
     articleDetailsPage?: ArticleDetailsPageSchema;
+    userDetails?: UserDetailsCardSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
