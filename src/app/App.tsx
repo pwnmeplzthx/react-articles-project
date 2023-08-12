@@ -7,6 +7,7 @@ import { getUserAuthData, getUserIsInitedAuthData, userActions } from '@/entitie
 import { AuthPage } from '@/pages/AuthPage';
 import { useTheme } from './providers/ThemeProvider';
 import { AppRouter } from './providers/router';
+import { MainLayout } from '@/shared/layouts/MainLayout';
 
 const App = () => {
     const { theme } = useTheme();
@@ -19,19 +20,16 @@ const App = () => {
     }, [dispatch]);
 
     return (
-        <div className={classNames('app', [])}>
+        <div className={classNames('app_redesigned', [])}>
             {/* Глобальное оборачивание компонентов, т.к. переводы будут подгружаться асинхронно */}
             <Suspense fallback="">
                 {userAuthData
                     ? (
-                        <>
-                            <Sidebar className="sidebar" />
-                            <div className="content-page">
-                                <Navbar />
-                                {/* AppRouter рендерится раньше, чем инициализируются данные о пользователе, необходима проверка */}
-                                {inited && <AppRouter />}
-                            </div>
-                        </>
+                        <MainLayout
+                            header={<Navbar />}
+                            content={<AppRouter />}
+                            sidebar={<Sidebar />}
+                        />
                     )
                     : <AuthPage />}
             </Suspense>

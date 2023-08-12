@@ -1,8 +1,16 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { getUserAuthData } from '@/entities/User';
-import ArticleIcon from '@/shared/assets/icons/article-20-20.svg';
-import MainIcon from '@/shared/assets/icons/main-20-20.svg';
-import ProfileIcon from '@/shared/assets/icons/profile-20-20.svg';
+
+// TODO delete this
+import MainIconDeprecated from '@/shared/assets/icons/main-20-20.svg';
+import AboutIconDeprecated from '@/shared/assets/icons/about-20-20.svg';
+import ProfileIconDeprecated from '@/shared/assets/icons/profile-20-20.svg';
+import ArticleIconDeprecated from '@/shared/assets/icons/article-20-20.svg';
+
+import MainIcon from '@/shared/assets/icons/home.svg';
+import ArticleIcon from '@/shared/assets/icons/article.svg';
+import ProfileIcon from '@/shared/assets/icons/avatar.svg';
+
 import { SidebarItemType } from '../types/sidebar';
 import {
     getRouteArticles, getRouteMain, getRouteProfile, getRouteUsers,
