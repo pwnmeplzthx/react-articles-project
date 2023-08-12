@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --env port=3000",
+    "start": "webpack serve --env port=5000",
     "start:vite": "vite",
     "start:dev:server": "node ./json-server/index.js",
     "start:dev": "concurrently \"npm start\" \"npm run start:dev:server\"",

@@ -12,8 +12,17 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
     'login/loginByUsername',
     async (authData, thunkAPI) => {
         try {
-            const response = await thunkAPI.extra.api.post<User>('/login', authData);
-
+            const response = await thunkAPI.extra.api.post<User>(
+                '/auth/jwt/login',
+                `&username=${authData.username}&password=${authData.password}`,
+                {
+                    // headers: {
+                    //     'Content-Type': 'multipart/form-data'
+                    // },
+                },
+            );
+            console.log('RESPONSE::');
+            console.log(response);
             if (!response.data) {
                 throw new Error();
             }

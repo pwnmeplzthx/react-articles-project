@@ -1,11 +1,13 @@
+// Линтер срет на комменты, потом удалить строку ниже
+/* stylelint-disable scss/double-slash-comment-whitespace-inside */
 // .app.light {
 // временный фикс для работы со сторибуком
 :root {
-    --bg-color: #f7f8f9;
-    --inverted-bg-color: #20a5bd;
+    --bg-color: #939393; //#f7f8f9;
+    --inverted-bg-color: #204055; //#20a5bd
 
     // акцентный цвет
-    --primary-color: #344666;
+    --primary-color: #3080ff; //#344666;
     --inverted-primary-color: #fff;
 
     // action-color
@@ -23,7 +25,7 @@
     --code-bg: #20a5bd;
 
     // sidebar
-    --sidebar-bg: #f7f8f9;
+    --sidebar-bg: #312418cc; //#f7f8f9;
 
     // card
     --card-bg: #fff;
