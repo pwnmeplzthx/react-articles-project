@@ -5,7 +5,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { Card } from '@/shared/ui/Card/Card';
 import { Icon } from '@/shared/ui/Icon/Icon';
 import { Text } from '@/shared/ui/Text/Text';
 import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
@@ -15,6 +14,7 @@ import cls from './ArticleListItem.module.scss';
 import { getRouteArticleDetails } from '@/app/providers/router/config/routeConfig';
 import { AppImage } from '@/shared/ui/redesigned/AppImage';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 interface ArticleListItemProps {
     className?: string;

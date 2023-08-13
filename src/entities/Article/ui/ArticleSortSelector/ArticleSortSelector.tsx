@@ -5,6 +5,9 @@ import { SortOrder } from '@/shared/types/sort';
 import { Select, SelectOption } from '@/shared/ui/Select/Select';
 import { ArticleSortField } from '../../model/consts/consts';
 import cls from './ArticleSortSelector.module.scss';
+import { VStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
+import { ListBox } from '@/shared/ui/redesigned/Popups';
 
 interface ArticleSortSelectorProps {
     className?: string;
@@ -47,20 +50,25 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
     ], [t]);
 
     return (
-        <div className={classNames(cls.articleSortSelector, [className])}>
-            <Select
-                options={sortFieldOptions}
-                label={t('Сортировать ПО')}
-                value={sort}
-                onChange={onChangeSort}
-            />
-            <Select
-                options={orderOptions}
-                label={t('по')}
-                value={order}
-                onChange={onChangeOrder}
-                className={cls.order}
-            />
+        <div
+            className={classNames(
+                cls.ArticleSortSelectorRedesigned,
+                [className],
+            )}
+        >
+            <VStack gap="8">
+                <Text text={t('Сортировать по:')} />
+                <ListBox
+                    items={sortFieldOptions}
+                    value={sort}
+                    onChange={onChangeSort}
+                />
+                <ListBox
+                    items={orderOptions}
+                    value={order}
+                    onChange={onChangeOrder}
+                />
+            </VStack>
         </div>
     );
 });
