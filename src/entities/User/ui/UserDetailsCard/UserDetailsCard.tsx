@@ -4,7 +4,7 @@ import { Mods, classNames } from '@/shared/lib/classNames/classNames';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Input } from '@/shared/ui/Input/Input';
 import { Loader } from '@/shared/ui/Loader/Loader';
-import { HStack, VStack } from '@/shared/ui/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Text, TextAlign, TextTheme } from '@/shared/ui/Text/Text';
 import { User } from '../../model/types/user';
 import cls from './UserDetailsCard.module.scss';

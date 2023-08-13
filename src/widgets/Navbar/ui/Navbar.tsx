@@ -5,7 +5,7 @@ import { getUserAuthData } from '@/entities/User';
 import { AvatarDropdown } from '@/features/avatarDropdown';
 import { NotificationButton } from '@/features/notificationButton';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { HStack } from '@/shared/ui/Stack';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -20,7 +20,7 @@ export const Navbar = memo((props: NavbarProps) => {
     if (authData) {
         return (
             <header className={classNames(cls.navbar, [className])}>
-                <HStack gap="16" className={cls.actions}>
+                <HStack gap="16" align="center" className={cls.actions}>
                     <NotificationButton />
                     <AvatarDropdown />
                 </HStack>

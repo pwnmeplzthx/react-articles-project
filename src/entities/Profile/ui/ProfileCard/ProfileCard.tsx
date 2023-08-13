@@ -6,7 +6,7 @@ import { Loader } from '@/shared/ui/Loader/Loader';
 import { Text, TextAlign, TextTheme } from '@/shared/ui/Text/Text';
 import { Currency, CurrencySelect } from '@/entities/Currency';
 import { Country, CountrySelect } from '@/entities/Country';
-import { HStack, VStack } from '@/shared/ui/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 

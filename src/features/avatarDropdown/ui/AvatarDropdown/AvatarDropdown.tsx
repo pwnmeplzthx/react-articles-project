@@ -6,14 +6,14 @@ import {
     getUserAuthData, isUserAdmin,
     userActions,
 } from '@/entities/User';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
-import { Dropdown } from '@/shared/ui/Popups';
 import { SettingsDrawer } from '@/shared/ui/SettingsDrawer/SettingsDrawer';
-import { HStack, VStack } from '@/shared/ui/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Text, TextSize, TextTheme } from '@/shared/ui/Text/Text';
 import { LangSwitcher } from '@/widgets/LangSwitcher';
 import { ThemeButtonSwitcher } from '@/widgets/ThemeButtonSwitcher';
 import { getRouteAdmin, getRouteProfile } from '@/app/providers/router/config/routeConfig';
+import { Dropdown } from '@/shared/ui/redesigned/Popups';
+import { Avatar } from '@/shared/ui/redesigned/Avatar';
 
 interface AvatarDropdownProps {
     className?: string;
@@ -71,7 +71,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
                 trigger={(
                     <HStack gap="8">
                         <Text theme={TextTheme.INVERTED} size={TextSize.S} text={authData.username} />
-                        <Avatar fallbackInverted size={30} src={authData.avatar} />
+                        <Avatar size={30} src={authData.avatar} />
                     </HStack>
                 )}
             />

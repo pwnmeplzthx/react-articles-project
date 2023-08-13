@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { Card } from '@/shared/ui/Card/Card';
 import { Page } from '@/widgets/Page/Page';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 type Props = {}
 
