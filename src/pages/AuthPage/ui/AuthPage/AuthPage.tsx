@@ -4,8 +4,8 @@ import { LoginForm } from '@/features/AuthByUsername';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page/Page';
 import { HStack } from '@/shared/ui/redesigned/Stack';
-import { Card } from '@/shared/ui/Card/Card';
 import cls from './AuthPage.module.scss';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 interface AuthPageProps {
     className?: string;

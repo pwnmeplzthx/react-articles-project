@@ -18,10 +18,6 @@
     justify-content: space-between;
 }
 
-.justifyAround {
-    justify-content: space-around;
-}
-
 .alignStart {
     align-items: flex-start;
 }
@@ -55,7 +51,7 @@
 }
 
 .gap24 {
-    gap: 24px;
+    gap: 16px;
 }
 
 .gap32 {
@@ -64,5 +60,12 @@
 
 .max {
     width: 100%;
-    max-width: 100%;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.nowrap {
+    flex-wrap: nowrap;
 }

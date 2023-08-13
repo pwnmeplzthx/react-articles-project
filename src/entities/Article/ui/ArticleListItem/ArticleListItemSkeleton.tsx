@@ -17,7 +17,7 @@ export const ArticleListItemSkeleton = memo(
         if (view === ArticleView.BIG) {
             return (
                 <div
-                    className={classNames(cls.ArticleListItem, [
+                    className={classNames(cls.ArticleListItemRedesigned, [
                         className,
                         cls[view],
                     ])}
@@ -52,7 +52,7 @@ export const ArticleListItemSkeleton = memo(
 
         return (
             <div
-                className={classNames(cls.ArticleListItem, [
+                className={classNames(cls.ArticleListItemRedesigned, [
                     className,
                     cls[view],
                 ])}
