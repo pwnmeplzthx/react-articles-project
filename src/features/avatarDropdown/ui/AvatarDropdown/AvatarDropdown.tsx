@@ -8,11 +8,11 @@ import {
 } from '@/entities/User';
 import { SettingsDrawer } from '@/shared/ui/SettingsDrawer/SettingsDrawer';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
-import { Text, TextSize, TextTheme } from '@/shared/ui/Text/Text';
 import { LangSwitcher } from '@/widgets/LangSwitcher';
 import { ThemeButtonSwitcher } from '@/widgets/ThemeButtonSwitcher';
 import { getRouteAdmin, getRouteProfile } from '@/app/providers/router/config/routeConfig';
 import { Dropdown } from '@/shared/ui/redesigned/Popups';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
 
 interface AvatarDropdownProps {
@@ -70,7 +70,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
                 ]}
                 trigger={(
                     <HStack gap="8">
-                        <Text theme={TextTheme.INVERTED} size={TextSize.S} text={authData.username} />
+                        <Text size="s" text={authData.username} />
                         <Avatar size={30} src={authData.avatar} />
                     </HStack>
                 )}
