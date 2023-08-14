@@ -1,0 +1,11 @@
+.UserViewSelector {
+    .notSelected {
+        fill: var(--secondary-color);
+    }
+}
+
+.UserViewSelectorRedesigned {
+    .notSelected {
+        color: var(--light-bg-redesigned);
+    }
+}
