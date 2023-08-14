@@ -5,6 +5,7 @@
     box-shadow: 0 2px 10px 0 var(--light-bg-redesigned);
     background: var(--light-bg-redesigned);
     overflow: hidden;
+    border-radius: 10px;
 
     &::before {
         content: "";

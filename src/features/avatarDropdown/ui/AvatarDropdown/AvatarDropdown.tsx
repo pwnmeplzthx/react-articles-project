@@ -14,6 +14,8 @@ import { getRouteAdmin, getRouteProfile } from '@/app/providers/router/config/ro
 import { Dropdown } from '@/shared/ui/redesigned/Popups';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
+import { Button } from '@/shared/ui/redesigned/Button';
+import cls from './AvatarDropdown.module.scss';
 
 interface AvatarDropdownProps {
     className?: string;
@@ -69,10 +71,10 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
                     },
                 ]}
                 trigger={(
-                    <HStack gap="8">
-                        <Text size="s" text={authData.username} />
+                    <Button variant="clear">
+                        <Text className={cls.username} size="s" text={authData.username} />
                         <Avatar size={30} src={authData.avatar} />
-                    </HStack>
+                    </Button>
                 )}
             />
             <SettingsDrawer isOpen={isOpen} onClose={onCloseDrawer}>

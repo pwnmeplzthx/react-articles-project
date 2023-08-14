@@ -1,19 +1,19 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArticleDetails } from '@/entities/Article';
+import { getRouteArticles } from '@/app/providers/router/config/routeConfig';
+import { ArticleRating } from '@/features/articleRating';
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/model/slices';
+import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { Card } from '@/shared/ui/Card/Card';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { Page } from '@/widgets/Page/Page';
+import { AdditionalInfoContainer } from '../AdditionalInfoContainer/AdditionalInfoContainer';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
+import { DetailsContainer } from '../DetailsContainer/DetailsContainer';
 import cls from './ArticleDetailsPage.module.scss';
-import { ArticleRating } from '@/features/articleRating';
-import { getRouteArticles } from '@/app/providers/router/config/routeConfig';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -37,24 +37,24 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         if (__PROJECT__ === 'storybook') {
             return (
                 <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-                    <Page className={classNames(cls.articleDetailsPage, [className])}>
-                        <VStack gap="32" max>
-                            <Card max>
+                    <StickyContentLayout
+                        content={(
+                            <Page
+                                className={classNames(
+                                    cls.ArticleDetailsPage,
+                                    [className],
+                                )}
+                            >
                                 <VStack gap="16" max>
-                                    <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
-                                        {t('Назад к списку')}
-                                    </Button>
-                                    <ArticleDetails id="1" />
+                                    <DetailsContainer />
+                                    <ArticleRating articleId="1" />
+                                    <ArticleRecommendationsList />
+                                    <ArticleDetailsComments id="1" />
                                 </VStack>
-                            </Card>
-                            <Card max>
-                                <ArticleRecommendationsList />
-                            </Card>
-                            <Card max>
-                                <ArticleDetailsComments id="1" />
-                            </Card>
-                        </VStack>
-                    </Page>
+                            </Page>
+                        )}
+                        right={<AdditionalInfoContainer />}
+                    />
                 </DynamicModuleLoader>
             );
         }
@@ -67,27 +67,24 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <Page className={classNames(cls.articleDetailsPage, [className])}>
-                <VStack gap="32" max>
-                    <Card max>
-                        <VStack gap="16" max>
-                            <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
-                                {t('Назад к списку')}
-                            </Button>
-                            <ArticleDetails id={id} />
+            <StickyContentLayout
+                content={(
+                    <Page
+                        className={classNames(
+                            cls.ArticleDetailsPage,
+                            [className],
+                        )}
+                    >
+                        <VStack gap="32" max>
+                            <DetailsContainer />
+                            <ArticleRating articleId={id} />
+                            <ArticleRecommendationsList />
+                            <ArticleDetailsComments id={id} />
                         </VStack>
-                    </Card>
-                    <Card max>
-                        <ArticleRating articleId={id} />
-                    </Card>
-                    <Card max>
-                        <ArticleRecommendationsList />
-                    </Card>
-                    <Card max>
-                        <ArticleDetailsComments id={id} />
-                    </Card>
-                </VStack>
-            </Page>
+                    </Page>
+                )}
+                right={<AdditionalInfoContainer />}
+            />
         </DynamicModuleLoader>
     );
 };

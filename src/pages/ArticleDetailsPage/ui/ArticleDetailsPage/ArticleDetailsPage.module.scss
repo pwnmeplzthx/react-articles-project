@@ -1,17 +1,9 @@
-.articleDetailsPage {
-    max-width: 100%;
-}
-
-.commentTitle {
-    margin-top: 20px;
+.ArticleDetailsPage {
+    min-height: 100%;
 }
 
 .recommendations {
-    justify-content: start;
-    max-width: 100%;
-    margin-top: 20px;
-
-    // flex-wrap: nowrap;
-    // overflow-y: hidden;
-    // overflow-x: auto;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
 }

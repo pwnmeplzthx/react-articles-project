@@ -1,8 +1,11 @@
-import { ButtonHTMLAttributes, memo, ReactNode } from 'react';
+import {
+    ButtonHTMLAttributes, ForwardedRef, forwardRef, memo, ReactNode,
+} from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
 
 export type ButtonVariant = 'clear' | 'outline' | 'filled';
+export type ButtonColor = 'normal' | 'success' | 'error';
 
 export type ButtonSize = 'm' | 'l' | 'xl';
 
@@ -12,6 +15,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
      * Тема кнопки. Отвечает за визуал (в рамке, без стилей, противоположный теме приложения цвет и тд)
      */
     variant?: ButtonVariant;
+    /**
+     * Тема кнопки. Отвечает за визуал (в рамке, без стилей, противоположный теме приложения цвет и тд)
+     */
+    color?: ButtonColor;
     /**
      * Флаг, делающий кнопку квадратной
      */
@@ -44,11 +51,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     addonRight?: ReactNode;
 }
 
-export const Button = memo((props: ButtonProps) => {
+export const Button = forwardRef((props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
     const {
         className,
         children,
         variant = 'outline',
+        color = 'normal',
         square,
         disabled,
         fullWidth,
@@ -72,9 +80,11 @@ export const Button = memo((props: ButtonProps) => {
                 className,
                 cls[variant],
                 cls[size],
+                cls[color],
             ], mods)}
             disabled={disabled}
             {...otherProps}
+            ref={ref}
         >
             <div className={cls.addonLeft}>{addonLeft}</div>
             {children}

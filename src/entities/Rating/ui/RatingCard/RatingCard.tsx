@@ -2,14 +2,14 @@ import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Card } from '@/shared/ui/Card/Card';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { StarRating } from '@/shared/ui/StarRating/StarRating';
 import { Modal } from '@/shared/ui/redesigned/Modal/Modal';
-import { Input } from '@/shared/ui/Input/Input';
 import { Drawer } from '@/shared/ui/redesigned/Drawer/Drawer';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
+import { Input } from '@/shared/ui/redesigned/Input';
+import { Card } from '@/shared/ui/redesigned/Card';
+import { Button } from '@/shared/ui/redesigned/Button';
 
 interface RatingCardProps {
     className?: string;
@@ -69,7 +69,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
     );
 
     return (
-        <Card className={classNames('', [className])}>
+        <Card max border="round" className={classNames('', [className])}>
             <VStack align="center" gap="8">
                 <Text title={starsCount ? t('Спасибо за оценку!') : title} />
                 <StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
@@ -79,10 +79,10 @@ export const RatingCard = memo((props: RatingCardProps) => {
                     <VStack max gap="32">
                         {modalContent}
                         <HStack max gap="16" justify="end">
-                            <Button onClick={cancelHandle} theme={ButtonTheme.OUTLINE_RED}>
+                            <Button onClick={cancelHandle} variant="outline" color="error">
                                 {t('Закрыть')}
                             </Button>
-                            <Button onClick={acceptHandle}>
+                            <Button onClick={acceptHandle} variant="outline" color="success">
                                 {t('Отправить')}
                             </Button>
                         </HStack>
@@ -93,7 +93,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
                 <Drawer isOpen={isModalOpen} lazy onClose={cancelHandle}>
                     <VStack gap="32">
                         {modalContent}
-                        <Button fullWidth onClick={acceptHandle} size={ButtonSize.L}>
+                        <Button fullWidth onClick={acceptHandle} variant="outline" size="l">
                             {t('Отправить')}
                         </Button>
                     </VStack>

@@ -22,5 +22,8 @@
     "Currency": "Currency",
     "Country": "Country",
     "Enter comment text": "Enter comment text",
-    "Send": "Send"
+    "Send": "Send",
+    "{{count}} просмотров_zero": "{{count}} views",
+    "{{count}} просмотров_one": "{{count}} view",
+    "{{count}} просмотров_other": "{{count}} views"
 }
