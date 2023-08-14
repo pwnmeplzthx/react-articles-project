@@ -8,16 +8,32 @@ import { AuthPage } from '@/pages/AuthPage';
 import { useTheme } from './providers/ThemeProvider';
 import { AppRouter } from './providers/router';
 import { MainLayout } from '@/shared/layouts/MainLayout';
+import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
+import { useAppToolbar } from './lib/useAppToolbar';
 
 const App = () => {
     const { theme } = useTheme();
     const dispatch = useDispatch();
     const inited = useSelector(getUserIsInitedAuthData);
     const userAuthData = !!(useSelector(getUserAuthData));
+    const toolbar = useAppToolbar();
 
     useEffect(() => {
         dispatch(userActions.initAuthData());
     }, [dispatch]);
+
+    // Скелетон - лейаут, отображается до подгрузки данных пользователя
+    if (!inited) {
+        return (
+            <div
+                id="app"
+                className={classNames('app_redesigned', [theme])}
+            >
+                <AppLoaderLayout />
+                {' '}
+            </div>
+        );
+    }
 
     return (
         <div id="app" className={classNames('app_redesigned', [])}>
@@ -29,6 +45,7 @@ const App = () => {
                             header={<Navbar />}
                             content={<AppRouter />}
                             sidebar={<Sidebar />}
+                            toolbar={toolbar}
                         />
                     )
                     : <AuthPage />}
