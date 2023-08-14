@@ -1,11 +1,14 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import ListIcon from '@/shared/assets/icons/list-24-24.svg';
-import TiledIcon from '@/shared/assets/icons/tiled-24-24.svg';
-import { Icon } from '@/shared/ui/Icon/Icon';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
-import cls from './ArticleViewSelector.module.scss';
+
+import ListIcon from '@/shared/assets/icons/burger.svg';
+import TiledIcon from '@/shared/assets/icons/tile.svg';
+
+import { Card } from '@/shared/ui/redesigned/Card';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 import { ArticleView } from '../../model/consts/consts';
+import cls from './ArticleViewSelector.module.scss';
 
 interface ArticleViewSelectorProps {
     className?: string;
@@ -32,19 +35,25 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
     };
 
     return (
-        <div className={classNames(cls.ArticleViewSelector, [className])}>
-            {viewTypes.map((viewType) => (
-                <Button
-                    theme={ButtonTheme.CLEAR}
-                    onClick={onClick(viewType.view)}
-                    key={viewType.view}
-                >
+        <Card
+            className={classNames(
+                cls.ArticleViewSelectorRedesigned,
+                [className],
+            )}
+            border="round"
+        >
+            <HStack gap="8">
+                {viewTypes.map((viewType) => (
                     <Icon
+                        clickable
+                        onClick={onClick(viewType.view)}
                         Svg={viewType.icon}
-                        className={classNames('', [viewType.view !== view ? cls.notSelected : cls.selected])}
+                        className={classNames('', [], {
+                            [cls.notSelected]: viewType.view !== view,
+                        })}
                     />
-                </Button>
-            ))}
-        </div>
+                ))}
+            </HStack>
+        </Card>
     );
 });

@@ -1,0 +1,19 @@
+.Icon {
+    color: var(--icon-redesigned);
+}
+
+.button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover .Icon {
+    color: var(--accent-redesigned);
+}

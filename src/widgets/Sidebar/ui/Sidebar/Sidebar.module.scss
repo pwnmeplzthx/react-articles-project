@@ -1,121 +1,38 @@
+/* stylelint-disable no-duplicate-selectors */
 .sidebar {
-    height: 100vh;
-    min-width: var(--sidebar-width);
-    background: transparent;
-    transition: min-width 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-}
+    height: calc(100vh - var(--navbar-height));
+    width: var(--sidebar-width);
+    background: var(--inverted-bg-color);
+    position: relative;
+    transition: width 0.3s;
 
-.sidebarHolder {
-    min-width: var(--sidebar-width);
-    transition: min-width 0.3s;
-}
-
-.sidebarWrapper {
-    background: var(--sidebar-bg);
-    height: calc(100% - 40px);
-    width: calc(100% - 20px);
-    border-radius: 20px;
-    box-shadow: rgb(0 0 0 / 5%) 0 1.25rem 1.6875rem 0;
-}
-
-.logoWrapepr {
-    max-width: 100%;
-    min-height: 50px;
-    max-height: 50px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
-
-    .logo {
-        max-width: 50px;
+    .switchers {
+        position: absolute;
+        bottom: 20px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
 
-    .logoName {
-        opacity: 1;
-        transition: width 0.6s 0.1s;
-        transition-delay: 2s;
-        margin-left: 5px;
+    .lang {
+        margin-left: 20px;
     }
-}
 
-.items {
-    margin-left: 40px;
-    margin-top: 40px;
-}
+    .collapseBtn {
+        position: absolute;
+        right: -32px;
+        bottom: 32px;
+        z-index: 10;
+    }
 
-.switchers {
-    position: absolute;
-    bottom: 20px;
-    display: flex;
-    justify-content: center;
-    width: calc(100% - 20px);
-}
-
-.lang {
-    margin-left: 20px;
-}
-
-.collapseBtn {
-    position: absolute;
-    right: calc(50% + 5px);
-    bottom: calc(50% - 5px);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--inverted-bg-color);
-    border: solid 3px var(--bg-color);
-    height: 10px !important;
-    width: 10px !important;
-    transition: 0.3s all;
-    transition-delay: 1s;
-    pointer-events: all;
-    z-index: 10000;
-}
-
-.strokeTogleButton {
-    stroke: var(--bg-color);
-    display: block;
-    opacity: 0;
-    transition: 0.2s opacity;
-    transition-delay: 1s;
-}
-
-.sideBarToggleWrapper {
-    background: transparent;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    position: absolute;
-    right: -30px;
-    top: calc(50% - 60px);
-    pointer-events: all;
-
-    &:hover {
-        .collapseBtn {
-            right: calc(50% - 10px);
-            bottom: calc(50% - 20px);
-            height: 40px !important;
-            width: 40px !important;
-            transition: 0.4s all;
-            background-color: var(--inverted-bg-color);
-        }
-
-        .strokeTogleButton {
-            opacity: 1;
-            transition: 0.3s opacity;
-        }
+    .items {
+        margin-top: 20px;
+        margin-left: 30px;
     }
 }
 
 .collapsed {
-    min-width: var(--sidebar-width-collapsed);
+    width: var(--sidebar-width-collapsed);
 
     .switchers {
         flex-direction: column;
@@ -125,10 +42,64 @@
     .lang {
         margin-left: 0;
     }
+}
 
-    .logoName {
-        opacity: 0;
-        width: 0;
-        transition: opacity 0.3s, width 0.3s;
+.sidebarRedesigned {
+    background: var(--light-bg-redesigned);
+    width: 220px;
+    height: 100%;
+    border-radius: 32px;
+    position: relative;
+
+    .appLogo {
+        padding-top: 20px;
+    }
+
+    .items {
+        margin-top: 40px;
+    }
+
+    .collapseBtn {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        z-index: 10;
+        transform: rotate(90deg);
+    }
+
+    .switchers {
+        position: absolute;
+        bottom: 40px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 16px;
+    }
+}
+
+.collapsedRedesigned {
+    width: 50px;
+
+    .switchers {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .items {
+        display: flex;
+        align-items: center;
+    }
+
+    .lang {
+        margin-left: 0;
+    }
+
+    .collapseBtn {
+        transform: rotate(-90deg);
+    }
+
+    .switchers {
+        flex-direction: column;
+        align-items: center;
     }
 }

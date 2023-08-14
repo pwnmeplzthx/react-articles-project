@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useMemo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
 import { ArticleType } from '../../model/consts/consts';
+import { TabItem, Tabs } from '@/shared/ui/redesigned/Tabs';
 
 interface ArticleTypeTabsProps {
     className?: string;
@@ -39,6 +39,7 @@ export const ArticleTypeTabs = memo((props: ArticleTypeTabsProps) => {
 
     return (
         <Tabs
+            direction="column"
             tabs={typeTabs}
             value={value}
             onTabClick={onTabClick}

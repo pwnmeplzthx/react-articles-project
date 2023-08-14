@@ -1,12 +1,12 @@
 .navbar {
     width: calc(100% - 40px);
     height: var(--navbar-height);
-    background: var(--inverted-bg-color);
+    background: var(--light-bg-redesigned);
     display: flex;
     align-items: center;
     border-radius: 20px;
     padding: 20px;
-    margin: 20px;
+    margin: 32px 32px 0 0;
     position: sticky;
     top: 0;
     z-index: 50;

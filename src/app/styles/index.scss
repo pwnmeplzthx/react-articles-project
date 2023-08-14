@@ -17,6 +17,13 @@ body {
     flex-direction: row;
 }
 
+.app_redesigned {
+    background: var(--bg-redesigned);
+    min-height: 100vh;
+    font: var(--font-m-redesigned);
+    color: var(--text-redesigned);
+}
+
 .app_modal,
 .app_drawer {
     font: var(--font-m);
@@ -37,11 +44,11 @@ body {
 }
 
 *::-webkit-scrollbar-track {
-    background: var(--inverted-bg-color);
+    background: var(--light-bg-redesigned);
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: var(--inverted-primary-color);    /* цвет плашки */
+    background-color: var(--icon-redesigned);    /* цвет плашки */
     border-radius: 20px;       /* закругления плашки */
-    border: 2px solid var(--primary-color);  /* padding вокруг плашки */
+    border: 2px solid var(--accent-redesigned);  /* padding вокруг плашки */
 }

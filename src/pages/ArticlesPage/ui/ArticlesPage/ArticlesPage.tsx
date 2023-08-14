@@ -12,6 +12,9 @@ import { initArticlesPage } from '../../model/services/initArticlesPage/initArti
 import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
 import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList';
 import cls from './ArticlesPage.module.scss';
+import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
+import { FiltersContainer } from './FiltersContainer/FiltersContainer';
+import { ViewSelectorContainer } from '../ViewSelectorContainer/ViewSelectorContainer';
 
 interface ArticlesPageProps {
     className?: string;
@@ -37,13 +40,22 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <Page
-                onScrollEnd={onLoadNextPart}
-                className={classNames(cls.ArticlesPage, [className])}
-            >
-                <ArticlesPageFilters />
-                <ArticleInfiniteList className={cls.list} />
-            </Page>
+            <StickyContentLayout
+                left={<ViewSelectorContainer />}
+                right={<FiltersContainer />}
+                content={(
+                    <Page
+                        data-testid="ArticlesPage"
+                        onScrollEnd={onLoadNextPart}
+                        className={classNames(
+                            cls.ArticlesPageRedesigned,
+                            [className],
+                        )}
+                    >
+                        <ArticleInfiniteList className={cls.list} />
+                    </Page>
+                )}
+            />
         </DynamicModuleLoader>
     );
 };

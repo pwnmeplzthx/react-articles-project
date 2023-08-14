@@ -6,7 +6,16 @@
 
 .SMALL {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
     gap: 30px;
+
+    .card {
+        display: inline-flex;
+        height: 300px;
+    }
+
+    .row {
+        display: flex;
+        gap: 30px;
+    }
 }

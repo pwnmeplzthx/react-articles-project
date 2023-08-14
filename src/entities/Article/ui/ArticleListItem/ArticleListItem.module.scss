@@ -52,6 +52,7 @@
     }
 
     &:hover {
+        opacity: 0.8;
         transform: scale(1.01);
 
         .date {
@@ -81,8 +82,6 @@
         width: 115px;
         white-space: nowrap;
         overflow: hidden;
-
-        // троеточие в конце, если текст не вмещается
         text-overflow: ellipsis;
     }
 
@@ -100,5 +99,11 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+}
+
+.ArticleListItemRedesigned {
+    &.BIG {
+        width: 100%;
     }
 }

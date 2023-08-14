@@ -28,9 +28,12 @@ export const Page = memo((props: PageProps) => {
         (state: StateSchema) => getUIScrollByPath(state, pathname),
     );
 
+    // если передаем undefined, то скролл биндится к скролу страницы
+    const wrapperRefRedesigned = undefined;
+
     useInfiniteScroll({
         triggerRef,
-        wrapperRef,
+        wrapperRef: wrapperRefRedesigned,
         callback: onScrollEnd,
     });
 
@@ -50,7 +53,7 @@ export const Page = memo((props: PageProps) => {
     return (
         <main
             ref={wrapperRef}
-            className={classNames(cls.page, [className])}
+            className={classNames(cls.pageRedesigned, [className])}
             onScroll={onScroll}
         >
             {children}

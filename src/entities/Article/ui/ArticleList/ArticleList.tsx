@@ -7,6 +7,7 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
 import { Article } from '../../model/types/article';
 import { ArticleView } from '../../model/consts/consts';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleListProps {
     className?: string;
@@ -52,11 +53,22 @@ export const ArticleList = memo((props: ArticleListProps) => {
     }
 
     return (
-        <div className={classNames(cls.articleList, [className, cls[view]])}>
-            {articles.length > 0
-                ? articles.map(renderArticle)
-                : null}
+        <HStack
+            wrap="wrap"
+            gap="16"
+            className={classNames(cls.ArticleListRedesigned)}
+            data-testid="ArticleList"
+        >
+            {articles.map((item) => (
+                <ArticleListItem
+                    article={item}
+                    view={view}
+                    target={target}
+                    key={item.id}
+                    className={cls.card}
+                />
+            ))}
             {isLoading && getSkeletons(view)}
-        </div>
+        </HStack>
     );
 });

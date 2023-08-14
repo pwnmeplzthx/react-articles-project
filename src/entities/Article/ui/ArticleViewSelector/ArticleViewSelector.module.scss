@@ -1,23 +1,11 @@
-.selected {
-    fill: var(--primary-action-color);
-    cursor: default;
+.ArticleViewSelector {
+    .notSelected {
+        fill: var(--secondary-color);
+    }
 }
 
-.notSelected {
-    fill: var(--secondary-color);
-    transition: 0.15s color, 0.15s fill;
-
-    &:hover {
-        fill: var(--primary-action-color);
-        color: var(--primary-action-color);
-
-        .icon {
-            fill: var(--primary-action-color);
-            color: var(--primary-action-color);
-        }
-
-        opacity: 0.8;
-        fill-opacity: 80%;
-        stroke-opacity: 80%;
+.ArticleViewSelectorRedesigned {
+    .notSelected {
+        color: var(--light-bg-redesigned);
     }
 }
