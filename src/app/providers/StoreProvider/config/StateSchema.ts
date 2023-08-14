@@ -13,6 +13,7 @@ import { ProfileSchema } from '@/features/editableProfileCard';
 import { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from '@/pages/ArticlesPage';
 import { rtkApi } from '@/shared/api/rtkApi';
+import { UsersPageSchema } from '@/pages/UsersPage/model/types/usersPageSchema';
 
 export interface StateSchema {
     // Обязательные
@@ -28,6 +29,7 @@ export interface StateSchema {
     addCommentForm?: AddCommentFormSchema;
     articlesPage?: ArticlesPageSchema;
     articleDetailsPage?: ArticleDetailsPageSchema;
+    usersPage?: UsersPageSchema;
     userDetails?: UserDetailsCardSchema;
 }
 

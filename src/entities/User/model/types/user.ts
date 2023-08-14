@@ -24,7 +24,7 @@ export interface User {
     service_percent?: number;
     // Кем создано
     created_by?: number;
-    // Кем м одифицировано
+    // Кем модифицировано
     modified_by?: number;
     // Дата создания
     created_at?: Date;

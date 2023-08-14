@@ -10,3 +10,15 @@ export enum ValidateUserError {
     NO_DATA = 'NO_DATA',
     SERVER_ERROR = 'SERVER_ERROR',
 }
+
+export enum UserView {
+    BIG = 'BIG',
+    SMALL = 'SMALL',
+}
+
+export enum UserSortField {
+    CREATED = 'created_at',
+    SALARY = 'salary',
+    NAME = 'name',
+    SURNAME = 'surname',
+}
