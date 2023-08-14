@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 
 interface PortalProps {
     children: ReactNode
-    elem?: HTMLElement
+    element?: HTMLElement
 }
 
 // Перенос элемента в указанное место дом дерева
@@ -11,8 +11,8 @@ interface PortalProps {
 export const Portal = (props: PortalProps) => {
     const {
         children,
-        elem = document.body,
+        element = document.body,
     } = props;
 
-    return createPortal(children, elem);
+    return createPortal(children, element);
 };

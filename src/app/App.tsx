@@ -20,7 +20,7 @@ const App = () => {
     }, [dispatch]);
 
     return (
-        <div className={classNames('app_redesigned', [])}>
+        <div id="app" className={classNames('app_redesigned', [])}>
             {/* Глобальное оборачивание компонентов, т.к. переводы будут подгружаться асинхронно */}
             <Suspense fallback="">
                 {userAuthData

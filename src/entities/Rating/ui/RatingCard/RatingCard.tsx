@@ -6,9 +6,9 @@ import { Card } from '@/shared/ui/Card/Card';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Text } from '@/shared/ui/Text/Text';
 import { StarRating } from '@/shared/ui/StarRating/StarRating';
-import { Modal } from '@/shared/ui/Modal/Modal';
+import { Modal } from '@/shared/ui/redesigned/Modal/Modal';
 import { Input } from '@/shared/ui/Input/Input';
-import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { Drawer } from '@/shared/ui/redesigned/Drawer/Drawer';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 
 interface RatingCardProps {

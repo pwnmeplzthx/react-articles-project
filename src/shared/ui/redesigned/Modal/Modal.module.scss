@@ -1,13 +1,12 @@
-.modal {
+.Modal {
     position: fixed;
     top: 0;
     bottom: 0;
-    left: 0;
     right: 0;
-    z-index: -1;
+    left: 0;
     opacity: 0;
     pointer-events: none;
-    color: var(--primary-color);
+    z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,17 +14,28 @@
 
 .content {
     padding: 20px;
-    border-radius: 10px;
-    background: var(--bg-color);
-    max-width: 60%;
-    transform: scale(0.5);
+    border-radius: 12px;
     transition: 0.3s transform;
+    transform: scale(0.5);
+    max-width: 60%;
     z-index: var(--modal-z-index);
 }
 
+.modalNew {
+    .content {
+        background: var(--light-bg-redesigned);
+    }
+}
+
+.modalOld {
+    .content {
+        background: var(--bg-color);
+    }
+}
+
 .opened {
-    opacity: 1;
     pointer-events: auto;
+    opacity: 1;
     z-index: var(--modal-z-index);
 
     .content {
@@ -35,6 +45,6 @@
 
 .isClosing {
     .content {
-        transform: scale(0.5);
+        transform: scale(0.2);
     }
 }
