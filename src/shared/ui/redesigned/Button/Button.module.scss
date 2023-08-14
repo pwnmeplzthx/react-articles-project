@@ -45,22 +45,22 @@
 
 .outline {
     background: none;
-    border: 1px solid var(--icon-redesigned);
+    border: 2px solid var(--icon-redesigned);
     border-radius: 34px;
 
     &:hover {
-        border: 1px solid var(--accent-redesigned);
+        border: 2px solid var(--accent-redesigned);
     }
 }
 
 .outline_red {
     background: none;
-    border: 1px solid var(--red-dark);
+    border: 2px solid var(--red-dark);
     border-radius: 34px;
 
     &:hover {
         color: var(--red-light);
-        border: 1px solid var(--red-light);
+        border: 2px solid var(--red-light);
     }
 }
 

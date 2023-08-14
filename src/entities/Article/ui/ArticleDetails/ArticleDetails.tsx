@@ -45,10 +45,11 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
     if (isLoading) {
         content = (
-            <VStack align="center" max gap="16">
-                <Skeleton className={cls.avatar} width={200} height={200} border="50%" />
+            <VStack gap="16" max>
                 <Skeleton className={cls.title} width={300} height={32} />
                 <Skeleton className={cls.skeleton} width={600} height={24} />
+                <Skeleton className={cls.skeleton} width="100%" height={200} />
+                <Skeleton className={cls.skeleton} width="100%" height={200} />
                 <Skeleton className={cls.skeleton} width="100%" height={200} />
                 <Skeleton className={cls.skeleton} width="100%" height={200} />
             </VStack>

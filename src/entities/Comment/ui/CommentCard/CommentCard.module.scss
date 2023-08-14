@@ -1,16 +1,11 @@
-.commentCard {
+.CommentCard {
     padding: 10px;
-    width: 100%;
     border: 1px solid var(--primary-color);
 }
 
 .header {
     display: flex;
     align-items: center;
-}
-
-.text {
-    margin-top: 10px;
 }
 
 .username {

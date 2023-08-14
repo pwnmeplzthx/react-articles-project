@@ -75,7 +75,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                             [className],
                         )}
                     >
-                        <VStack gap="16" max>
+                        <VStack gap="32" max>
                             <DetailsContainer />
                             <ArticleRating articleId={id} />
                             <ArticleRecommendationsList />
