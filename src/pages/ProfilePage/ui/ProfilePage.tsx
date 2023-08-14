@@ -2,8 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { EditableProfileCard } from '@/features/editableProfileCard';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { VStack } from '@/shared/ui/redesigned/Stack';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { Page } from '@/widgets/Page/Page';
 import { Card } from '@/shared/ui/redesigned/Card';
 

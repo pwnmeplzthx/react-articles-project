@@ -4,7 +4,7 @@ import { BrowserView, MobileView } from 'react-device-detect';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Card } from '@/shared/ui/Card/Card';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { StarRating } from '@/shared/ui/StarRating/StarRating';
 import { Modal } from '@/shared/ui/redesigned/Modal/Modal';
 import { Input } from '@/shared/ui/Input/Input';

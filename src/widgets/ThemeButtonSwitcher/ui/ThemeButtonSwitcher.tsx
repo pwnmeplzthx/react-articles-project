@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Theme, useTheme } from '@/app/providers/ThemeProvider';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import cls from './ThemeButtonSwitcher.module.scss';
 
 interface ThemeButtonSwitcherProps {
