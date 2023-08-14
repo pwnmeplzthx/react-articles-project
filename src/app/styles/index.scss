@@ -4,17 +4,11 @@
 @import "./themes/dark";
 @import "./themes/kanagawa";
 
-body {
+.app {
     font: var(--font-m);
     color: var(--primary-color);
-    background: linear-gradient(var(--inverted-bg-color) 350px, var(--bg-color) 350px 100%);
-}
-
-.app {
+    background: var(--bg-color);
     min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
 }
 
 .app_redesigned {
@@ -24,17 +18,8 @@ body {
     color: var(--text-redesigned);
 }
 
-.app_modal,
-.app_drawer {
-    font: var(--font-m);
-    color: var(--primary-color);
-}
-
 .content-page {
     display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    flex-shrink: 100;
 }
 
 // scrollbar styling

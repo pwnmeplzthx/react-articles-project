@@ -4,9 +4,9 @@ import React, {
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/app/providers/ThemeProvider';
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
-import { Overlay } from '../redesigned/Overlay/Overlay';
+import { Overlay } from '../Overlay/Overlay';
 import cls from './Drawer.module.scss';
-import { Portal } from '../redesigned/Portal/Portal';
+import { Portal } from '../Portal/Portal';
 
 interface DrawerProps {
     className?: string;
@@ -81,8 +81,8 @@ export const DrawerContent = memo((props: DrawerProps) => {
     const display = y.to((py) => (py < height ? 'block' : 'none'));
 
     return (
-        <Portal>
-            <div className={classNames(cls.Drawer, [className, theme, 'app_drawer'])}>
+        <Portal element={document.getElementById('app') ?? document.body}>
+            <div className={classNames(cls.drawerNew, [className, theme, 'app_drawer'])}>
                 <Overlay onClick={() => close()} />
                 <Spring.a.div
                     className={cls.sheet}

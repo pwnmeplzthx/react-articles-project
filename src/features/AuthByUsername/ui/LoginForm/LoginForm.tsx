@@ -6,8 +6,6 @@ import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { Input } from '@/shared/ui/Input/Input';
 import { Text, TextTheme } from '@/shared/ui/Text/Text';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
@@ -16,6 +14,11 @@ import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLogi
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
+import { Input } from '@/shared/ui/redesigned/Input';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import { Button } from '@/shared/ui/redesigned/Button';
+import UserIcon from '@/shared/assets/icons/login-24x24.svg';
+import PasswordIcon from '@/shared/assets/icons/password-20x20.svg';
 
 export interface LoginFormProps {
     className?: string;
@@ -78,21 +81,24 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
                 {error && <Text text={t('Incorrect login or password')} theme={TextTheme.ERROR} />}
                 <Input
                     autofocus
-                    type="text"
-                    className={cls.input}
-                    placeholder={t('Enter login')}
                     onChange={onChangeUsername}
                     value={username}
+                    className={cls.input}
+                    size="l"
+                    placeholder={t('Enter login')}
+                    addonLeft={<Icon Svg={UserIcon} />}
                 />
                 <Input
                     type="password"
-                    className={cls.input}
-                    placeholder={t('Enter password')}
                     onChange={onChangePassword}
                     value={password}
+                    className={cls.input}
+                    size="l"
+                    placeholder={t('Enter password')}
+                    addonLeft={<Icon Svg={PasswordIcon} />}
                 />
                 <Button
-                    theme={ButtonTheme.OUTLINE}
+                    variant="outline"
                     className={cls.loginBtn}
                     onClick={onLoginClick}
                     disabled={isLoading}
