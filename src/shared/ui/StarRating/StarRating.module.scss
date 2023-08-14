@@ -9,6 +9,9 @@
 }
 
 .starRatingRedesigned {
+    flex-direction: row;
+    display: flex;
+
     .normal {
         fill: none;
     }

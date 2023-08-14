@@ -17,7 +17,7 @@ const AuthPage = (props: AuthPageProps) => {
 
     return (
         <Page className={classNames(cls.authPage, [className])}>
-            <Card>
+            <Card padding="24" border="round">
                 <HStack className={cls.loginFormWrapper} justify="center" align="center" max>
                     <LoginForm onSuccess={() => {}} />
                 </HStack>
