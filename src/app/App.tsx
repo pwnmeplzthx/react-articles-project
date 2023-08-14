@@ -8,8 +8,8 @@ import { AuthPage } from '@/pages/AuthPage';
 import { useTheme } from './providers/ThemeProvider';
 import { AppRouter } from './providers/router';
 import { MainLayout } from '@/shared/layouts/MainLayout';
-import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 import { useAppToolbar } from './lib/useAppToolbar';
+import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 
 const App = () => {
     const { theme } = useTheme();
