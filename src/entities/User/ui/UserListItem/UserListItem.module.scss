@@ -37,6 +37,14 @@
         max-height: 200px;
         overflow-y: hidden;
     }
+
+    .avatarWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
 }
 
 .SMALL {
@@ -107,7 +115,7 @@
     }
 }
 
-.ArticleListItemRedesigned {
+.UserListItemRedesigned {
     &.BIG {
         width: 100%;
     }
