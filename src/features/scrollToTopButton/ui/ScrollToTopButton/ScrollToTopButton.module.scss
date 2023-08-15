@@ -1,3 +1,9 @@
 .ScrollToTopButton {
-    // todo
+    fill: var(--light-bg-redesigned);
+    color: var(--light-bg-redesigned);
+
+    &:hover {
+        color: var(--accent-redesigned);
+        fill: var(--accent-redesigned);
+    }
 }

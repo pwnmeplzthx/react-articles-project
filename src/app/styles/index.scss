@@ -4,6 +4,10 @@
 @import "./themes/dark";
 @import "./themes/kanagawa";
 
+body {
+    background: var(--bg-redesigned);
+}
+
 .app {
     font: var(--font-m);
     color: var(--primary-color);
