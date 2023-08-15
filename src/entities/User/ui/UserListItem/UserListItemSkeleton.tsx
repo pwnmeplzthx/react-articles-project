@@ -4,7 +4,7 @@ import { Card } from '@/shared/ui/redesigned/Card';
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 import cls from './UserListItem.module.scss';
 import { UserView } from '../../model/consts/consts';
-import { VStack } from '@/shared/ui/redesigned/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 
 interface UserListItemSkeletonProps {
     className?: string;
@@ -27,28 +27,52 @@ export const UserListItemSkeleton = memo(
                         border="round"
                         padding="24"
                     >
-                        <div className={cls.header}>
-                            <Skeleton border="50%" height={30} width={30} />
-                            <Skeleton
-                                width={150}
-                                height={16}
-                                className={cls.username}
-                            />
-                            <Skeleton
-                                width={150}
-                                height={16}
-                                className={cls.date}
-                            />
-                        </div>
-                        <Skeleton
-                            width={250}
-                            height={24}
-                            className={cls.title}
-                        />
-                        <Skeleton height={200} className={cls.img} />
-                        <div className={cls.footer}>
-                            <Skeleton height={36} width={200} />
-                        </div>
+                        <HStack align="start" max gap="16">
+                            <div className={cls.avatarWrapper}>
+                                <Skeleton height={150} width={150} />
+                            </div>
+                            <VStack className={cls.info} gap="16" max>
+                                <VStack className={cls.info} gap="8" max>
+                                    <Skeleton
+                                        width={400}
+                                        height={24}
+                                        className={cls.title}
+                                    />
+                                    <Skeleton
+                                        width={250}
+                                        height={24}
+                                        className={cls.title}
+                                    />
+                                </VStack>
+                                <VStack className={cls.info} gap="8" max>
+                                    <Skeleton
+                                        width={150}
+                                        height={16}
+                                        className={cls.username}
+                                    />
+                                    <Skeleton
+                                        width={150}
+                                        height={16}
+                                        className={cls.username}
+                                    />
+                                    <Skeleton
+                                        width={150}
+                                        height={16}
+                                        className={cls.username}
+                                    />
+                                    <Skeleton
+                                        width={150}
+                                        height={16}
+                                        className={cls.username}
+                                    />
+                                </VStack>
+                                <VStack gap="4" className={cls.footer} max>
+                                    <HStack max justify="end">
+                                        <Skeleton height={40} width={120} />
+                                    </HStack>
+                                </VStack>
+                            </VStack>
+                        </HStack>
                     </Card>
                 </div>
             );
