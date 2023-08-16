@@ -14,6 +14,7 @@ import { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from '@/pages/ArticlesPage';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { UsersPageSchema } from '@/pages/UsersPage/model/types/usersPageSchema';
+import { CustomersPageSchema } from '@/pages/CustomersPage';
 
 export interface StateSchema {
     // Обязательные
@@ -31,6 +32,8 @@ export interface StateSchema {
     articleDetailsPage?: ArticleDetailsPageSchema;
     usersPage?: UsersPageSchema;
     userDetails?: UserDetailsCardSchema;
+    customersPage?: CustomersPageSchema;
+    // customerDetails?: UserDetailsCardSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
