@@ -14,6 +14,7 @@ import cls from './UserListItemRedesigned.module.scss';
 import UnknownUser from '@/shared/assets/icons/unknown_user.svg';
 import { Icon } from '@/shared/ui/redesigned/Icon';
 import { Button } from '@/shared/ui/redesigned/Button';
+import { Input } from '@/shared/ui/redesigned/Input';
 
 export const UserListItemRedesigned = memo((props: UserListItemProps) => {
     const {
@@ -53,21 +54,29 @@ export const UserListItemRedesigned = memo((props: UserListItemProps) => {
                     <VStack className={cls.info} gap="16" max>
                         <Text title={`${user.surname} ${user.name} ${user.patronymic}`} />
                         <VStack className={cls.info} gap="8" max>
-                            <Text
-                                text={`Телефон:  ${user.phone}`}
-                                className={cls.date}
+                            <Input
+                                value={user.phone}
+                                label={t('Телефон')}
+                                readonly
+                                size="s"
                             />
-                            <Text
-                                text={`Whatsapp:  ${user.whatsapp}`}
-                                className={cls.date}
+                            <Input
+                                value={user.whatsapp}
+                                label={t('Whatsapp')}
+                                readonly
+                                size="s"
                             />
-                            <Text
-                                text={`Telegram:  ${user.telegram}`}
-                                className={cls.date}
+                            <Input
+                                value={user.telegram}
+                                label={t('Telegram')}
+                                readonly
+                                size="s"
                             />
-                            <Text
-                                text={`Почта:  ${user.email}`}
-                                className={cls.date}
+                            <Input
+                                value={user.email}
+                                label={t('Почта')}
+                                readonly
+                                size="s"
                             />
                         </VStack>
                         <VStack gap="4" className={cls.footer} max>

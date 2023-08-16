@@ -34,41 +34,41 @@ export const UserListItemSkeleton = memo(
                             <VStack className={cls.info} gap="16" max>
                                 <VStack className={cls.info} gap="8" max>
                                     <Skeleton
-                                        width={400}
+                                        width="100%"
                                         height={24}
                                         className={cls.title}
                                     />
                                     <Skeleton
-                                        width={250}
+                                        width="50%"
                                         height={24}
                                         className={cls.title}
                                     />
                                 </VStack>
                                 <VStack className={cls.info} gap="8" max>
                                     <Skeleton
-                                        width={150}
-                                        height={16}
+                                        width="100%"
+                                        height={24}
                                         className={cls.username}
                                     />
                                     <Skeleton
-                                        width={150}
-                                        height={16}
+                                        width="100%"
+                                        height={24}
                                         className={cls.username}
                                     />
                                     <Skeleton
-                                        width={150}
-                                        height={16}
+                                        width="100%"
+                                        height={24}
                                         className={cls.username}
                                     />
                                     <Skeleton
-                                        width={150}
-                                        height={16}
+                                        width="100%"
+                                        height={24}
                                         className={cls.username}
                                     />
                                 </VStack>
                                 <VStack gap="4" className={cls.footer} max>
                                     <HStack max justify="end">
-                                        <Skeleton height={40} width={120} />
+                                        <Skeleton height={50} width={120} />
                                     </HStack>
                                 </VStack>
                             </VStack>
