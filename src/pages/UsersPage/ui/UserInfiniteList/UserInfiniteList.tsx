@@ -19,7 +19,7 @@ export const UserInfiniteList = memo((props: UserInfiniteListProps) => {
     const { t } = useTranslation();
 
     if (error) {
-        return <Text text={t('Ошибка при загрузке статей')} />;
+        return <Text text={t('Ошибка при загрузке списка пользователей')} />;
     }
 
     return (

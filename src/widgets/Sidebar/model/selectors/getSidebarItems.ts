@@ -10,10 +10,11 @@ import ArticleIconDeprecated from '@/shared/assets/icons/article-20-20.svg';
 import MainIcon from '@/shared/assets/icons/home.svg';
 import ArticleIcon from '@/shared/assets/icons/article.svg';
 import ProfileIcon from '@/shared/assets/icons/avatar.svg';
+import CustomerIcon from '@/shared/assets/icons/clients-20x20.svg';
 
 import { SidebarItemType } from '../types/sidebar';
 import {
-    getRouteArticles, getRouteMain, getRouteProfile, getRouteUsers,
+    getRouteArticles, getRouteCustomers, getRouteMain, getRouteUsers,
 } from '@/app/providers/router/config/routeConfig';
 
 // используется createSelector (реселект), чтобы мемоизировать значения
@@ -34,6 +35,12 @@ export const getSidebarItems = createSelector(
                     path: getRouteUsers(),
                     Icon: ProfileIcon,
                     text: 'Users',
+                    authOnly: true,
+                },
+                {
+                    path: getRouteCustomers(),
+                    Icon: CustomerIcon,
+                    text: 'Customers',
                     authOnly: true,
                 },
                 {
