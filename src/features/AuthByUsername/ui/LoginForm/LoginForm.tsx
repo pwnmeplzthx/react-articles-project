@@ -86,7 +86,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
                     className={cls.input}
                     size="l"
                     placeholder={t('Enter login')}
-                    addonLeft={<Icon Svg={UserIcon} />}
+                    addonLeft={<Icon className={cls.icon} Svg={UserIcon} />}
                 />
                 <Input
                     type="password"
@@ -95,7 +95,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
                     className={cls.input}
                     size="l"
                     placeholder={t('Enter password')}
-                    addonLeft={<Icon Svg={PasswordIcon} />}
+                    addonLeft={<Icon className={cls.icon} Svg={PasswordIcon} />}
                 />
                 <Button
                     variant="outline"
