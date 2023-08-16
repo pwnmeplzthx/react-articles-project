@@ -28,9 +28,6 @@ export const CustomerListItemSkeleton = memo(
                         padding="24"
                     >
                         <HStack align="start" max gap="16">
-                            <div className={cls.avatarWrapper}>
-                                <Skeleton height={150} width={150} />
-                            </div>
                             <VStack className={cls.info} gap="16" max>
                                 <VStack className={cls.info} gap="8" max>
                                     <Skeleton
@@ -38,34 +35,53 @@ export const CustomerListItemSkeleton = memo(
                                         height={24}
                                         className={cls.title}
                                     />
-                                    <Skeleton
-                                        width={250}
-                                        height={24}
-                                        className={cls.title}
-                                    />
                                 </VStack>
-                                <VStack className={cls.info} gap="8" max>
-                                    <Skeleton
-                                        width={150}
-                                        height={16}
-                                        className={cls.name}
-                                    />
-                                    <Skeleton
-                                        width={150}
-                                        height={16}
-                                        className={cls.name}
-                                    />
-                                    <Skeleton
-                                        width={150}
-                                        height={16}
-                                        className={cls.name}
-                                    />
-                                    <Skeleton
-                                        width={150}
-                                        height={16}
-                                        className={cls.name}
-                                    />
-                                </VStack>
+                                <HStack gap="8" max justify="between">
+                                    <VStack className={cls.info} gap="8" max>
+                                        <Skeleton
+                                            width={150}
+                                            height={16}
+                                            className={cls.name}
+                                        />
+                                        <Skeleton
+                                            width={150}
+                                            height={16}
+                                            className={cls.name}
+                                        />
+                                        <Skeleton
+                                            width={150}
+                                            height={16}
+                                            className={cls.name}
+                                        />
+                                        <Skeleton
+                                            width={150}
+                                            height={16}
+                                            className={cls.name}
+                                        />
+                                    </VStack>
+                                    <VStack className={cls.info} gap="8" max>
+                                        <Skeleton
+                                            width={150}
+                                            height={16}
+                                            className={cls.name}
+                                        />
+                                        <Skeleton
+                                            width={150}
+                                            height={16}
+                                            className={cls.name}
+                                        />
+                                        <Skeleton
+                                            width={150}
+                                            height={16}
+                                            className={cls.name}
+                                        />
+                                        <Skeleton
+                                            width={150}
+                                            height={16}
+                                            className={cls.name}
+                                        />
+                                    </VStack>
+                                </HStack>
                                 <VStack gap="4" className={cls.footer} max>
                                     <HStack max justify="end">
                                         <Skeleton height={40} width={120} />
@@ -87,12 +103,6 @@ export const CustomerListItemSkeleton = memo(
             >
                 <Card className={cls.card} border="round" padding="16">
                     <VStack gap="8" align="center" justify="center">
-                        <div className={cls.imageWrapper}>
-                            <Skeleton
-                                width="100%"
-                                height={140}
-                            />
-                        </div>
                         <Skeleton width="90%" height={16} />
                         <Skeleton width="80%" height={32} className={cls.title} />
                         <Skeleton width="90%" height={16} />

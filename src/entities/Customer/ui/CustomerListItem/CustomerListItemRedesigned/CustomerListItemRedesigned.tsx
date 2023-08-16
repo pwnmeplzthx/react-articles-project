@@ -11,15 +11,34 @@ import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { CustomerListItemProps } from '../CustomerListItem';
 import cls from './CustomerListItemRedesigned.module.scss';
-import UnknownCustomer from '@/shared/assets/icons/unknown_customer.svg';
-import { Icon } from '@/shared/ui/redesigned/Icon';
 import { Button } from '@/shared/ui/redesigned/Button';
+import { Customer } from '@/entities/Customer';
+import { Input } from '@/shared/ui/redesigned/Input';
 
 export const CustomerListItemRedesigned = memo((props: CustomerListItemProps) => {
     const {
         className, customer, view, target,
     } = props;
     const { t } = useTranslation();
+
+    const conflictCustomer = customer.is_conflict || customer.is_refusenic;
+
+    const badCustomerHandler = (customer: Customer) => {
+        if (!customer.is_active) {
+            return (<Text title={t('Заблокирован')} variant="error" size="s" className={cls.date} />);
+        }
+        if (customer.is_conflict && customer.is_refusenic) {
+            return (<Text title={t('Конфликтный отказник')} variant="error" size="s" className={cls.date} />);
+        }
+        if (customer.is_conflict) {
+            return (<Text title={t('Конфликтный')} variant="error" size="s" className={cls.date} />);
+        }
+        if (customer.is_refusenic) {
+            return (<Text title={t('Отказник')} variant="error" size="s" className={cls.date} />);
+        }
+
+        return null;
+    };
 
     if (view === CustomerView.BIG) {
         return (
@@ -28,40 +47,49 @@ export const CustomerListItemRedesigned = memo((props: CustomerListItemProps) =>
                 max
                 border="round"
                 data-testid="CustomerListItem"
-                className={classNames(cls.CustomerListItem, [
-                    className,
-                    cls[view],
-                ])}
+                className={classNames(
+                    cls.CustomerListItem,
+                    [
+                        className,
+                        cls[view],
+                    ],
+                    { [cls.redCard]: conflictCustomer },
+                )}
             >
                 <HStack align="start" max gap="16">
-                    {/* <div className={cls.avatarWrapper}>
-                        {customer.customer_icon
-                            ? (
-                                <AppImage
-                                    fallback={<Skeleton width={150} height="100%" />}
-                                    alt={customer.customername}
-                                    src={customer.customer_icon}
-                                    className={cls.img}
-                                />
-                            )
-                            : (
-                                <Icon Svg={UnknownCustomer} width={150} height="100%" />
-                            )}
-                        <Text text={`${customer.customername}`} />
-                        <Text text={`${customer.roles?.length && customer.roles[0]}`} />
-                    </div> */}
                     <VStack className={cls.info} gap="16" max>
-                        <Text title={customer.name} />
-                        <VStack className={cls.info} gap="8" max>
-                            <Text
-                                text={`Телефон:  ${customer.phone}`}
-                                className={cls.date}
-                            />
-                            <Text
-                                text={`Почта:  ${customer.email}`}
-                                className={cls.date}
-                            />
-                        </VStack>
+                        <HStack max gap="8" justify="between">
+                            <Text title={customer.name} />
+                            {badCustomerHandler(customer)}
+                        </HStack>
+                        <HStack max gap="8" align="start">
+                            <VStack className={cls.info} gap="8">
+                                <Input
+                                    value={customer.phone}
+                                    label={t('Телефон')}
+                                    readonly
+                                />
+                                <Input
+                                    value={customer.email}
+                                    label={t('Почта')}
+                                    readonly
+                                />
+                                <Input
+                                    value={customer.created_at}
+                                    label={t('Дата создания')}
+                                    readonly
+                                />
+                            </VStack>
+                            <VStack gap="8" justify="start">
+
+                                <Input
+                                    value={customer.customer_source}
+                                    label={t('Узнал из')}
+                                    readonly
+                                />
+                            </VStack>
+                        </HStack>
+
                         <VStack gap="4" className={cls.footer} max>
                             <HStack max justify="end">
                                 <AppLink
@@ -90,23 +118,11 @@ export const CustomerListItemRedesigned = memo((props: CustomerListItemProps) =>
                 cls[view],
             ])}
         >
-            <Card className={cls.card} border="round" padding="0">
-                {/* {customer.customer_icon
-                    ? (
-                        <AppImage
-                            fallback={<Skeleton width="100%" height={140} />}
-                            alt={customer.customername}
-                            src={customer.customer_icon}
-                            className={cls.img}
-                        />
-                    )
-                    : (
-                        <Icon Svg={UnknownCustomer} width="100%" height={260} />
-                    )} */}
-
-                <VStack className={cls.info} gap="4">
-                    <Text text={customer.name} />
-                    <VStack gap="4" className={cls.footer} max>
+            <Card className={classNames(cls.card, [], { [cls.redCard]: conflictCustomer })} border="round" padding="0">
+                <VStack maxHeight max justify="center" align="center" className={cls.info} gap="4">
+                    <Text title={customer.name} />
+                    <VStack justify="center" align="center" gap="4">
+                        {badCustomerHandler(customer)}
                         <Text
                             text={customer.phone}
                             className={cls.date}
@@ -116,6 +132,7 @@ export const CustomerListItemRedesigned = memo((props: CustomerListItemProps) =>
                             className={cls.date}
                         />
                     </VStack>
+
                 </VStack>
             </Card>
         </AppLink>

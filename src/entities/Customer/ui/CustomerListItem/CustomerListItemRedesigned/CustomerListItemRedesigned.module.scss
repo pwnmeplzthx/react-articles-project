@@ -1,7 +1,7 @@
 .SMALL {
     .card {
         width: 240px;
-        height: 350px;
+        height: 200px;
         overflow: hidden;
         display: flex;
         flex-direction: column;
@@ -50,4 +50,8 @@
         align-items: center;
         height: 100%;
     }
+}
+
+.redCard {
+    background: var(--error-card);
 }
