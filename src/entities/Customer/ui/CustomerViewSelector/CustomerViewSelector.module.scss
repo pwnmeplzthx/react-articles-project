@@ -1,0 +1,11 @@
+.CustomerViewSelector {
+    .notSelected {
+        fill: var(--secondary-color);
+    }
+}
+
+.CustomerViewSelectorRedesigned {
+    .notSelected {
+        color: var(--light-bg-redesigned);
+    }
+}
