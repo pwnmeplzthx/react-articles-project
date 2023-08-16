@@ -29,15 +29,15 @@ export const fetchUsersList = createAsyncThunk<
                 addQueryParams({
                     sort, order, search,
                 });
-                const response = await extra.api.get<User[]>('/users', {
-                    params: {
-                        _limit: limit,
-                        _page: page,
-                        _sort: sort,
-                        _order: order,
-                        // Поисковая строка, см доку json fake api
-                        q: search,
-                    },
+                const response = await extra.api.get<User[]>('auth/users', {
+                    // params: {
+                    //     _limit: limit,
+                    //     _page: page,
+                    //     _sort: sort,
+                    //     _order: order,
+                    //     // Поисковая строка, см доку json fake api
+                    //     q: search,
+                    // },
                 });
 
                 if (!response.data) {

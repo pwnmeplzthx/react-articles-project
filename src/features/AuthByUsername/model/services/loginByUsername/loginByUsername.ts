@@ -12,7 +12,7 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
     'login/loginByUsername',
     async (authData, thunkAPI) => {
         try {
-            const response = await thunkAPI.extra.api.post<User>(
+            const response = await thunkAPI.extra.api.post<any>(
                 '/auth/jwt/login',
                 `&username=${authData.username}&password=${authData.password}`,
                 {
@@ -26,8 +26,9 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
             if (!response.data) {
                 throw new Error();
             }
+            const accessToken = response.data;
 
-            localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
+            localStorage.setItem(USER_LOCALSTORAGE_KEY, (`Bearer ${accessToken.access_token}`));
             thunkAPI.dispatch(userActions.setAuthData(response.data));
 
             return response.data;
