@@ -70,28 +70,32 @@ export const CustomerListItemRedesigned = memo((props: CustomerListItemProps) =>
                                     readonly
                                 />
                                 <Input
-                                    value={customer.email}
-                                    label={t('Почта')}
-                                    readonly
-                                />
-                                <Input
                                     value={customer.created_at}
                                     label={t('Дата создания')}
                                     readonly
                                 />
                             </VStack>
                             <VStack gap="8" justify="start">
-
                                 <Input
-                                    value={customer.customer_source}
-                                    label={t('Узнал из')}
+                                    value={customer.email}
+                                    label={t('Почта')}
                                     readonly
                                 />
                             </VStack>
                         </HStack>
-
+                        <Input
+                            value={customer.notes}
+                            label={t('Заметка')}
+                            readonly
+                        />
                         <VStack gap="4" className={cls.footer} max>
-                            <HStack max justify="end">
+                            <HStack max justify="between">
+                                <Input
+                                    value={customer.customer_source}
+                                    label={t('Узнал из')}
+                                    readonly
+                                    withPercent="threeQuarters"
+                                />
                                 <AppLink
                                     target={target}
                                     to={getRouteCustomerDetails(customer.id)}
