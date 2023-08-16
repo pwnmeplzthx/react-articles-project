@@ -17,6 +17,7 @@ type HTMLInputProps = Omit<
 >;
 
 type InputSize = 's' | 'm' | 'l';
+type InputWith = 'half'| 'threeQuarters' | 'full'
 
 interface InputProps extends HTMLInputProps {
     className?: string;
@@ -28,6 +29,7 @@ interface InputProps extends HTMLInputProps {
     addonLeft?: ReactNode;
     addonRight?: ReactNode;
     size?: InputSize;
+    withPercent?: InputWith;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -43,6 +45,7 @@ export const Input = memo((props: InputProps) => {
         addonRight,
         label,
         size = 'm',
+        withPercent = 'full',
         ...otherProps
     } = props;
     const ref = useRef<HTMLInputElement>(null);
@@ -79,6 +82,7 @@ export const Input = memo((props: InputProps) => {
             className={classNames(cls.InputWrapper, [
                 className,
                 cls[size],
+                cls[withPercent],
             ], mods)}
         >
             <div className={cls.addonLeft}>{addonLeft}</div>

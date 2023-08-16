@@ -23,9 +23,9 @@ export interface User {
     // Процент за услуги
     service_percent?: number;
     // Кем создано
-    created_by?: number;
+    created_by?: string;
     // Кем модифицировано
-    modified_by?: number;
+    modified_by?: string;
     // Дата создания
     created_at?: Date;
     // Дата модификации

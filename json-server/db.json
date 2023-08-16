@@ -860,6 +860,68 @@
       "created_at": ""
     }
   ],
+  "customers": [
+    {
+      "id": "1",
+      "name": "Клиент Клиентович Клиентов",
+      "phone": "89324568912",
+      "customer_source": "Газета жизнь",
+      "email": "customer@gmail.ru",
+      "is_conflict": false,
+      "is_refusenic": false,
+      "notes": "заметка о пользователе",
+      "is_active": true,
+      "created_at": "12.02.2023",
+      "modified_at": "",
+      "created_by": "",
+      "modified_by": ""
+    },
+    {
+      "id": "2",
+      "name": "Очень Проблемный Клиент",
+      "phone": "89324560943",
+      "customer_source": "Откуда он узнал?",
+      "email": "customer1@gmail.ru",
+      "is_conflict": true,
+      "is_refusenic": true,
+      "notes": "заметка о пользователе",
+      "is_active": true,
+      "created_at": "14.05.2023",
+      "modified_at": "",
+      "created_by": "",
+      "modified_by": ""
+    },
+    {
+      "id": "3",
+      "name": "Еще Один Клиент",
+      "phone": "89324566589",
+      "customer_source": "Откуда-то из интернета",
+      "email": "customer2@gmail.ru",
+      "is_conflict": false,
+      "is_refusenic": true,
+      "notes": "Клиент отказник",
+      "is_active": true,
+      "created_at": "31.05.2023",
+      "modified_at": "",
+      "created_by": "",
+      "modified_by": ""
+    },
+    {
+      "id": "4",
+      "name": "Обычный Обычный Клиент",
+      "phone": "89324566589",
+      "customer_source": "Откуда-то из интернета",
+      "email": "customer2@gmail.ru",
+      "is_conflict": false,
+      "is_refusenic": false,
+      "notes": "Клиент отказник",
+      "is_active": true,
+      "created_at": "23.07.2023",
+      "modified_at": "",
+      "created_by": "",
+      "modified_by": ""
+    }
+  ],
   "profile": [
     {
       "id": "1",

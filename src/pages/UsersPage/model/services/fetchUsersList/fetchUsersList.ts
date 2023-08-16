@@ -45,7 +45,8 @@ export const fetchUsersList = createAsyncThunk<
                 }
 
                 return response.data;
-            } catch (e) {
+            } catch (error) {
+                console.log('error', error);
                 return rejectWithValue('error');
             }
         },

@@ -10,6 +10,8 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { UsersPage } from '@/pages/UsersPage';
 import { UserDetailsPage } from '@/pages/UserDetailsPage';
+import { CustomersPage } from '@/pages/CustomersPage';
+import { CustomerDetailsPage } from '@/pages/CustomerDetailsPage';
 
 // Расширяем пропсы библиотеки
 export type AppRoutesProps = RouteProps & {
@@ -25,6 +27,8 @@ export enum AppRoutes {
     ARTICLE_DETAILS = 'article_details',
     USERS = 'users',
     USER_DETAILS = 'user_details',
+    CUSTOMERS = 'customers',
+    CUSTOMERS_DETAILS = 'customer_details',
     ADMIN_PANEL = 'admin_panel',
     FORBIDDEN = 'forbidden',
     // last
@@ -40,6 +44,8 @@ export const getRouteArticles = () => '/articles';
 export const getRouteArticleDetails = (id: string) => `/articles/${id}`;
 export const getRouteUsers = () => '/users';
 export const getRouteUserDetails = (id: string) => `/users/${id}`;
+export const getRouteCustomers = () => '/customers';
+export const getRouteCustomerDetails = (id: string) => `/customers/${id}`;
 export const getRouteArticleCreate = () => '/articles/new';
 export const getRouteArticleEdit = (id: string) => `/articles/${id}/edit`;
 export const getRouteAdmin = () => '/admin';
@@ -80,6 +86,16 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         element: <UserDetailsPage />,
         authOnly: true,
     },
+    [AppRoutes.CUSTOMERS]: {
+        path: getRouteCustomers(),
+        element: <CustomersPage />,
+        authOnly: true,
+    },
+    [AppRoutes.CUSTOMERS_DETAILS]: {
+        path: getRouteCustomerDetails(':id'),
+        element: <CustomerDetailsPage />,
+        authOnly: true,
+    },
     [AppRoutes.ADMIN_PANEL]: {
         path: getRouteAdmin(),
         element: <AdminPanelPage />,
@@ -97,6 +113,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     },
 };
 
+// Используется в useRouteChange хуке
 export const AppRouteByPathPattern: Record<string, AppRoutes> = {
     [getRouteMain()]: AppRoutes.MAIN,
     [getRouteProfile(':id')]: AppRoutes.PROFILE,
@@ -106,4 +123,6 @@ export const AppRouteByPathPattern: Record<string, AppRoutes> = {
     [getRouteForbidden()]: AppRoutes.FORBIDDEN,
     [getRouteUsers()]: AppRoutes.USERS,
     [getRouteUserDetails(':id')]: AppRoutes.USER_DETAILS,
+    [getRouteCustomers()]: AppRoutes.CUSTOMERS,
+    [getRouteCustomerDetails(':id')]: AppRoutes.CUSTOMERS_DETAILS,
 };
