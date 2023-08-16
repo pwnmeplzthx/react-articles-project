@@ -43,12 +43,12 @@ export const getSidebarItems = createSelector(
                     text: 'Customers',
                     authOnly: true,
                 },
-                {
-                    path: getRouteArticles(),
-                    Icon: ArticleIcon,
-                    text: 'Articles',
-                    authOnly: true,
-                },
+                // {
+                //     path: getRouteArticles(),
+                //     Icon: ArticleIcon,
+                //     text: 'Articles',
+                //     authOnly: true,
+                // },
             );
         }
 

@@ -121,11 +121,12 @@ export const UserListItemRedesigned = memo((props: UserListItemProps) => {
                         <Icon Svg={UnknownUser} width="100%" height={260} />
                     )}
 
-                <VStack className={cls.info} gap="4">
+                <VStack align="center" className={cls.info} gap="4">
                     <Text text={user.username} />
-                    <Text title={`${user.surname} ${user.name}`} />
+                    <Text title={`${user.surname}`} />
+                    <Text title={`${user.name}`} />
                     <Text text={`${user.roles?.length && user.roles[0]}`} />
-                    <VStack gap="4" className={cls.footer} max>
+                    <VStack align="center" gap="4" className={cls.footer} max>
                         <Text
                             text={user.phone}
                             className={cls.date}

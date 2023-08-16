@@ -23,6 +23,10 @@ export const CustomerListItemRedesigned = memo((props: CustomerListItemProps) =>
 
     const conflictCustomer = customer.is_conflict || customer.is_refusenic;
 
+    const splitNameArray = customer.name.split(' ');
+
+    const renderSplitName = (namePart: string) => (<Text title={namePart} />);
+
     const badCustomerHandler = (customer: Customer) => {
         if (!customer.is_active) {
             return (<Text title={t('Заблокирован')} variant="error" size="s" className={cls.date} />);
@@ -124,7 +128,9 @@ export const CustomerListItemRedesigned = memo((props: CustomerListItemProps) =>
         >
             <Card className={classNames(cls.card, [], { [cls.redCard]: conflictCustomer })} border="round" padding="0">
                 <VStack maxHeight max justify="center" align="center" className={cls.info} gap="4">
-                    <Text title={customer.name} />
+                    <Text title={splitNameArray[0]} />
+                    <Text title={splitNameArray[1]} />
+                    <Text title={splitNameArray[2]} />
                     <VStack justify="center" align="center" gap="4">
                         {badCustomerHandler(customer)}
                         <Text
