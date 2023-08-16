@@ -29,15 +29,15 @@ export const fetchCustomersList = createAsyncThunk<
                 addQueryParams({
                     sort, order, search,
                 });
-                const response = await extra.api.get<Customer[]>('/customers', {
-                    params: {
-                        _limit: limit,
-                        _page: page,
-                        _sort: sort,
-                        _order: order,
-                        // Поисковая строка, см доку json fake api
-                        q: search,
-                    },
+                const response = await extra.api.get<Customer[]>('trade/customers', {
+                    // params: {
+                    //     _limit: limit,
+                    //     _page: page,
+                    //     _sort: sort,
+                    //     _order: order,
+                    //     // Поисковая строка, см доку json fake api
+                    //     q: search,
+                    // },
                 });
 
                 if (!response.data) {
