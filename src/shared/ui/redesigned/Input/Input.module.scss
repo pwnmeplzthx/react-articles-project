@@ -44,13 +44,24 @@
 .input {
     border: none;
     outline: none;
-    width: 100%;
     color: var(--text-redesigned);
     background: none;
 
     &::placeholder {
         color: var(--hint-redesigned);
     }
+}
+
+.half {
+    width: 50%;
+}
+
+.threeQuarters {
+    width: 75%;
+}
+
+.full {
+    width: 100%;
 }
 
 .readonly {
