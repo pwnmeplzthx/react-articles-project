@@ -41,3 +41,38 @@ body {
     border-radius: 20px;       /* закругления плашки */
     border: 2px solid var(--accent-redesigned);  /* padding вокруг плашки */
 }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: arial, sans-serif;
+    table-layout: fixed;
+    width: 100%;
+    min-width: 500px;
+    background: var(--dark-bg-redesigned);
+}
+
+thead {
+    background: var(--light-bg-redesigned);
+    margin: 0;
+    position: sticky;
+    top: 0;
+}
+
+th {
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    padding: 2px 4px;
+    text-align: left;
+}
+
+td {
+    padding: 6px;
+}
+
+.container {
+    border: 1px solid lightgray;
+    height: 500px;
+    max-width: 900px !important;
+    overflow: auto;
+}

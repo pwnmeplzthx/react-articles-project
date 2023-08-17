@@ -14,6 +14,7 @@ import { FiltersContainer } from './FiltersContainer/FiltersContainer';
 import { Page } from '@/widgets/Page/Page';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { CustomerInfiniteList } from './CustomerInfiniteList/CustomerInfiniteList';
+import { CustomersTable } from '@/features/customersTable/ui/CustomersTable';
 
 interface CustomersPageProps {
     className?: string;
@@ -40,22 +41,23 @@ const CustomersPage = (props: CustomersPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <StickyContentLayout
+            {/* <StickyContentLayout
                 left={<ViewSelectorContainer />}
                 right={<FiltersContainer />}
-                content={(
-                    <Page
-                        data-testid="UsersPage"
-                        onScrollEnd={onLoadNextPart}
-                        className={classNames(
-                            cls.usersPage,
-                            [className],
-                        )}
-                    >
-                        <CustomerInfiniteList className={cls.list} />
-                    </Page>
+                content={( */}
+            <Page
+                data-testid="UsersPage"
+                // onScrollEnd={onLoadNextPart}
+                className={classNames(
+                    cls.usersPage,
+                    [className],
                 )}
-            />
+            >
+                {/* <CustomerInfiniteList className={cls.list} /> */}
+                <CustomersTable />
+            </Page>
+            {/* )}
+            /> */}
         </DynamicModuleLoader>
     );
 };
