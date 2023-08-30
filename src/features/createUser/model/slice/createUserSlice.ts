@@ -18,6 +18,7 @@ export const createUserSlice = createSlice({
         },
         createUser: (state, action: PayloadAction<User>) => {
             state.data = {
+                ...state.data,
                 ...action.payload,
             };
         },
