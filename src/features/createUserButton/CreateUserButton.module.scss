@@ -1,0 +1,11 @@
+.CreateUserButton {
+    fill: var(--accent-redesigned);
+    color: var(--accent-redesigned);
+    opacity: 0.5;
+
+    &:hover {
+        color: var(--accent-redesigned);
+        fill: var(--accent-redesigned);
+        opacity: 1;
+    }
+}

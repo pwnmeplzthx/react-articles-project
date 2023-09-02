@@ -1,3 +1,3 @@
 import { lazy } from 'react';
 
-export const CreateUserFormAsync = lazy(() => import('./CreateUSerForm'));
+export const CreateUserFormAsync = lazy(() => import('./CreateUserForm'));

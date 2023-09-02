@@ -72,7 +72,7 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
             reducers={initialReducers}
         >
             <div className={classNames(cls.createUserForm, [className])}>
-                <Text title={t('Authorization form')} />
+                <Text title={t('Создание пользователя')} />
                 {error && <Text text={t('Incorrect createUser or password')} theme={TextTheme.ERROR} />}
                 <Input
                     autofocus
@@ -80,7 +80,7 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                     value={data?.username}
                     className={cls.input}
                     size="l"
-                    placeholder={t('Enter createUser')}
+                    placeholder={t('Введите логин')}
                 />
                 <Input
                     type="password"
@@ -88,7 +88,7 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                     value={data?.name}
                     className={cls.input}
                     size="l"
-                    placeholder={t('Enter password')}
+                    placeholder={t('Введите пароль')}
                 />
                 <Button
                     variant="outline"
