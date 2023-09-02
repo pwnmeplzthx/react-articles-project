@@ -45,7 +45,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
                     className,
                 ])}
             >
-                <AppLink to={getRouteProfile(comment.user.id)}>
+                <AppLink to={getRouteProfile(comment.user.id || 'null')}>
                     <HStack gap="8">
                         {comment.user.avatar ? (
                             <Avatar
