@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Text, TextTheme } from '@/shared/ui/Text/Text';
 import cls from './CreateUserForm.module.scss';
 import { Input } from '@/shared/ui/redesigned/Input';
 import { Button } from '@/shared/ui/redesigned/Button';
@@ -16,6 +15,12 @@ import { getUserIsLoading } from '../../model/selectors/getUserIsLoading';
 import { getUserError } from '../../model/selectors/getUserError';
 import { createUserData } from '../../model/services/createUserData/createUserData';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
+import { formatTelephoneNumber } from '@/shared/lib/formatTelephoneNumber';
+import { ResetInputButton } from '@/features/resetInputButton/ResetInputButton';
+import { capitalizeFirstLetter } from '@/shared/lib/capitalizeFirstLetter';
+import { Text } from '@/shared/ui/redesigned/Text';
+import { Avatar } from '@/shared/ui/redesigned/Avatar';
+import { TogglePasswordButton } from '@/features/togglePasswordButton/TogglePasswordButton';
 
 export interface CreateUserFormProps {
     className?: string;
@@ -40,10 +45,14 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
     // Кастомный хук для типизации диспатча
     const dispatch = useAppDispatch();
 
+    const [showPassword, setShowPassword] = useState(false);
+
     // Вытаскиваем поля точечно, потому что объект может быть undefined
     const data = useSelector(getUserData);
     const isLoading = useSelector(getUserIsLoading);
     const error = useSelector(getUserError);
+
+    const resetHandler = useCallback((resetData: any) => () => { dispatch(resetData); }, [dispatch]);
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(createUserActions.createUser({ username: value || '' }));
@@ -54,19 +63,23 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
     }, [dispatch]);
 
     const onChangeName = useCallback((value: string) => {
-        dispatch(createUserActions.createUser({ name: value || '' }));
+        value = capitalizeFirstLetter(value);
+        dispatch(createUserActions.createUser({ name: value.replace(/\d/g, '') || '' }));
     }, [dispatch]);
 
     const onChangeSurname = useCallback((value: string) => {
-        dispatch(createUserActions.createUser({ surname: value || '' }));
+        value = capitalizeFirstLetter(value);
+        dispatch(createUserActions.createUser({ surname: value.replace(/\d/g, '') || '' }));
     }, [dispatch]);
 
     const onChangePatronymic = useCallback((value: string) => {
-        dispatch(createUserActions.createUser({ patronymic: value || '' }));
+        value = capitalizeFirstLetter(value);
+        dispatch(createUserActions.createUser({ patronymic: value.replace(/\d/g, '') || '' }));
     }, [dispatch]);
 
     const onChangePhone = useCallback((value: string) => {
-        dispatch(createUserActions.createUser({ phone: value || '' }));
+        value = value.replace(/\D/g, '');
+        dispatch(createUserActions.createUser({ phone: formatTelephoneNumber(value) || '' }));
     }, [dispatch]);
 
     const onChangeEmail = useCallback((value: string) => {
@@ -74,11 +87,17 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
     }, [dispatch]);
 
     const onChangeWhatsapp = useCallback((value: string) => {
-        dispatch(createUserActions.createUser({ whatsapp: value || '' }));
+        value = value.replace(/\D/g, '');
+        dispatch(createUserActions.createUser({ whatsapp: formatTelephoneNumber(value) || '' }));
     }, [dispatch]);
 
     const onChangeTelegram = useCallback((value: string) => {
-        dispatch(createUserActions.createUser({ telegram: value || '' }));
+        value = value.replace(/\D/g, '');
+        dispatch(createUserActions.createUser({ telegram: formatTelephoneNumber(value) || '' }));
+    }, [dispatch]);
+
+    const onChangeAvatar = useCallback((value: string) => {
+        dispatch(createUserActions.createUser({ avatar: value || '' }));
     }, [dispatch]);
 
     const onCreateUserClick = useCallback(async () => {
@@ -110,10 +129,10 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
             reducers={initialReducers}
         >
             <div className={classNames(cls.createUserForm, [className])}>
-                <Text className={classNames(cls.formTitle)} title={t('Создание пользователя')} />
-                {error && <Text text={t('Incorrect createUser or password')} theme={TextTheme.ERROR} />}
+                <Text size="l" className={classNames(cls.formTitle)} title={t('Создание пользователя')} />
                 {step === 1 && (
-                    <VStack gap="16" max align="center">
+                    <VStack gap="16" maxHeight max align="center">
+                        <Text size="m" title={t('Шаг 1 из 3 - персональные данные')} />
                         <div className={classNames(cls.inputsWrapper)}>
                             <VStack gap="16" max>
                                 <Input
@@ -124,6 +143,7 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     className={cls.input}
                                     size="l"
                                     required
+                                    resetHandler={resetHandler(createUserActions.createUser({ name: '' }))}
                                     placeholder={t('Введите имя')}
                                 />
                                 <Input
@@ -133,6 +153,7 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     className={cls.input}
                                     size="l"
                                     required
+                                    resetHandler={resetHandler(createUserActions.createUser({ surname: '' }))}
                                     placeholder={t('Введите фамилию')}
                                 />
                                 <Input
@@ -141,6 +162,7 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     label={t('Отчество')}
                                     className={cls.input}
                                     size="l"
+                                    resetHandler={resetHandler(createUserActions.createUser({ patronymic: '' }))}
                                     placeholder={t('Введите отчество')}
                                 />
                                 <Input
@@ -149,16 +171,8 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     label={t('Телефон')}
                                     className={cls.input}
                                     size="l"
-                                    required
-                                    placeholder={t('Введите номер телефона')}
-                                />
-                                <Input
-                                    onChange={onChangeEmail}
-                                    value={data?.email || ''}
-                                    label={t('Почта')}
-                                    className={cls.input}
-                                    size="l"
-                                    placeholder={t('Введите e-mail')}
+                                    resetHandler={resetHandler(createUserActions.createUser({ phone: '' }))}
+                                    placeholder="+7 (000) 000-00-00"
                                 />
                                 <Input
                                     onChange={onChangeWhatsapp}
@@ -166,7 +180,8 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     label={t('Whatsapp')}
                                     className={cls.input}
                                     size="l"
-                                    placeholder={t('Введите whatsapp')}
+                                    resetHandler={resetHandler(createUserActions.createUser({ whatsapp: '' }))}
+                                    placeholder="+7 (000) 000-00-00"
                                 />
                                 <Input
                                     onChange={onChangeTelegram}
@@ -174,11 +189,47 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     label={t('Telegram')}
                                     className={cls.input}
                                     size="l"
-                                    placeholder={t('Введите telegram')}
+                                    resetHandler={resetHandler(createUserActions.createUser({ telegram: '' }))}
+                                    placeholder="+7 (000) 000-00-00"
+                                />
+                                <Input
+                                    onChange={onChangeEmail}
+                                    value={data?.email || ''}
+                                    label={t('Почта')}
+                                    className={cls.input}
+                                    size="l"
+                                    resetHandler={resetHandler(createUserActions.createUser({ email: '' }))}
+                                    placeholder="abcdefgh@gmail.com"
                                 />
                             </VStack>
                         </div>
                         <HStack max justify="end">
+                            <Button
+                                variant="outline"
+                                className={cls.createUserBtn}
+                                onClick={handleNextStep}
+                                disabled={isLoading || data?.name === '' || data?.name === undefined || data?.surname === '' || data?.surname === undefined}
+                            >
+                                {t('Далее')}
+                            </Button>
+                        </HStack>
+                    </VStack>
+                )}
+                {step === 2 && (
+                    <VStack gap="16" maxHeight max align="center">
+                        <Text size="m" title={t('Шаг 2 из 3 - настрока доступа')} />
+                        <div className={classNames(cls.inputsWrapper)}>
+                            Change role
+                        </div>
+                        <HStack max justify="between">
+                            <Button
+                                variant="outline"
+                                className={cls.createUserBtn}
+                                onClick={handlePreviousStep}
+                                disabled={isLoading}
+                            >
+                                {t('Назад')}
+                            </Button>
                             <Button
                                 variant="outline"
                                 className={cls.createUserBtn}
@@ -190,27 +241,48 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                         </HStack>
                     </VStack>
                 )}
-                {step === 2 && (
-                    <VStack gap="16" max>
-                        <Input
-                            autofocus
-                            onChange={onChangeUsername}
-                            value={data?.username || ''}
-                            label={t('Логин')}
-                            className={cls.input}
-                            size="l"
-                            required
-                            placeholder={t('Введите логин')}
-                        />
-                        <Input
-                            onChange={onChangePassword}
-                            value={data?.password || ''}
-                            label={t('Пароль')}
-                            className={cls.input}
-                            size="l"
-                            required
-                            placeholder={t('Введите пароль')}
-                        />
+                {step === 3 && (
+                    <VStack gap="16" maxHeight max justify="around" align="center">
+                        <Text size="m" title={t('Шаг 3 из 3 - данные учетной записи')} />
+                        <div className={classNames(cls.inputsWrapper)}>
+                            <VStack gap="16" maxHeight max>
+                                <HStack justify="center" max>
+                                    <Avatar size={128} src={data?.avatar} />
+                                </HStack>
+                                <Input
+                                    autofocus
+                                    onChange={onChangeAvatar}
+                                    value={data?.avatar || ''}
+                                    label={t('Аватар')}
+                                    className={cls.input}
+                                    size="l"
+                                    resetHandler={resetHandler(createUserActions.createUser({ avatar: '' }))}
+                                    placeholder={t('Ссылка на аватар')}
+                                />
+                                <Input
+                                    autofocus
+                                    onChange={onChangeUsername}
+                                    value={data?.username || ''}
+                                    label={t('Логин')}
+                                    className={cls.input}
+                                    size="l"
+                                    required
+                                    resetHandler={resetHandler(createUserActions.createUser({ username: '' }))}
+                                    placeholder={t('Введите логин')}
+                                />
+                                <Input
+                                    onChange={onChangePassword}
+                                    value={data?.password || ''}
+                                    label={t('Пароль')}
+                                    className={cls.input}
+                                    size="l"
+                                    required
+                                    type={showPassword ? 'text' : 'password'}
+                                    placeholder={t('Введите пароль')}
+                                    addonRight={<TogglePasswordButton currentState={showPassword} onClick={() => { setShowPassword(!showPassword); }} />}
+                                />
+                            </VStack>
+                        </div>
                         <HStack max justify="between">
                             <Button
                                 variant="outline"
@@ -224,7 +296,8 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                 variant="outline"
                                 className={cls.createUserBtn}
                                 onClick={onCreateUserClick}
-                                disabled={isLoading}
+                                disabled={isLoading || data?.username === '' || data?.username === undefined || data?.password === '' || data?.password === undefined}
+                                color="success"
                             >
                                 {t('Создать пользователя')}
                             </Button>
