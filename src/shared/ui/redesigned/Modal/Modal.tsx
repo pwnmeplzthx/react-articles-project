@@ -49,8 +49,6 @@ export const Modal = (props: ModalProps) => {
         return null;
     }
 
-    console.log("document.getElementById('app')", document.getElementById('app'));
-
     return (
         <Portal element={document.body}>
             <div className={classNames(cls.modalNew, [className, theme, 'app_modal'], mods)}>

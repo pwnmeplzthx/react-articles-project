@@ -1,4 +1,5 @@
 import { memo, useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './CreateUserButton.module.scss';
 import { Icon } from '@/shared/ui/redesigned/Icon';
@@ -12,6 +13,8 @@ interface CreateUserButtonProps {
 
 export const CreateUserButton = memo((props: CreateUserButtonProps) => {
     const { className } = props;
+
+    const { t } = useTranslation();
 
     const [isOpenCreateModal, setIsCreateModal] = useState(false);
 
@@ -31,6 +34,7 @@ export const CreateUserButton = memo((props: CreateUserButtonProps) => {
                 onClick={onShowModal}
                 width={32}
                 height={32}
+                title={t('Создать пользователя')}
                 className={classNames(cls.CreateUserButton, [className])}
             />
             {isOpenCreateModal && (

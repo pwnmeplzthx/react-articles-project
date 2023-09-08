@@ -1,0 +1,11 @@
+.resetInputButton {
+    color: var(--cancel-redesigned);
+    fill: var(--cancel-redesigned);
+    opacity: 0.5;
+
+    &:hover {
+        color: var(--cancel-redesigned);
+        fill: var(--cancel-redesigned);
+        opacity: 1;
+    }
+}

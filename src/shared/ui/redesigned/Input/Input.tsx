@@ -1,4 +1,5 @@
 import React, {
+    FocusEventHandler,
     InputHTMLAttributes,
     memo,
     ReactNode,
@@ -11,6 +12,7 @@ import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 import { HStack, VStack } from '../Stack';
 import { Text } from '../Text';
+import { ResetInputButton } from '@/features/resetInputButton/ResetInputButton';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
@@ -32,6 +34,7 @@ interface InputProps extends HTMLInputProps {
     size?: InputSize;
     widthPercent?: InputWidth;
     required?: boolean;
+    resetHandler?: () => void;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -49,6 +52,7 @@ export const Input = memo((props: InputProps) => {
         size = 'm',
         widthPercent = 'full',
         required = false,
+        resetHandler,
         ...otherProps
     } = props;
     const { t } = useTranslation();
@@ -63,8 +67,8 @@ export const Input = memo((props: InputProps) => {
         }
     }, [autofocus]);
 
-    const requiredValueHandler = () => {
-        if (required && value === '') {
+    const requiredValueHandler = (inputValue: any = value) => {
+        if (required && inputValue?.toString().trim() === '') {
             setIsRequiredError(true);
         } else {
             setIsRequiredError(false);
@@ -72,7 +76,7 @@ export const Input = memo((props: InputProps) => {
     };
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        requiredValueHandler();
+        requiredValueHandler(e.target.value);
         onChange?.(e.target.value);
     };
 
@@ -114,7 +118,7 @@ export const Input = memo((props: InputProps) => {
                 placeholder={placeholder}
                 {...otherProps}
             />
-            <div className={cls.addonRight}>{addonRight}</div>
+            <div className={cls.addonRight}>{resetHandler && !readonly && value?.toString() !== '' ? <ResetInputButton onClick={resetHandler} /> : addonRight}</div>
         </div>
     );
 
