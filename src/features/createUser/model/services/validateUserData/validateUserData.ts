@@ -1,18 +1,18 @@
-import { Profile } from '@/entities/Profile';
+import { User } from '@/entities/User';
 import { ValidateUserError } from '@/entities/User/model/consts/consts';
 
-export const validateUserData = (profile?: Profile) => {
+export const validateUserData = (profile?: User) => {
     if (!profile) {
         return [ValidateUserError.NO_DATA];
     }
 
     const {
-        first, lastname, age, country,
+        name, username,
     } = profile;
 
     const errors: ValidateUserError[] = [];
 
-    if (!first || !lastname) {
+    if (!name || !username) {
         errors.push(ValidateUserError.INCORRECT_USER_DATA);
     }
 

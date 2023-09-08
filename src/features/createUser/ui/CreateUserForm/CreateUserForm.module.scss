@@ -1,14 +1,13 @@
 .createUserForm {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 50vw;
 }
 
-.input {
-    margin-top: 10px;
+.formTitle {
+    margin-bottom: 24px;
 }
 
-.createUserBtn {
-    margin-top: 15px;
-    margin-left: auto;
+.inputsWrapper {
+    width: 70%;
 }

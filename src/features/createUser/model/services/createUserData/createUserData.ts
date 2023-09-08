@@ -18,13 +18,15 @@ export const createUserData = createAsyncThunk<
 
             const errors = validateUserData(userData);
 
+            console.log('errors', errors);
+
             if (errors.length) {
                 return rejectWithValue(errors);
             }
 
             try {
-                const response = await extra.api.put<User>(
-                    `/user/${userData?.id}`,
+                const response = await extra.api.post<User>(
+                    '/users',
                     userData,
                 );
 
