@@ -1,8 +1,9 @@
 import { UserRole } from '../consts/consts';
 
 export interface User {
-    id: string;
-    username: string;
+    id?: string;
+    username?: string;
+    password?: string;
     avatar?: string;
     roles?: UserRole[];
     name?: string;

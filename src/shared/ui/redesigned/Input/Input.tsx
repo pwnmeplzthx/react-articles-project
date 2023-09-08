@@ -1,4 +1,5 @@
 import React, {
+    FocusEventHandler,
     InputHTMLAttributes,
     memo,
     ReactNode,
@@ -6,10 +7,12 @@ import React, {
     useRef,
     useState,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
-import { HStack } from '../Stack';
+import { HStack, VStack } from '../Stack';
 import { Text } from '../Text';
+import { ResetInputButton } from '@/features/resetInputButton/ResetInputButton';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
@@ -17,7 +20,7 @@ type HTMLInputProps = Omit<
 >;
 
 type InputSize = 's' | 'm' | 'l';
-type InputWith = 'half'| 'threeQuarters' | 'full'
+type InputWidth = 'half'| 'threeQuarters' | 'full'
 
 interface InputProps extends HTMLInputProps {
     className?: string;
@@ -29,7 +32,9 @@ interface InputProps extends HTMLInputProps {
     addonLeft?: ReactNode;
     addonRight?: ReactNode;
     size?: InputSize;
-    withPercent?: InputWith;
+    widthPercent?: InputWidth;
+    required?: boolean;
+    resetHandler?: () => void;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -45,11 +50,15 @@ export const Input = memo((props: InputProps) => {
         addonRight,
         label,
         size = 'm',
-        withPercent = 'full',
+        widthPercent = 'full',
+        required = false,
+        resetHandler,
         ...otherProps
     } = props;
+    const { t } = useTranslation();
     const ref = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
+    const [isRequiredError, setIsRequiredError] = useState(false);
 
     useEffect(() => {
         if (autofocus) {
@@ -58,11 +67,21 @@ export const Input = memo((props: InputProps) => {
         }
     }, [autofocus]);
 
+    const requiredValueHandler = (inputValue: any = value) => {
+        if (required && inputValue?.toString().trim() === '') {
+            setIsRequiredError(true);
+        } else {
+            setIsRequiredError(false);
+        }
+    };
+
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        requiredValueHandler(e.target.value);
         onChange?.(e.target.value);
     };
 
     const onBlur = () => {
+        requiredValueHandler();
         setIsFocused(false);
     };
 
@@ -73,6 +92,7 @@ export const Input = memo((props: InputProps) => {
     const mods: Mods = {
         [cls.readonly]: readonly,
         [cls.focused]: isFocused,
+        [cls.requiredError]: isRequiredError,
         [cls.withAddonLeft]: Boolean(addonLeft),
         [cls.withAddonRight]: Boolean(addonRight),
     };
@@ -82,7 +102,7 @@ export const Input = memo((props: InputProps) => {
             className={classNames(cls.InputWrapper, [
                 className,
                 cls[size],
-                cls[withPercent],
+                cls[widthPercent],
             ], mods)}
         >
             <div className={cls.addonLeft}>{addonLeft}</div>
@@ -98,18 +118,34 @@ export const Input = memo((props: InputProps) => {
                 placeholder={placeholder}
                 {...otherProps}
             />
-            <div className={cls.addonRight}>{addonRight}</div>
+            <div className={cls.addonRight}>{resetHandler && !readonly && value?.toString() !== '' ? <ResetInputButton onClick={resetHandler} /> : addonRight}</div>
         </div>
     );
 
     if (label) {
         return (
             <HStack max gap="8">
-                <Text text={label} />
-                {input}
+                {required
+                    ? (
+                        <>
+                            <Text text={`${label}`} />
+                            <Text variant="error" text="*" />
+                        </>
+                    )
+                    : <Text text={label} />}
+                <VStack gap="8" max>
+                    {input}
+                    {isRequiredError && <Text size="s" variant="error" text={t('Обязательно для заполнения')} />}
+                </VStack>
             </HStack>
+
         );
     }
 
-    return input;
+    return (
+        <VStack gap="8" max>
+            {input}
+            {isRequiredError && <Text size="s" variant="error" text={t('Обязательно для заполнения')} />}
+        </VStack>
+    );
 });

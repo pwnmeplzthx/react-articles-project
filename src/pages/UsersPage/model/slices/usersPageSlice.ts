@@ -8,7 +8,7 @@ import { fetchUsersList } from '../services/fetchUsersList/fetchUsersList';
 import { UsersPageSchema } from '../types/usersPageSchema';
 
 const usersAdapter = createEntityAdapter<User>({
-    selectId: (user) => user.id,
+    selectId: (user) => user.id || '',
 });
 
 export const getUsers = usersAdapter.getSelectors<StateSchema>(

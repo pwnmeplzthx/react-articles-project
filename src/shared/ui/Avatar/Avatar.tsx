@@ -24,8 +24,6 @@ export const Avatar = ({
         height: size || 100,
     }), [size]);
 
-    console.log('asjdhfgsakdgfhsad');
-
     const fallback = <Skeleton width={size} height={size} border="50%" />;
     const errorFallback = <Icon inverted={fallbackInverted} width={size} height={size} Svg={UserIcon} />;
 

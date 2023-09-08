@@ -39,7 +39,7 @@ export const UserListItemRedesigned = memo((props: UserListItemProps) => {
                         {user.user_icon
                             ? (
                                 <AppImage
-                                    fallback={<Skeleton width={150} height="100%" />}
+                                    fallback={<Skeleton width={150} height={150} />}
                                     alt={user.username}
                                     src={user.user_icon}
                                     className={cls.img}
@@ -83,7 +83,7 @@ export const UserListItemRedesigned = memo((props: UserListItemProps) => {
                             <HStack max justify="end">
                                 <AppLink
                                     target={target}
-                                    to={getRouteUserDetails(user.id)}
+                                    to={getRouteUserDetails(user.id || '')}
                                 >
                                     <Button variant="outline">
                                         {t('Подробнее')}
@@ -101,7 +101,7 @@ export const UserListItemRedesigned = memo((props: UserListItemProps) => {
         <AppLink
             data-testid="UserListItem"
             target={target}
-            to={getRouteUserDetails(user.id)}
+            to={getRouteUserDetails(user.id || '')}
             className={classNames(cls.UserListItem, [
                 className,
                 cls[view],

@@ -98,7 +98,7 @@ export const CustomerListItemRedesigned = memo((props: CustomerListItemProps) =>
                                     value={customer.customer_source}
                                     label={t('Узнал из')}
                                     readonly
-                                    withPercent="threeQuarters"
+                                    widthPercent="threeQuarters"
                                 />
                                 <AppLink
                                     target={target}

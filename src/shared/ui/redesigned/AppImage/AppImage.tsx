@@ -24,10 +24,12 @@ export const AppImage = memo((props: AppImageProps) => {
     // useLayoutEffect отрабатывает асинхронно перед монтированием
     // useEffect отрабатывает асинхронно, после того, как компонент вмонтировался в дом-дерево
     useLayoutEffect(() => {
+        setIsLoading(true);
         const img = new Image();
         img.src = src ?? '';
         img.onload = () => {
             setIsLoading(false);
+            setHasError(false);
         };
         img.onerror = () => {
             setIsLoading(false);

@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ScrollToTopButton.module.scss';
 import { Icon } from '@/shared/ui/redesigned/Icon';
@@ -12,6 +13,8 @@ interface ScrollToTopButtonProps {
 export const ScrollToTopButton = memo((props: ScrollToTopButtonProps) => {
     const { className } = props;
 
+    const { t } = useTranslation();
+
     const onCLick = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -24,6 +27,7 @@ export const ScrollToTopButton = memo((props: ScrollToTopButtonProps) => {
                 onClick={onCLick}
                 width={32}
                 height={32}
+                title={t('В начало страницы')}
                 className={classNames(cls.ScrollToTopButton, [className])}
             />
         </Card>

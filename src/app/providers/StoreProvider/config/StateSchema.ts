@@ -15,6 +15,7 @@ import { ArticlesPageSchema } from '@/pages/ArticlesPage';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { UsersPageSchema } from '@/pages/UsersPage/model/types/usersPageSchema';
 import { CustomersPageSchema } from '@/pages/CustomersPage';
+import { CreateUserSchema } from '@/features/createUser';
 
 export interface StateSchema {
     // Обязательные
@@ -26,6 +27,7 @@ export interface StateSchema {
     // Асинхронные редюсеры
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
+    createUser?: CreateUserSchema;
     articleDetails?: ArticleDetailsSchema;
     addCommentForm?: AddCommentFormSchema;
     articlesPage?: ArticlesPageSchema;
