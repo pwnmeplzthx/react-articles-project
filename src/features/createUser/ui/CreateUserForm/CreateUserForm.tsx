@@ -143,6 +143,8 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     className={cls.input}
                                     size="l"
                                     required
+                                    minLength={3}
+                                    maxLength={30}
                                     resetHandler={resetHandler(createUserActions.createUser({ name: '' }))}
                                     placeholder={t('Введите имя')}
                                 />
@@ -153,6 +155,8 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     className={cls.input}
                                     size="l"
                                     required
+                                    minLength={3}
+                                    maxLength={30}
                                     resetHandler={resetHandler(createUserActions.createUser({ surname: '' }))}
                                     placeholder={t('Введите фамилию')}
                                 />
@@ -162,6 +166,8 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     label={t('Отчество')}
                                     className={cls.input}
                                     size="l"
+                                    minLength={3}
+                                    maxLength={30}
                                     resetHandler={resetHandler(createUserActions.createUser({ patronymic: '' }))}
                                     placeholder={t('Введите отчество')}
                                 />
@@ -278,7 +284,7 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     size="l"
                                     required
                                     type={showPassword ? 'text' : 'password'}
-                                    placeholder={t('Введите пароль')}
+                                    placeholder={t('Enter password')}
                                     addonRight={<TogglePasswordButton currentState={showPassword} onClick={() => { setShowPassword(!showPassword); }} />}
                                 />
                             </VStack>

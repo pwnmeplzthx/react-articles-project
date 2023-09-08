@@ -1,5 +1,5 @@
 import {
-    memo, useCallback, useEffect,
+    memo, useCallback, useEffect, useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -19,6 +19,7 @@ import { Icon } from '@/shared/ui/redesigned/Icon';
 import { Button } from '@/shared/ui/redesigned/Button';
 import UserIcon from '@/shared/assets/icons/login-24x24.svg';
 import PasswordIcon from '@/shared/assets/icons/password-20x20.svg';
+import { TogglePasswordButton } from '@/features/togglePasswordButton/TogglePasswordButton';
 
 export interface LoginFormProps {
     className?: string;
@@ -39,6 +40,8 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const password = useSelector(getLoginPassword);
     const isLoading = useSelector(getLoginIsLoading);
     const error = useSelector(getLoginError);
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value));
@@ -90,7 +93,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
                     addonLeft={<Icon className={cls.icon} Svg={UserIcon} />}
                 />
                 <Input
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     onChange={onChangePassword}
                     value={password}
                     className={cls.input}
@@ -98,12 +101,13 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
                     required
                     placeholder={t('Enter password')}
                     addonLeft={<Icon className={cls.icon} Svg={PasswordIcon} />}
+                    addonRight={<TogglePasswordButton currentState={showPassword} onClick={() => { setShowPassword(!showPassword); }} />}
                 />
                 <Button
                     variant="outline"
                     className={cls.loginBtn}
                     onClick={onLoginClick}
-                    disabled={isLoading}
+                    disabled={isLoading || username === '' || password === ''}
                 >
                     {t('Log in')}
                 </Button>

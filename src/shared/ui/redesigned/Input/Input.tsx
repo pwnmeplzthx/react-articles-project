@@ -1,5 +1,4 @@
 import React, {
-    FocusEventHandler,
     InputHTMLAttributes,
     memo,
     ReactNode,
@@ -34,6 +33,7 @@ interface InputProps extends HTMLInputProps {
     size?: InputSize;
     widthPercent?: InputWidth;
     required?: boolean;
+    minLength?: number;
     resetHandler?: () => void;
 }
 
@@ -53,12 +53,41 @@ export const Input = memo((props: InputProps) => {
         widthPercent = 'full',
         required = false,
         resetHandler,
+        minLength,
         ...otherProps
     } = props;
     const { t } = useTranslation();
     const ref = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
-    const [isRequiredError, setIsRequiredError] = useState(false);
+    const [isErrors, setIsErrors] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const errosHandler = (inputValue: any = value) => {
+        if (required && inputValue?.toString().trim() === '') {
+            setErrorMessage(t('Обязательно для заполнения'));
+            setIsErrors(true);
+        } else if (minLength && inputValue?.toString().length < minLength && inputValue?.toString().length !== 0) {
+            setErrorMessage(`${t('Минимальное количество символов')} ${minLength}`);
+            setIsErrors(true);
+        } else {
+            setErrorMessage('');
+            setIsErrors(false);
+        }
+    };
+
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        errosHandler(e.target.value);
+        onChange?.(e.target.value);
+    };
+
+    const onBlur = () => {
+        errosHandler();
+        setIsFocused(false);
+    };
+
+    const onFocus = () => {
+        setIsFocused(true);
+    };
 
     useEffect(() => {
         if (autofocus) {
@@ -67,32 +96,10 @@ export const Input = memo((props: InputProps) => {
         }
     }, [autofocus]);
 
-    const requiredValueHandler = (inputValue: any = value) => {
-        if (required && inputValue?.toString().trim() === '') {
-            setIsRequiredError(true);
-        } else {
-            setIsRequiredError(false);
-        }
-    };
-
-    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        requiredValueHandler(e.target.value);
-        onChange?.(e.target.value);
-    };
-
-    const onBlur = () => {
-        requiredValueHandler();
-        setIsFocused(false);
-    };
-
-    const onFocus = () => {
-        setIsFocused(true);
-    };
-
     const mods: Mods = {
         [cls.readonly]: readonly,
         [cls.focused]: isFocused,
-        [cls.requiredError]: isRequiredError,
+        [cls.requiredError]: isErrors,
         [cls.withAddonLeft]: Boolean(addonLeft),
         [cls.withAddonRight]: Boolean(addonRight),
     };
@@ -125,7 +132,7 @@ export const Input = memo((props: InputProps) => {
     if (label) {
         return (
             <HStack max gap="8">
-                {required
+                {!readonly && required
                     ? (
                         <>
                             <Text text={`${label}`} />
@@ -135,7 +142,7 @@ export const Input = memo((props: InputProps) => {
                     : <Text text={label} />}
                 <VStack gap="8" max>
                     {input}
-                    {isRequiredError && <Text size="s" variant="error" text={t('Обязательно для заполнения')} />}
+                    {isErrors && <Text size="s" variant="error" text={errorMessage} />}
                 </VStack>
             </HStack>
 
@@ -145,7 +152,7 @@ export const Input = memo((props: InputProps) => {
     return (
         <VStack gap="8" max>
             {input}
-            {isRequiredError && <Text size="s" variant="error" text={t('Обязательно для заполнения')} />}
+            {isErrors && <Text size="s" variant="error" text={errorMessage} />}
         </VStack>
     );
 });
