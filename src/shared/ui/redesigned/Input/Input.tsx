@@ -91,9 +91,17 @@ export const Input = memo((props: InputProps) => {
                 setErrorMessage(t('Номер телефона должен содержать 9 - 11 цифр'));
                 setIsErrors(true);
             }
-        } else if (isEmail) {
-            setErrorMessage(`${t('Введите корректный e-mail')} ${minLength}`);
-            setIsErrors(true);
+        } else if (isEmail && inputValue?.toString().length !== 0) {
+            const validEmail = inputValue.toLowerCase().match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            );
+            if (validEmail) {
+                setErrorMessage('');
+                setIsErrors(false);
+            } else {
+                setErrorMessage(t('Введите корректный e-mail'));
+                setIsErrors(true);
+            }
         } else {
             setIsErrors(false);
         }

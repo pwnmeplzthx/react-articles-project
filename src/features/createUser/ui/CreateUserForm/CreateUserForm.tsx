@@ -185,6 +185,7 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     label={t('Whatsapp')}
                                     className={cls.input}
                                     size="l"
+                                    isPhone
                                     resetHandler={resetHandler(createUserActions.createUser({ whatsapp: '' }))}
                                     placeholder="+7 (000) 000-00-00"
                                 />
@@ -194,6 +195,7 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     label={t('Telegram')}
                                     className={cls.input}
                                     size="l"
+                                    isPhone
                                     maxLength={18}
                                     resetHandler={resetHandler(createUserActions.createUser({ telegram: '' }))}
                                     placeholder="+7 (000) 000-00-00"
@@ -204,6 +206,7 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     label={t('Почта')}
                                     className={cls.input}
                                     size="l"
+                                    isEmail
                                     resetHandler={resetHandler(createUserActions.createUser({ email: '' }))}
                                     placeholder="abcdefgh@gmail.com"
                                 />
