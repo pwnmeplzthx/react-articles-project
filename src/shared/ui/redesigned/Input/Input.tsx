@@ -12,6 +12,7 @@ import cls from './Input.module.scss';
 import { HStack, VStack } from '../Stack';
 import { Text } from '../Text';
 import { ResetInputButton } from '@/features/resetInputButton/ResetInputButton';
+import { formatTelephoneNumber } from '@/shared/lib/formatTelephoneNumber';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
@@ -34,6 +35,8 @@ interface InputProps extends HTMLInputProps {
     widthPercent?: InputWidth;
     required?: boolean;
     minLength?: number;
+    isPhone?: boolean;
+    isEmail?: boolean;
     resetHandler?: () => void;
 }
 
@@ -54,6 +57,8 @@ export const Input = memo((props: InputProps) => {
         required = false,
         resetHandler,
         minLength,
+        isPhone,
+        isEmail,
         ...otherProps
     } = props;
     const { t } = useTranslation();
@@ -62,6 +67,12 @@ export const Input = memo((props: InputProps) => {
     const [isErrors, setIsErrors] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
+    const resetFunction = () => {
+        setIsErrors(false);
+
+        return resetHandler && resetHandler();
+    };
+
     const errosHandler = (inputValue: any = value) => {
         if (required && inputValue?.toString().trim() === '') {
             setErrorMessage(t('Обязательно для заполнения'));
@@ -69,19 +80,31 @@ export const Input = memo((props: InputProps) => {
         } else if (minLength && inputValue?.toString().length < minLength && inputValue?.toString().length !== 0) {
             setErrorMessage(`${t('Минимальное количество символов')} ${minLength}`);
             setIsErrors(true);
+        } else if (isPhone && value?.toString().length !== 0) {
+            if (formatTelephoneNumber(inputValue.replace(/[\D]+/g, ''))[0] === '+' && (formatTelephoneNumber(inputValue.replace(/[\D]+/g, '')).length === 15 || formatTelephoneNumber(inputValue.replace(/[\D]+/g, '')).length === 18)) {
+                setErrorMessage('');
+                setIsErrors(false);
+            } else if (formatTelephoneNumber(inputValue.replace(/[\D]+/g, ''))[0] === '8' && (formatTelephoneNumber(inputValue.replace(/[\D]+/g, '')).length === 14 || formatTelephoneNumber(inputValue.replace(/[\D]+/g, '')).length === 17)) {
+                setErrorMessage('');
+                setIsErrors(false);
+            } else {
+                setErrorMessage(t('Номер телефона должен содержать 9 - 11 цифр'));
+                setIsErrors(true);
+            }
+        } else if (isEmail) {
+            setErrorMessage(`${t('Введите корректный e-mail')} ${minLength}`);
+            setIsErrors(true);
         } else {
-            setErrorMessage('');
             setIsErrors(false);
         }
     };
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        errosHandler(e.target.value);
         onChange?.(e.target.value);
+        errosHandler(e.target.value);
     };
 
     const onBlur = () => {
-        errosHandler();
         setIsFocused(false);
     };
 
@@ -125,7 +148,7 @@ export const Input = memo((props: InputProps) => {
                 placeholder={placeholder}
                 {...otherProps}
             />
-            <div className={cls.addonRight}>{resetHandler && !readonly && value?.toString() !== '' ? <ResetInputButton onClick={resetHandler} /> : addonRight}</div>
+            <div className={cls.addonRight}>{resetHandler && !readonly && value?.toString() !== '' ? <ResetInputButton onClick={resetFunction} /> : addonRight}</div>
         </div>
     );
 

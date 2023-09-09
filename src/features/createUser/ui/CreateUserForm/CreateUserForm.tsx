@@ -16,7 +16,6 @@ import { getUserError } from '../../model/selectors/getUserError';
 import { createUserData } from '../../model/services/createUserData/createUserData';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { formatTelephoneNumber } from '@/shared/lib/formatTelephoneNumber';
-import { ResetInputButton } from '@/features/resetInputButton/ResetInputButton';
 import { capitalizeFirstLetter } from '@/shared/lib/capitalizeFirstLetter';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
@@ -97,7 +96,7 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
     }, [dispatch]);
 
     const onChangeAvatar = useCallback((value: string) => {
-        dispatch(createUserActions.createUser({ avatar: value || '' }));
+        dispatch(createUserActions.createUser({ user_icon: value || '' }));
     }, [dispatch]);
 
     const onCreateUserClick = useCallback(async () => {
@@ -167,7 +166,6 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     className={cls.input}
                                     size="l"
                                     minLength={3}
-                                    maxLength={30}
                                     resetHandler={resetHandler(createUserActions.createUser({ patronymic: '' }))}
                                     placeholder={t('Введите отчество')}
                                 />
@@ -177,6 +175,7 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     label={t('Телефон')}
                                     className={cls.input}
                                     size="l"
+                                    isPhone
                                     resetHandler={resetHandler(createUserActions.createUser({ phone: '' }))}
                                     placeholder="+7 (000) 000-00-00"
                                 />
@@ -195,6 +194,7 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                                     label={t('Telegram')}
                                     className={cls.input}
                                     size="l"
+                                    maxLength={18}
                                     resetHandler={resetHandler(createUserActions.createUser({ telegram: '' }))}
                                     placeholder="+7 (000) 000-00-00"
                                 />
@@ -253,16 +253,16 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
                         <div className={classNames(cls.inputsWrapper)}>
                             <VStack gap="16" maxHeight max>
                                 <HStack justify="center" max>
-                                    <Avatar size={128} src={data?.avatar} />
+                                    <Avatar size={128} src={data?.user_icon} />
                                 </HStack>
                                 <Input
                                     autofocus
                                     onChange={onChangeAvatar}
-                                    value={data?.avatar || ''}
+                                    value={data?.user_icon || ''}
                                     label={t('Аватар')}
                                     className={cls.input}
                                     size="l"
-                                    resetHandler={resetHandler(createUserActions.createUser({ avatar: '' }))}
+                                    resetHandler={resetHandler(createUserActions.createUser({ user_icon: '' }))}
                                     placeholder={t('Ссылка на аватар')}
                                 />
                                 <Input
