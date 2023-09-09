@@ -13,6 +13,9 @@ const prefixNumber = (str: string) => {
 
 export function formatTelephoneNumber(value: string) {
     const numberLength = 11;
+    // if (value.length > numberLength) {
+    //     value = value.slice(0, -1);
+    // }
     let result;
     if (value.includes('+8') || value[0] === '8') {
         result = '';
