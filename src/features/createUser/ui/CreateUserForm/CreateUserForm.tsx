@@ -20,6 +20,7 @@ import { capitalizeFirstLetter } from '@/shared/lib/capitalizeFirstLetter';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
 import { TogglePasswordButton } from '@/features/togglePasswordButton/TogglePasswordButton';
+import { showNotification } from '@/entities/Notificaion/model/services/showNotification';
 
 export interface CreateUserFormProps {
     className?: string;
@@ -105,8 +106,14 @@ const CreateUserForm = memo(({ className, onSuccess }: CreateUserFormProps) => {
         // https://redux-toolkit.js.org/usage/usage-with-typescript
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
+            showNotification('success', t('Пользователь успешно создан!'), dispatch);
         }
-    }, [dispatch, onSuccess]);
+
+        if (result.meta.requestStatus === 'rejected') {
+            onSuccess();
+            showNotification('danger', t('Ошибка на сервере!'), dispatch);
+        }
+    }, [dispatch, onSuccess, t]);
 
     const onKeyDown = useCallback((e: KeyboardEvent) => {
         if (e.key === 'Enter') {
