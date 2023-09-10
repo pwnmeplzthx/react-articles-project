@@ -16,11 +16,13 @@ import { rtkApi } from '@/shared/api/rtkApi';
 import { UsersPageSchema } from '@/pages/UsersPage/model/types/usersPageSchema';
 import { CustomersPageSchema } from '@/pages/CustomersPage';
 import { CreateUserSchema } from '@/features/createUser';
+import { Notification } from '@/entities/Notificaion';
 
 export interface StateSchema {
     // Обязательные
     counter: CounterSchema;
     user: UserSchema;
+    notification: Notification;
     ui: UISchema;
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
