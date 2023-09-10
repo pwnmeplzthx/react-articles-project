@@ -1,22 +1,25 @@
-import { Suspense, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Navbar } from '@/widgets/Navbar';
-import { Sidebar } from '@/widgets/Sidebar';
+import { Suspense, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { getUserAuthData, getUserIsInitedAuthData, userActions } from '@/entities/User';
 import { AuthPage } from '@/pages/AuthPage';
+import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
+import { MainLayout } from '@/shared/layouts/MainLayout';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Navbar } from '@/widgets/Navbar';
+import { Sidebar } from '@/widgets/Sidebar';
+import { useAppToolbar } from './lib/useAppToolbar';
 import { useTheme } from './providers/ThemeProvider';
 import { AppRouter } from './providers/router';
-import { MainLayout } from '@/shared/layouts/MainLayout';
-import { useAppToolbar } from './lib/useAppToolbar';
-import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
+import { NotificationItem, getNotificationData } from '@/entities/Notificaion';
 
 const App = () => {
     const { theme } = useTheme();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const inited = useSelector(getUserIsInitedAuthData);
     const userAuthData = !!(useSelector(getUserAuthData));
     const toolbar = useAppToolbar();
+    const { message, type } = useSelector(getNotificationData);
 
     useEffect(() => {
         dispatch(userActions.initAuthData());
@@ -41,12 +44,16 @@ const App = () => {
             <Suspense fallback="">
                 {userAuthData
                     ? (
-                        <MainLayout
-                            header={<Navbar />}
-                            content={<AppRouter />}
-                            sidebar={<Sidebar />}
-                            toolbar={toolbar}
-                        />
+                        <>
+                            <MainLayout
+                                header={<Navbar />}
+                                content={<AppRouter />}
+                                sidebar={<Sidebar />}
+                                toolbar={toolbar}
+                            />
+                            {message && <NotificationItem message={message} type={type} />}
+                        </>
+
                     )
                     : <AuthPage />}
             </Suspense>

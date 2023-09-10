@@ -880,6 +880,20 @@
       "username": "phoneTest",
       "password": "changeme",
       "id": "sfayFBE"
+    },
+    {
+      "name": "Тест",
+      "surname": "Колбека",
+      "username": "callBackTest",
+      "password": "changeme",
+      "id": "Ad778hQ"
+    },
+    {
+      "name": "Тест",
+      "surname": "Нотификейшн",
+      "username": "notificationTest",
+      "password": "changeme",
+      "id": "qRps5aU"
     }
   ],
   "customers": [
