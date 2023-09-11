@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { showNotification } from '@/entities/Notificaion/model/services/showNotification';
+import { showNotification } from '@/entities/Notification/model/services/showNotification';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { Card } from '@/shared/ui/redesigned/Card';
