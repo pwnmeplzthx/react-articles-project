@@ -17,20 +17,19 @@ export const initCustomersPage = createAsyncThunk<
             const inited = getCustomersPageInited(getState());
 
             if (!inited) {
-                const orderFromUrl = searchParams.get('order') as SortOrder;
-                const sortFromUrl = searchParams.get('sort') as CustomerSortField;
-                const searchFromUrl = searchParams.get('search');
-                const typeFromUrl = searchParams.get('type');
+                // const orderFromUrl = searchParams.get('order') as SortOrder;
+                // const sortFromUrl = searchParams.get('sort') as CustomerSortField;
+                // const searchFromUrl = searchParams.get('search');
 
-                if (orderFromUrl) {
-                    dispatch(customersPageActions.setOrder(orderFromUrl));
-                }
-                if (sortFromUrl) {
-                    dispatch(customersPageActions.setSort(sortFromUrl));
-                }
-                if (searchFromUrl) {
-                    dispatch(customersPageActions.setSearch(searchFromUrl));
-                }
+                // if (orderFromUrl) {
+                //     dispatch(customersPageActions.setOrder(orderFromUrl));
+                // }
+                // if (sortFromUrl) {
+                //     dispatch(customersPageActions.setSort(sortFromUrl));
+                // }
+                // if (searchFromUrl) {
+                //     dispatch(customersPageActions.setSearch(searchFromUrl));
+                // }
 
                 dispatch(customersPageActions.initState());
                 dispatch(fetchCustomersList({}));

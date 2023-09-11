@@ -8,7 +8,7 @@ import { $api } from '@/shared/api/api';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
-import { notificationReducer } from '@/entities/Notificaion/model/slice/notificationSlice';
+import { notificationReducer } from '@/entities/Notification/model/slice/notificationSlice';
 
 // Создание стора вынесено в функцию для переиспользования в storybook и jest
 export function createReduxStore(

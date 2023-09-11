@@ -16,7 +16,7 @@ import { rtkApi } from '@/shared/api/rtkApi';
 import { UsersPageSchema } from '@/pages/UsersPage/model/types/usersPageSchema';
 import { CustomersPageSchema } from '@/pages/CustomersPage';
 import { CreateUserSchema } from '@/features/createUser';
-import { Notification } from '@/entities/Notificaion';
+import { Notification } from '@/entities/Notification';
 
 export interface StateSchema {
     // Обязательные
