@@ -1,6 +1,6 @@
+import { NotificationType } from '../../ui/NotificationItem';
+
 export interface Notification {
-    id: string;
-    title: string;
-    description: string;
-    href?: string;
+  message: string;
+  type: NotificationType;
 }

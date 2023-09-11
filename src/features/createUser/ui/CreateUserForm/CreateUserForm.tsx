@@ -20,7 +20,7 @@ import { capitalizeFirstLetter } from '@/shared/lib/capitalizeFirstLetter';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
 import { TogglePasswordButton } from '@/features/togglePasswordButton/TogglePasswordButton';
-import { showNotification } from '@/entities/Notificaion/model/services/showNotification';
+import { showNotification } from '@/entities/Notification/model/services/showNotification';
 
 export interface CreateUserFormProps {
     className?: string;

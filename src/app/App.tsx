@@ -11,7 +11,7 @@ import { Sidebar } from '@/widgets/Sidebar';
 import { useAppToolbar } from './lib/useAppToolbar';
 import { useTheme } from './providers/ThemeProvider';
 import { AppRouter } from './providers/router';
-import { NotificationItem, getNotificationData } from '@/entities/Notificaion';
+import { NotificationItem, getNotificationData } from '@/entities/Notification';
 
 const App = () => {
     const { theme } = useTheme();

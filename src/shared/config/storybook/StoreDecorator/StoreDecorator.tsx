@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { articleDetailsReducer } from '@/entities/Article/model/slice/articleDetailsSlice';
-import { notificationReducer } from '@/entities/Notificaion/model/slice/notificationSlice';
+import { notificationReducer } from '@/entities/Notification/model/slice/notificationSlice';
 import { loginReducer } from '@/features/AuthByUsername/model/slice/loginSlice';
 import { addCommentFormReducer } from '@/features/addCommentForm/model/slices/addCommentFormSlice';
 import { profileReducer } from '@/features/editableProfileCard/model/slice/profileSlice';
