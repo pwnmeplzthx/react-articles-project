@@ -1,4 +1,4 @@
-export type { Notification } from './model/types/Notification';
+export type { Notification } from './model/types/notification';
 
 export { getNotificationData } from './model/selectors/selectors';
 

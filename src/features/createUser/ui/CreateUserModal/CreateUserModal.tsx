@@ -16,6 +16,7 @@ export const CreateUserModal = ({ className, isOpen, onClose }: CreateUserModalP
         isOpen={isOpen}
         onClose={onClose}
         lazy
+        closeButton
     >
         <Suspense fallback={<Loader />}>
             <CreateUserFormAsync onSuccess={onClose} />

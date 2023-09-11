@@ -60,3 +60,19 @@
         transform: scale(0.2);
     }
 }
+
+.closeModalButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--cancel-redesigned);
+    fill: var(--cancel-redesigned);
+    opacity: 0.5;
+    z-index: 9999999;
+
+    &:hover {
+        color: var(--cancel-redesigned);
+        fill: var(--cancel-redesigned);
+        opacity: 1;
+    }
+}

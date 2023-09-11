@@ -1,6 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { buildSlice } from '@/shared/lib/store';
-import { Notification } from '../types/Notification';
+import { Notification } from '../types/notification';
 
 const initialState: Notification = {
     message: '',

@@ -1,13 +1,13 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './NotificationItem.module.scss';
-import { Notification } from '../../model/types/notification';
+import { NotificationList } from '../../model/types/notificationList';
 import { Card } from '@/shared/ui/redesigned/Card';
 import { Text } from '@/shared/ui/redesigned/Text';
 
 interface NotificationItemProps {
     className?: string;
-    item: Notification
+    item: NotificationList
 }
 
 export const NotificationItem = memo((props: NotificationItemProps) => {

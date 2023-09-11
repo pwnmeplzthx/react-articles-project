@@ -1,17 +1,16 @@
 import {
-    FC, useState, useEffect, useRef,
+    useEffect,
+    useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@/shared/ui/redesigned/Button';
+import CrossIcon from '@/shared/assets/icons/cross-20x20.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import { Portal } from '@/shared/ui/redesigned/Portal/Portal';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { notificationActions } from '../model/slice/notificationSlice';
 import cls from './NotificationItem.module.scss';
-import { Portal } from '@/shared/ui/redesigned/Portal/Portal';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/redesigned/Text';
-import CrossIcon from '@/shared/assets/icons/cross-20x20.svg';
-import { Icon } from '@/shared/ui/redesigned/Icon';
-import { StateSchema } from '@/app/providers/StoreProvider';
 
 interface NotificationItemProps {
     message: string;
