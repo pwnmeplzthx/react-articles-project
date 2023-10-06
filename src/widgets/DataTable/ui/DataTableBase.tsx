@@ -26,7 +26,7 @@ export function DataTableBase<T>(props: DataTableBaseProps): JSX.Element {
         table: {
             style: {
                 display: 'table',
-                minHeight: '80vh',
+                // minHeight: '80vh',
                 backgroundColor: 'var(--light-bg-redesigned)',
             },
         },
@@ -92,11 +92,13 @@ export function DataTableBase<T>(props: DataTableBaseProps): JSX.Element {
         pagination: {
             style: {
                 color: 'var(--icon-redesigned)',
+                fill: 'var(--icon-redesigned)',
                 backgroundColor: 'var(--dark-bg-redesigned)',
                 borderTopColor: 'var(--hint-redesigned)',
             },
             pageButtonsStyle: {
                 color: 'var(--icon-redesigned)',
+                fill: 'var(--icon-redesigned)',
                 backgroundColor: 'transparent',
                 '&:disabled': {
                     cursor: 'unset',
@@ -124,10 +126,17 @@ export function DataTableBase<T>(props: DataTableBaseProps): JSX.Element {
         },
     };
 
+    const paginationComponentOptions = {
+        rowsPerPageText: t('Данных на странице'),
+        rangeSeparatorText: t('из'),
+    };
+
     return (
         <DataTable
             pagination
             paginationServer
+            paginationTotalRows={20}
+            paginationComponentOptions={paginationComponentOptions}
             // dense
             highlightOnHover
             customStyles={customStyles}
