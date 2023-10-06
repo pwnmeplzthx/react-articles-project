@@ -1,8 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
-import { validateUserData } from '../validateUserData/validateUserData';
 import { ValidateUserError } from '@/entities/User/model/consts/consts';
-import { User } from '@/entities/User';
+import { User, validateUserData } from '@/entities/User';
 import { getUserData } from '../../selectors/getUserData';
 
 export const createUserData = createAsyncThunk<

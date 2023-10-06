@@ -27,3 +27,5 @@ export {
 export type {
     UserDetailsCardSchema,
 } from './model/types/userDetailsCardSchema';
+
+export { validateUserData } from './model/services/validateUserData';
