@@ -3,6 +3,7 @@ import DataTable, { TableProps } from 'react-data-table-component';
 import { ReactNode } from 'react';
 import cls from './DataTable.module.scss';
 import { FiltersContainer } from '@/pages/CustomersPage/ui/FiltersContainer/FiltersContainer';
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 
 interface DataTableBaseProps {
     data: any;
@@ -102,6 +103,25 @@ export function DataTableBase<T>(props: DataTableBaseProps): JSX.Element {
                 },
             },
         },
+        noData: {
+            style: {
+                display: 'flex',
+                minHeight: '80vh',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--text-redesigned)',
+                backgroundColor: 'var(--light-bg-redesigned)',
+            },
+        },
+        progress: {
+            style: {
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--text-redesigned)',
+                backgroundColor: 'var(--light-bg-redesigned)',
+            },
+        },
     };
 
     return (
@@ -117,6 +137,7 @@ export function DataTableBase<T>(props: DataTableBaseProps): JSX.Element {
             subHeader
             subHeaderComponent={filtersContainer}
             progressPending={isLoading}
+            progressComponent={<Skeleton height="80vh" />}
         />
     );
 }
