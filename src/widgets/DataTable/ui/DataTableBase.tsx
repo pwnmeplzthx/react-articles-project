@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import DataTable, { TableProps } from 'react-data-table-component';
+import { ReactNode } from 'react';
 import cls from './DataTable.module.scss';
 import { FiltersContainer } from '@/pages/CustomersPage/ui/FiltersContainer/FiltersContainer';
 
@@ -7,10 +8,13 @@ interface DataTableBaseProps {
     data: any;
     columns: any;
     isLoading: boolean;
+    filtersContainer: ReactNode;
 }
 
 export function DataTableBase<T>(props: DataTableBaseProps): JSX.Element {
-    const { data, columns, isLoading } = props;
+    const {
+        data, columns, isLoading, filtersContainer,
+    } = props;
     const { t } = useTranslation();
 
     // стилизация таблицы
@@ -111,7 +115,7 @@ export function DataTableBase<T>(props: DataTableBaseProps): JSX.Element {
             columns={columns}
             fixedHeader
             subHeader
-            subHeaderComponent={<FiltersContainer />}
+            subHeaderComponent={filtersContainer}
             progressPending={isLoading}
         />
     );

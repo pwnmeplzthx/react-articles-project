@@ -1,22 +1,20 @@
-import { memo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useSearchParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { memo } from 'react';
 import { TableColumn } from 'react-data-table-component';
-import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+import { Customer } from '@/entities/Customer';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { DataTableBase } from '@/widgets/DataTable';
 import { Page } from '@/widgets/Page/Page';
-import { fetchNextCustomersPage } from '../model/services/fetchNextCustomersPage/fetchNextCustomersPage';
+import { getCustomersPageIsLoading } from '../model/selectors/customersPageSelectors';
 import { initCustomersPage } from '../model/services/initCustomersPage/initCustomersPage';
 import { customersPageReducer, getCustomers } from '../model/slices/customersPageSlice';
 import cls from './CustomersPage.module.scss';
-import { Customer } from '@/entities/Customer';
-import { fetchCustomersList } from '../model/services/fetchCustomersList/fetchCustomersList';
-import { getCustomersPageIsLoading } from '../model/selectors/customersPageSelectors';
+import { FiltersContainer } from './FiltersContainer/FiltersContainer';
 
 interface CustomersPageProps {
     className?: string;
@@ -64,10 +62,6 @@ const CustomersPage = (props: CustomersPageProps) => {
     // TODO сделать скелетон во время загрузки
     const isLoading = useSelector(getCustomersPageIsLoading);
 
-    console.log(customers);
-    console.log(customers);
-    console.log(customers);
-
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <Page
@@ -81,6 +75,7 @@ const CustomersPage = (props: CustomersPageProps) => {
                     columns={columns}
                     data={customers}
                     isLoading={isLoading}
+                    filtersContainer={<FiltersContainer />}
                 />
             </Page>
         </DynamicModuleLoader>
