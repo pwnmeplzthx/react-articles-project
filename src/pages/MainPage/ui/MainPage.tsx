@@ -6,6 +6,7 @@ import { Card } from '@/shared/ui/redesigned/Card';
 import { Page } from '@/widgets/Page/Page';
 import { DropdownList } from '@/shared/ui/redesigned/Popups';
 import { Role } from '@/entities/Role';
+import { StatusBadge } from '@/shared/ui/redesigned/StatusBadge/StatusBadge';
 
 type Props = {}
 
@@ -49,6 +50,7 @@ const MainPage = (props: Props) => {
                 {t('Main page')}
                 <Button className="button mr-2" onClick={() => showNotification('success', 'hello world!', dispatch)}>Add success notification</Button>
                 <DropdownList<Role> displayField="name" items={items} />
+                <StatusBadge status="success" text="hello world" />
             </Card>
         </Page>
     );
